@@ -1,0 +1,12 @@
+[submodule "lib/Blue-Base"]
+	path = lib/Blue-Base
+	url = https://github.com/BlueHuskyStudios/Blue-Base.git
+[submodule "lib/Husky-UI"]
+	path = lib/Husky-UI
+	url = https://github.com/BlueHuskyStudios/Husky-UI.git
+[submodule "lib/Husky-IO"]
+	path = lib/Husky-IO
+	url = https://github.com/BlueHuskyStudios/Husky-IO.git
+[submodule "lib/Wag"]
+	path = lib/Wag
+	url = https://github.com/BlueHuskyStudios/Wag.git
