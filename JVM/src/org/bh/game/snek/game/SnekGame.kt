@@ -1,5 +1,7 @@
 package org.bh.game.snek.game
 
+import org.bh.game.snek.state.SnekArgsProcessor
+
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
  *
@@ -8,7 +10,7 @@ package org.bh.game.snek.game
  */
 class SnekGame {
     constructor(args: Array<String>) {
-
+        SnekArgsProcessor.shared.process(args)
     }
 
     fun start() {

@@ -26,10 +26,10 @@ class SnekArgs(val metaGameState: SnekMetaGameState): CommandlineArgCollection()
 
 private val _shared = SnekArgs(SnekMetaGameState.shared)
 
-val Companion.shared: SnekArgs get() = _shared
+val SnekArgs.Companion.shared: SnekArgs get() = _shared
 
-class SnekArgsProcessor {
-    fun process(args: Array<String>) {
-        SnekArgs.shared.parse(args).forEach { it.action(emptyArray()) }
+class SnekArgsProcessor(expectedArgs: SnekArgs): CommandLineArgProcessor(expectedArgs) {
+    companion object {
+        val shared = SnekArgsProcessor(SnekArgs.shared)
     }
 }
