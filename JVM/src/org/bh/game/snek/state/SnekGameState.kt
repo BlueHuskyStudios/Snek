@@ -1,6 +1,12 @@
+@file:Suppress("unused")
+
 package org.bh.game.snek.state
 
 import org.bh.tools.base.collections.deepEquals
+import org.bh.tools.base.struct.Data
+import org.bh.tools.base.struct.DataAccessor
+import org.bh.tools.base.struct.DataView
+import org.bh.tools.base.struct.DataViewController
 import org.bh.tools.base.struct.coord.IntPoint
 import org.bh.tools.base.struct.coord.IntSize
 import java.util.*
@@ -13,20 +19,21 @@ import java.util.*
  * @author Kyli Rouge
  * @since 2016-10-30
  */
-class SnekGameState(initialData: SnekData) {
-    val snek = BaseSnekDataView(initialData)
+class SnekGameState(override val dataView: BaseSnekDataView): DataViewController<SnekData, BaseSnekDataView> {
+    val snek: BaseSnekDataView get() = dataView
 }
 
-data class BaseSnekDataView(private val initialData: SnekData) {
-    val boardSize: IntSize get() = initialData.boardSize
-    val snek: Array<IntPoint> get() = initialData.snekPath
+data class BaseSnekDataView(override val data: SnekData): DataView<SnekData> {
+    val boardSize: IntSize get() = data.boardSize
+    val snek: Array<IntPoint> get() = data.snekPath
+    val leaderboard: Leaderboard<Leader, Int> get() = data.leaderboard
 }
 
 data class SnekData(
         val boardSize: IntSize,
         val snekPath: Array<IntPoint>,
         val leaderboard: Leaderboard<Leader, Int>
-    ) {
+    ): Data {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is SnekData) return false
@@ -41,4 +48,24 @@ data class SnekData(
         return result
     }
 }
+
+class SnekDataAccessor(): DataAccessor<SnekData, SnekDataAccessDetails?, SnekDataAccessStatus?> {
+    override fun accessData(details: SnekDataAccessDetails?,
+                            didAccessData: (accessedData: SnekData?, status: SnekDataAccessStatus?) -> Unit) {
+        didAccessData(newData, null)
+    }
+
+    companion object {
+        val shared = SnekDataAccessor()
+
+        val newData: SnekData get() = SnekData(defaultBoardSize, defaultSnekPath, defaultLeaderboard)
+
+        private val defaultBoardSize = IntSize(width = 32, height = 32)
+        private val defaultSnekPath: Array<IntPoint> = emptyArray()
+        private val  defaultLeaderboard = Leaderboard<Leader, Int>(mapOf())
+    }
+}
+
+class SnekDataAccessDetails // TODO
+class SnekDataAccessStatus // TODO
 

@@ -10,7 +10,7 @@ import java.util.*
  * @author Kyli Rouge
  * @since 2016-11-02
  */
-data class Leaderboard<KeyType, ScoreType>(val scores: Dictionary<KeyType, ScoreType>)
+data class Leaderboard<KeyType, out ScoreType>(val scores: Map<KeyType, ScoreType>)
 
 
 /**
