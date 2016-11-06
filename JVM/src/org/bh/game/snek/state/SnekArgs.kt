@@ -1,9 +1,9 @@
 package org.bh.game.snek.state
 
-import org.bh.game.snek.state.SnekArgs.Companion
-import org.bh.tools.game.CommandLineArg
-import org.bh.tools.game.CommandlineArgCollection
-import org.bh.tools.game.CompleteCommandLineArg
+import org.bh.tools.io.setup.CommandLineArg
+import org.bh.tools.io.setup.CommandLineArgProcessor
+import org.bh.tools.io.setup.CommandlineArgCollection
+import org.bh.tools.io.setup.CompleteCommandLineArg
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
