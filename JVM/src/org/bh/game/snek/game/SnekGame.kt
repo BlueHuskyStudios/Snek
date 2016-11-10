@@ -1,5 +1,7 @@
 package org.bh.game.snek.game
 
+import org.bh.game.snek.game.logic.SnekGameStateController
+import org.bh.game.snek.gui.swing.Keymap
 import org.bh.game.snek.gui.swing.SnekViewController
 import org.bh.game.snek.gui.swing.SnekWindow
 import org.bh.game.snek.state.SnekArgsProcessor
@@ -19,7 +21,11 @@ class SnekGame(args: Array<String>) {
 
     fun start() {
         SnekDataAccessor.shared.accessData(null) { data, status ->
-            val snekViewController = SnekViewController(snekData = data ?: SnekDataAccessor.newData)
+            val stateController = SnekGameStateController()
+            val snekViewController = SnekViewController(
+                    snekData = data ?: SnekDataAccessor.newData,
+                    mutator = stateController,
+                    keymap = Keymap.default)
             SnekWindow(snekViewController).isVisible = true
         }
     }

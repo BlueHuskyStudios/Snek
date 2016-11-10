@@ -1,6 +1,8 @@
 package org.bh.game.snek.gui.swing
 
 import java.awt.BorderLayout
+import java.awt.event.WindowEvent
+import java.awt.event.WindowListener
 import javax.swing.JApplet
 import javax.swing.JFrame
 
@@ -10,11 +12,42 @@ import javax.swing.JFrame
  * @author Kyli Rouge
  * @since 2016-11-05
  */
-class SnekWindow(snekViewController: SnekViewController): JFrame() {
+class SnekWindow(snekViewController: SnekViewController): JFrame(), WindowListener {
     init {
+        addWindowListener(this)
+        title = "Snek"
         contentPane = SnekApplet(snekViewController)
-        setLocationRelativeTo(null)
         defaultCloseOperation = EXIT_ON_CLOSE
+    }
+
+    override fun pack() {
+        super.pack()
+        setLocationRelativeTo(null)
+    }
+
+    // MARK: - WindowListener
+
+    var hasShown = false
+
+    override fun windowIconified(e: WindowEvent?) { }
+
+    override fun windowDeiconified(e: WindowEvent?) { }
+
+    override fun windowClosing(e: WindowEvent?) { }
+
+    override fun windowClosed(e: WindowEvent?) { }
+
+    override fun windowActivated(e: WindowEvent?) {
+        if (!hasShown) {
+            pack()
+        }
+    }
+
+    override fun windowDeactivated(e: WindowEvent?) { }
+
+    override fun windowOpened(e: WindowEvent?) {
+        hasShown = true
+        pack()
     }
 }
 
