@@ -5,8 +5,10 @@ import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekData
 import org.bh.tools.base.collections.safeFirst
 import org.bh.tools.base.struct.UIViewController
+import java.awt.event.ActionEvent
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
+import javax.swing.AbstractAction
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
@@ -22,18 +24,29 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
 
     init {
         view.addKeyListener(this)
+        view.isFocusCycleRoot = true
+        view.grabFocus()
+
+        keymap.registerAll(this) {
+            //{print(it)}
+            object: AbstractAction() {
+                override fun actionPerformed(e: ActionEvent?) {
+                    println(it)
+                }
+            }
+        }
     }
 
     override fun keyTyped(e: KeyEvent?) {
-        print("Key typed: ${e?.extendedKeyCode}")
+        println("Key typed: ${e?.extendedKeyCode}")
     }
 
     override fun keyPressed(e: KeyEvent?) {
-        print("Key pressed: ${e?.extendedKeyCode}")
+        println("Key down: ${e?.extendedKeyCode}")
     }
 
     override fun keyReleased(e: KeyEvent?) {
-        print("Key released: ${e?.extendedKeyCode}")
+        println("Key up: ${e?.extendedKeyCode}")
         if (e == null) return
         val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
         if (action != null) {

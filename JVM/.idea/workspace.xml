@@ -34,33 +34,163 @@
       <file leaf-file-name="SnekGame.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="391">
+              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+              <folding>
+                <element signature="e#31#323#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Keymap.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/Keymap.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+              <folding>
+                <element signature="e#36#408#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Leaderboard.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/Leaderboard.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SnekArgs.kt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekArgs.kt">
+      <file leaf-file-name="SnekWindow.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekWindow.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="918">
+              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
               <folding>
-                <element signature="e#32#218#0" expanded="true" />
+                <element signature="e#36#188#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Command-Line Arguments.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/bh/tools/game/Command-Line Arguments.kt">
+      <file leaf-file-name="SnekViewController.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="782">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="e#36#409#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Action.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/javax/swing/Action.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="252" column="21" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#16759#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="docComment;class#Action#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SnekView.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekView.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="19" column="42" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="42" />
+              <folding>
+                <element signature="e#36#407#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Graphics Extensions.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Husky-UI/JVM/src/org/bh/tools/ui/swing/Graphics Extensions.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="75" column="17" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
               <folding>
-                <element signature="e#27#109#0" expanded="true" />
+                <element signature="e#31#162#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SnekGameStateController.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/logic/SnekGameStateController.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#37#285#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeltaStack.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/DeltaStack.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+              <folding>
+                <element signature="e#39#137#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Basic State Interfaces.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/Basic State Interfaces.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StateStore.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateStore.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stack.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Stack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#3888#0" expanded="false" />
+                <element signature="e#2838#2839#0" expanded="false" />
+                <element signature="e#2872#2873#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StateMutator.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateMutator.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,7 +198,7 @@
       <file leaf-file-name="String Utils.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/util/String Utils.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="767">
+            <state relative-caret-position="1309">
               <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
               <folding />
             </state>
@@ -78,145 +208,10 @@
       <file leaf-file-name="Regex.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/parsing/Regex.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+            <state relative-caret-position="221">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
               <folding>
                 <element signature="e#35#122#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_Collections.kt" pinned="false" current-in-tab="false">
-        <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/generated/_Collections.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27030">
-              <caret line="1593" column="20" selection-start-line="1593" selection-start-column="20" selection-end-line="1593" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pattern.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/regex/Pattern.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14943">
-              <caret line="914" column="67" selection-start-line="914" selection-start-column="67" selection-end-line="914" selection-end-column="67" />
-              <folding>
-                <element signature="e#0#220073#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#49482#49483#0" expanded="false" />
-                <element signature="e#49530#49531#0" expanded="false" />
-                <element signature="e#49703#49704#0" expanded="false" />
-                <element signature="e#49733#49734#0" expanded="false" />
-                <element signature="e#50012#50013#0" expanded="false" />
-                <element signature="e#50042#50043#0" expanded="false" />
-                <element signature="e#50700#50701#0" expanded="false" />
-                <element signature="e#50728#50729#0" expanded="false" />
-                <element signature="e#57959#57960#0" expanded="false" />
-                <element signature="e#57997#57998#0" expanded="false" />
-                <element signature="e#68318#68319#0" expanded="false" />
-                <element signature="e#68381#68382#0" expanded="false" />
-                <element signature="e#75891#75892#0" expanded="false" />
-                <element signature="e#75922#75923#0" expanded="false" />
-                <element signature="e#76422#76423#0" expanded="false" />
-                <element signature="e#76461#76462#0" expanded="false" />
-                <element signature="e#76875#76876#0" expanded="false" />
-                <element signature="e#76914#76915#0" expanded="false" />
-                <element signature="e#79893#79894#0" expanded="false" />
-                <element signature="e#79917#79918#0" expanded="false" />
-                <element signature="e#122682#122683#0" expanded="false" />
-                <element signature="e#122711#122712#0" expanded="false" />
-                <element signature="e#122750#122751#0" expanded="false" />
-                <element signature="e#122778#122779#0" expanded="false" />
-                <element signature="e#126231#126232#0" expanded="false" />
-                <element signature="e#126282#126283#0" expanded="false" />
-                <element signature="e#128644#128645#0" expanded="false" />
-                <element signature="e#128689#128690#0" expanded="false" />
-                <element signature="e#131342#131343#0" expanded="false" />
-                <element signature="e#131377#131378#0" expanded="false" />
-                <element signature="e#136722#136723#0" expanded="false" />
-                <element signature="e#136761#136762#0" expanded="false" />
-                <element signature="e#139122#139123#0" expanded="false" />
-                <element signature="e#139161#139162#0" expanded="false" />
-                <element signature="e#143211#143212#0" expanded="false" />
-                <element signature="e#143249#143250#0" expanded="false" />
-                <element signature="e#143480#143481#0" expanded="false" />
-                <element signature="e#143518#143519#0" expanded="false" />
-                <element signature="e#143856#143857#0" expanded="false" />
-                <element signature="e#143913#143914#0" expanded="false" />
-                <element signature="e#144110#144111#0" expanded="false" />
-                <element signature="e#144152#144153#0" expanded="false" />
-                <element signature="e#144524#144525#0" expanded="false" />
-                <element signature="e#144566#144567#0" expanded="false" />
-                <element signature="e#144606#144607#0" expanded="false" />
-                <element signature="e#144675#144676#0" expanded="false" />
-                <element signature="e#144894#144895#0" expanded="false" />
-                <element signature="e#144938#144939#0" expanded="false" />
-                <element signature="e#144978#144979#0" expanded="false" />
-                <element signature="e#145049#145050#0" expanded="false" />
-                <element signature="e#145307#145308#0" expanded="false" />
-                <element signature="e#145384#145385#0" expanded="false" />
-                <element signature="e#145637#145638#0" expanded="false" />
-                <element signature="e#145680#145681#0" expanded="false" />
-                <element signature="e#145917#145918#0" expanded="false" />
-                <element signature="e#145983#145984#0" expanded="false" />
-                <element signature="e#146856#146857#0" expanded="false" />
-                <element signature="e#146892#146893#0" expanded="false" />
-                <element signature="e#147254#147255#0" expanded="false" />
-                <element signature="e#147288#147289#0" expanded="false" />
-                <element signature="e#147939#147940#0" expanded="false" />
-                <element signature="e#147973#147974#0" expanded="false" />
-                <element signature="e#148742#148743#0" expanded="false" />
-                <element signature="e#148776#148777#0" expanded="false" />
-                <element signature="e#149565#149566#0" expanded="false" />
-                <element signature="e#149599#149600#0" expanded="false" />
-                <element signature="e#150489#150490#0" expanded="false" />
-                <element signature="e#150523#150524#0" expanded="false" />
-                <element signature="e#150552#150553#0" expanded="false" />
-                <element signature="e#150599#150600#0" expanded="false" />
-                <element signature="e#151509#151510#0" expanded="false" />
-                <element signature="e#151543#151544#0" expanded="false" />
-                <element signature="e#151572#151573#0" expanded="false" />
-                <element signature="e#151650#151651#0" expanded="false" />
-                <element signature="e#151724#151725#0" expanded="false" />
-                <element signature="e#151773#151774#0" expanded="false" />
-                <element signature="e#153329#153330#0" expanded="false" />
-                <element signature="e#153364#153365#0" expanded="false" />
-                <element signature="e#153908#153909#0" expanded="false" />
-                <element signature="e#153949#153950#0" expanded="false" />
-                <element signature="e#167918#167919#0" expanded="false" />
-                <element signature="e#167976#167977#0" expanded="false" />
-                <element signature="e#168015#168016#0" expanded="false" />
-                <element signature="e#168064#168065#0" expanded="false" />
-                <element signature="e#170643#170644#0" expanded="false" />
-                <element signature="e#170690#170691#0" expanded="false" />
-                <element signature="e#171592#171593#0" expanded="false" />
-                <element signature="e#171632#171633#0" expanded="false" />
-                <element signature="e#173773#173774#0" expanded="false" />
-                <element signature="e#173813#173814#0" expanded="false" />
-                <element signature="e#173879#173880#0" expanded="false" />
-                <element signature="e#173941#173942#0" expanded="false" />
-                <element signature="e#173980#173981#0" expanded="false" />
-                <element signature="e#174027#174028#0" expanded="false" />
-                <element signature="e#177368#177369#0" expanded="false" />
-                <element signature="e#177421#177422#0" expanded="false" />
-                <element signature="e#183068#183069#0" expanded="false" />
-                <element signature="e#183122#183123#0" expanded="false" />
-                <element signature="e#185260#185261#0" expanded="false" />
-                <element signature="e#185300#185301#0" expanded="false" />
-                <element signature="e#186043#186044#0" expanded="false" />
-                <element signature="e#186083#186084#0" expanded="false" />
-                <element signature="e#187233#187234#0" expanded="false" />
-                <element signature="e#187289#187290#0" expanded="false" />
-                <element signature="e#188699#188700#0" expanded="false" />
-                <element signature="e#188746#188747#0" expanded="false" />
-                <element signature="e#191265#191266#0" expanded="false" />
-                <element signature="e#191312#191313#0" expanded="false" />
-                <element signature="e#215964#215965#0" expanded="false" />
-                <element signature="e#216009#216010#0" expanded="false" />
-                <element signature="e#218047#218048#0" expanded="false" />
-                <element signature="e#218108#218109#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -225,10 +220,10 @@
       <file leaf-file-name="SnekGameState.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+            <state relative-caret-position="-1732">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="28" />
               <folding>
-                <element signature="e#32#124#0" expanded="true" />
+                <element signature="e#58#564#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -237,88 +232,29 @@
       <file leaf-file-name="SnekMetaGameState.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="272">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Serializable.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/Serializable.kt">
+      <file leaf-file-name="Observing.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/func/Observing.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
+            <state relative-caret-position="2567">
+              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Arrays.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Arrays.java">
+      <file leaf-file-name="BH Software Structure.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/BH Software Structure.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70754">
-              <caret line="4249" column="26" selection-start-line="4249" selection-start-column="26" selection-end-line="4249" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#227755#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#3370#3371#0" expanded="false" />
-                <element signature="e#3446#3447#0" expanded="false" />
-                <element signature="e#5027#5028#0" expanded="false" />
-                <element signature="e#5098#5099#0" expanded="false" />
-                <element signature="e#6903#6904#0" expanded="false" />
-                <element signature="e#6974#6975#0" expanded="false" />
-                <element signature="e#8781#8782#0" expanded="false" />
-                <element signature="e#8852#8853#0" expanded="false" />
-                <element signature="e#10659#10660#0" expanded="false" />
-                <element signature="e#10730#10731#0" expanded="false" />
-                <element signature="e#12536#12537#0" expanded="false" />
-                <element signature="e#12595#12596#0" expanded="false" />
-                <element signature="e#14928#14929#0" expanded="false" />
-                <element signature="e#14999#15000#0" expanded="false" />
-                <element signature="e#17889#17890#0" expanded="false" />
-                <element signature="e#17960#17961#0" expanded="false" />
-                <element signature="e#84738#84739#0" expanded="false" />
-                <element signature="e#84795#84796#0" expanded="false" />
-                <element signature="e#88329#88330#0" expanded="false" />
-                <element signature="e#88386#88387#0" expanded="false" />
-                <element signature="e#91921#91922#0" expanded="false" />
-                <element signature="e#91978#91979#0" expanded="false" />
-                <element signature="e#95523#95524#0" expanded="false" />
-                <element signature="e#95580#95581#0" expanded="false" />
-                <element signature="e#99118#99119#0" expanded="false" />
-                <element signature="e#99175#99176#0" expanded="false" />
-                <element signature="e#102793#102794#0" expanded="false" />
-                <element signature="e#102850#102851#0" expanded="false" />
-                <element signature="e#107069#107070#0" expanded="false" />
-                <element signature="e#107126#107127#0" expanded="false" />
-                <element signature="e#111724#111725#0" expanded="false" />
-                <element signature="e#111781#111782#0" expanded="false" />
-                <element signature="e#177013#177014#0" expanded="false" />
-                <element signature="e#177054#177055#0" expanded="false" />
-                <element signature="e#177353#177354#0" expanded="false" />
-                <element signature="e#177410#177411#0" expanded="false" />
-                <element signature="e#177457#177458#0" expanded="false" />
-                <element signature="e#177496#177497#0" expanded="false" />
-                <element signature="e#177551#177552#0" expanded="false" />
-                <element signature="e#177591#177592#0" expanded="false" />
-                <element signature="e#178082#178083#0" expanded="false" />
-                <element signature="e#178121#178122#0" expanded="false" />
-                <element signature="e#178785#178786#0" expanded="false" />
-                <element signature="e#178832#178833#0" expanded="false" />
-                <element signature="e#178897#178898#0" expanded="false" />
-                <element signature="e#178976#178977#0" expanded="false" />
-                <element signature="e#179525#179526#0" expanded="false" />
-                <element signature="e#179566#179567#0" expanded="false" />
-                <element signature="e#223144#223145#0" expanded="false" />
-                <element signature="e#223197#223198#0" expanded="false" />
-                <element signature="e#224394#224395#0" expanded="false" />
-                <element signature="e#224447#224448#0" expanded="false" />
-                <element signature="e#225606#225607#0" expanded="false" />
-                <element signature="e#225659#225660#0" expanded="false" />
-                <element signature="e#226830#226831#0" expanded="false" />
-                <element signature="e#226883#226884#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -326,8 +262,8 @@
       <file leaf-file-name="Array Extensions.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Array Extensions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+            <state relative-caret-position="1411">
+              <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
               <folding>
                 <element signature="e#39#212#0" expanded="true" />
               </folding>
@@ -338,9 +274,11 @@
       <file leaf-file-name="Size.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Size.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="918">
+              <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+              <folding>
+                <element signature="e#40#146#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -348,9 +286,11 @@
       <file leaf-file-name="Point.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="663">
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+              <folding>
+                <element signature="e#66#153#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -358,10 +298,10 @@
       <file leaf-file-name="SnekStateStorage.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
-                <element signature="e#32#162#0" expanded="true" />
+                <element signature="e#32#252#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -393,7 +333,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
+        <option value="JavaFXApplication" />
         <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
       </list>
@@ -409,16 +351,9 @@
       <list>
         <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/abstraction/Across Architectures.kt" />
         <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/HistoryArray.kt" />
-        <option value="$PROJECT_DIR$/.idea/dictionaries/Snek.xml" />
-        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt" />
-        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Size.kt" />
-        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt" />
         <option value="$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/GsonSerializatinFactory.kt" />
         <option value="$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/Serializable.kt" />
-        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/Leaderboard.kt" />
-        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/Main.kt" />
-        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/Args.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/GameArgs.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGameArgs.kt" />
@@ -427,12 +362,42 @@
         <option value="$PROJECT_DIR$/src/org/bh/tools/game/FullCommandLineArg.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/tools/game/CompleteCommandLineArg.kt" />
         <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/parsing/Regex.kt" />
-        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Array Extensions.kt" />
         <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/util/String Utils.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/SnekArgs.kt" />
-        <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt" />
-        <option value="$PROJECT_DIR$/src/org/bh/tools/game/Command-Line Arguments.kt" />
         <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekArgs.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt" />
+        <option value="$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/logging/Log.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/tools/game/Command-Line Arguments.kt" />
+        <option value="$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/setup/Command-Line Arguments.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/SnekFXApp.java" />
+        <option value="$PROJECT_DIR$/../lib/Husky-UI/JVM/src/org/bh/tools/ui/swing/SwingUtils.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/Leaderboard.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekDataAccessor.kt" />
+        <option value="$PROJECT_DIR$/../lib/Husky-UI/JVM/src/org/bh/tools/ui/swing/Graphics Extensions.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Array Extensions.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Size.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/BH Software Structure.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Iterable Extensions.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/logic/SnekGameStateMutator.kt" />
+        <option value="$PROJECT_DIR$/.idea/dictionaries/ben_s.xml" />
+        <option value="$PROJECT_DIR$/.idea/dictionaries/Snek.xml" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateController.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateMutator.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekView.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekView.java" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/OptionSet.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/Keymap.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekWindow.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/game/logic/SnekGameStateController.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/Basic State Interfaces.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateStore.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt" />
+        <option value="$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt" />
+        <option value="$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/DeltaStack.kt" />
       </list>
     </option>
   </component>
@@ -467,8 +432,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -501,28 +464,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Snek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="snek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -538,10 +479,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bh" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -567,10 +504,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="snek" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -588,6 +521,64 @@
               <option name="myItemId" value="JVM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="snek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Snek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Snek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Snek" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -607,69 +598,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Snek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="struct" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Snek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parsing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Snek" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JVM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
+              <option name="myItemId" value="state" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,17 +626,28 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lib/Husky-UI/JVM/Husky UI.iml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="Action&#9;FILE&#9;jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/javax/swing/Action.java&#10;Enum&#9;FILE&#9;file://U:/Libraries/Programs/Git/Snek/lib/Husky-IO/JVM/lib/gson/gson/src/test/java/com/google/gson/functional/EnumTest.java" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.bh.game.snek.state" />
+      <recent name="org.bh.game.snek.gui.swing" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="U:\Libraries\Programs\Git\Snek\JVM\src\org\bh\game\snek\gui\swing" />
+      <recent name="U:\Libraries\Programs\Git\Husky-IO\JVM\src\org\bh\tools\io\setup" />
       <recent name="U:\Libraries\Programs\Git\Snek\JVM\src\org\bh\game\snek\state" />
     </key>
   </component>
@@ -946,33 +886,34 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.6370531" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.6034669" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.3629469" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.39653304" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32394367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20476706" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19609967" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12892741" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -987,7 +928,92 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/Component.java</url>
+          <line>8694</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/Component.java</url>
+          <line>8754</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="39" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -995,667 +1021,214 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/Main.kt">
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Iterable Extensions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekArgs.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-          <folding>
-            <element signature="e#32#218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/tools/game/Command-Line Arguments.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
-          <folding>
-            <element signature="e#27#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/parsing/Regex.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#35#122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/generated/_Collections.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27030">
-          <caret line="1593" column="20" selection-start-line="1593" selection-start-column="20" selection-end-line="1593" selection-end-column="20" />
+        <state relative-caret-position="207">
+          <caret line="181" column="1" selection-start-line="181" selection-start-column="1" selection-end-line="190" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/BH Software Structure.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/regex/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15538">
-          <caret line="914" column="67" selection-start-line="914" selection-start-column="67" selection-end-line="914" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#220073#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#49482#49483#0" expanded="false" />
-            <element signature="e#49530#49531#0" expanded="false" />
-            <element signature="e#49703#49704#0" expanded="false" />
-            <element signature="e#49733#49734#0" expanded="false" />
-            <element signature="e#50012#50013#0" expanded="false" />
-            <element signature="e#50042#50043#0" expanded="false" />
-            <element signature="e#50700#50701#0" expanded="false" />
-            <element signature="e#50728#50729#0" expanded="false" />
-            <element signature="e#57959#57960#0" expanded="false" />
-            <element signature="e#57997#57998#0" expanded="false" />
-            <element signature="e#68318#68319#0" expanded="false" />
-            <element signature="e#68381#68382#0" expanded="false" />
-            <element signature="e#75891#75892#0" expanded="false" />
-            <element signature="e#75922#75923#0" expanded="false" />
-            <element signature="e#76422#76423#0" expanded="false" />
-            <element signature="e#76461#76462#0" expanded="false" />
-            <element signature="e#76875#76876#0" expanded="false" />
-            <element signature="e#76914#76915#0" expanded="false" />
-            <element signature="e#79893#79894#0" expanded="false" />
-            <element signature="e#79917#79918#0" expanded="false" />
-            <element signature="e#122682#122683#0" expanded="false" />
-            <element signature="e#122711#122712#0" expanded="false" />
-            <element signature="e#122750#122751#0" expanded="false" />
-            <element signature="e#122778#122779#0" expanded="false" />
-            <element signature="e#126231#126232#0" expanded="false" />
-            <element signature="e#126282#126283#0" expanded="false" />
-            <element signature="e#128644#128645#0" expanded="false" />
-            <element signature="e#128689#128690#0" expanded="false" />
-            <element signature="e#131342#131343#0" expanded="false" />
-            <element signature="e#131377#131378#0" expanded="false" />
-            <element signature="e#136722#136723#0" expanded="false" />
-            <element signature="e#136761#136762#0" expanded="false" />
-            <element signature="e#139122#139123#0" expanded="false" />
-            <element signature="e#139161#139162#0" expanded="false" />
-            <element signature="e#143211#143212#0" expanded="false" />
-            <element signature="e#143249#143250#0" expanded="false" />
-            <element signature="e#143480#143481#0" expanded="false" />
-            <element signature="e#143518#143519#0" expanded="false" />
-            <element signature="e#143856#143857#0" expanded="false" />
-            <element signature="e#143913#143914#0" expanded="false" />
-            <element signature="e#144110#144111#0" expanded="false" />
-            <element signature="e#144152#144153#0" expanded="false" />
-            <element signature="e#144524#144525#0" expanded="false" />
-            <element signature="e#144566#144567#0" expanded="false" />
-            <element signature="e#144606#144607#0" expanded="false" />
-            <element signature="e#144675#144676#0" expanded="false" />
-            <element signature="e#144894#144895#0" expanded="false" />
-            <element signature="e#144938#144939#0" expanded="false" />
-            <element signature="e#144978#144979#0" expanded="false" />
-            <element signature="e#145049#145050#0" expanded="false" />
-            <element signature="e#145307#145308#0" expanded="false" />
-            <element signature="e#145384#145385#0" expanded="false" />
-            <element signature="e#145637#145638#0" expanded="false" />
-            <element signature="e#145680#145681#0" expanded="false" />
-            <element signature="e#145917#145918#0" expanded="false" />
-            <element signature="e#145983#145984#0" expanded="false" />
-            <element signature="e#146856#146857#0" expanded="false" />
-            <element signature="e#146892#146893#0" expanded="false" />
-            <element signature="e#147254#147255#0" expanded="false" />
-            <element signature="e#147288#147289#0" expanded="false" />
-            <element signature="e#147939#147940#0" expanded="false" />
-            <element signature="e#147973#147974#0" expanded="false" />
-            <element signature="e#148742#148743#0" expanded="false" />
-            <element signature="e#148776#148777#0" expanded="false" />
-            <element signature="e#149565#149566#0" expanded="false" />
-            <element signature="e#149599#149600#0" expanded="false" />
-            <element signature="e#150489#150490#0" expanded="false" />
-            <element signature="e#150523#150524#0" expanded="false" />
-            <element signature="e#150552#150553#0" expanded="false" />
-            <element signature="e#150599#150600#0" expanded="false" />
-            <element signature="e#151509#151510#0" expanded="false" />
-            <element signature="e#151543#151544#0" expanded="false" />
-            <element signature="e#151572#151573#0" expanded="false" />
-            <element signature="e#151650#151651#0" expanded="false" />
-            <element signature="e#151724#151725#0" expanded="false" />
-            <element signature="e#151773#151774#0" expanded="false" />
-            <element signature="e#153329#153330#0" expanded="false" />
-            <element signature="e#153364#153365#0" expanded="false" />
-            <element signature="e#153908#153909#0" expanded="false" />
-            <element signature="e#153949#153950#0" expanded="false" />
-            <element signature="e#167918#167919#0" expanded="false" />
-            <element signature="e#167976#167977#0" expanded="false" />
-            <element signature="e#168015#168016#0" expanded="false" />
-            <element signature="e#168064#168065#0" expanded="false" />
-            <element signature="e#170643#170644#0" expanded="false" />
-            <element signature="e#170690#170691#0" expanded="false" />
-            <element signature="e#171592#171593#0" expanded="false" />
-            <element signature="e#171632#171633#0" expanded="false" />
-            <element signature="e#173773#173774#0" expanded="false" />
-            <element signature="e#173813#173814#0" expanded="false" />
-            <element signature="e#173879#173880#0" expanded="false" />
-            <element signature="e#173941#173942#0" expanded="false" />
-            <element signature="e#173980#173981#0" expanded="false" />
-            <element signature="e#174027#174028#0" expanded="false" />
-            <element signature="e#177368#177369#0" expanded="false" />
-            <element signature="e#177421#177422#0" expanded="false" />
-            <element signature="e#183068#183069#0" expanded="false" />
-            <element signature="e#183122#183123#0" expanded="false" />
-            <element signature="e#185260#185261#0" expanded="false" />
-            <element signature="e#185300#185301#0" expanded="false" />
-            <element signature="e#186043#186044#0" expanded="false" />
-            <element signature="e#186083#186084#0" expanded="false" />
-            <element signature="e#187233#187234#0" expanded="false" />
-            <element signature="e#187289#187290#0" expanded="false" />
-            <element signature="e#188699#188700#0" expanded="false" />
-            <element signature="e#188746#188747#0" expanded="false" />
-            <element signature="e#191265#191266#0" expanded="false" />
-            <element signature="e#191312#191313#0" expanded="false" />
-            <element signature="e#215964#215965#0" expanded="false" />
-            <element signature="e#216009#216010#0" expanded="false" />
-            <element signature="e#218047#218048#0" expanded="false" />
-            <element signature="e#218108#218109#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding>
-            <element signature="e#32#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/Serializable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72233">
-          <caret line="4249" column="26" selection-start-line="4249" selection-start-column="26" selection-end-line="4249" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#227755#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3370#3371#0" expanded="false" />
-            <element signature="e#3446#3447#0" expanded="false" />
-            <element signature="e#5027#5028#0" expanded="false" />
-            <element signature="e#5098#5099#0" expanded="false" />
-            <element signature="e#6903#6904#0" expanded="false" />
-            <element signature="e#6974#6975#0" expanded="false" />
-            <element signature="e#8781#8782#0" expanded="false" />
-            <element signature="e#8852#8853#0" expanded="false" />
-            <element signature="e#10659#10660#0" expanded="false" />
-            <element signature="e#10730#10731#0" expanded="false" />
-            <element signature="e#12536#12537#0" expanded="false" />
-            <element signature="e#12595#12596#0" expanded="false" />
-            <element signature="e#14928#14929#0" expanded="false" />
-            <element signature="e#14999#15000#0" expanded="false" />
-            <element signature="e#17889#17890#0" expanded="false" />
-            <element signature="e#17960#17961#0" expanded="false" />
-            <element signature="e#84738#84739#0" expanded="false" />
-            <element signature="e#84795#84796#0" expanded="false" />
-            <element signature="e#88329#88330#0" expanded="false" />
-            <element signature="e#88386#88387#0" expanded="false" />
-            <element signature="e#91921#91922#0" expanded="false" />
-            <element signature="e#91978#91979#0" expanded="false" />
-            <element signature="e#95523#95524#0" expanded="false" />
-            <element signature="e#95580#95581#0" expanded="false" />
-            <element signature="e#99118#99119#0" expanded="false" />
-            <element signature="e#99175#99176#0" expanded="false" />
-            <element signature="e#102793#102794#0" expanded="false" />
-            <element signature="e#102850#102851#0" expanded="false" />
-            <element signature="e#107069#107070#0" expanded="false" />
-            <element signature="e#107126#107127#0" expanded="false" />
-            <element signature="e#111724#111725#0" expanded="false" />
-            <element signature="e#111781#111782#0" expanded="false" />
-            <element signature="e#177013#177014#0" expanded="false" />
-            <element signature="e#177054#177055#0" expanded="false" />
-            <element signature="e#177353#177354#0" expanded="false" />
-            <element signature="e#177410#177411#0" expanded="false" />
-            <element signature="e#177457#177458#0" expanded="false" />
-            <element signature="e#177496#177497#0" expanded="false" />
-            <element signature="e#177551#177552#0" expanded="false" />
-            <element signature="e#177591#177592#0" expanded="false" />
-            <element signature="e#178082#178083#0" expanded="false" />
-            <element signature="e#178121#178122#0" expanded="false" />
-            <element signature="e#178785#178786#0" expanded="false" />
-            <element signature="e#178832#178833#0" expanded="false" />
-            <element signature="e#178897#178898#0" expanded="false" />
-            <element signature="e#178976#178977#0" expanded="false" />
-            <element signature="e#179525#179526#0" expanded="false" />
-            <element signature="e#179566#179567#0" expanded="false" />
-            <element signature="e#223144#223145#0" expanded="false" />
-            <element signature="e#223197#223198#0" expanded="false" />
-            <element signature="e#224394#224395#0" expanded="false" />
-            <element signature="e#224447#224448#0" expanded="false" />
-            <element signature="e#225606#225607#0" expanded="false" />
-            <element signature="e#225659#225660#0" expanded="false" />
-            <element signature="e#226830#226831#0" expanded="false" />
-            <element signature="e#226883#226884#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Array Extensions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#39#212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Size.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#32#162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/HistoryArray.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/Main.kt">
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/collections/AbstractIterator.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding />
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt">
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/Collections.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#32#124#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="235">
+          <caret line="340" column="19" selection-start-line="340" selection-start-column="19" selection-end-line="340" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/HistoryArray.kt">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/jre/lib/rt.jar!/sun/misc/Launcher.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="3207" column="0" selection-start-line="3207" selection-start-column="0" selection-end-line="3207" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/jre/lib/rt.jar!/sun/util/logging/PlatformLogger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/Container.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/jvm/internal/MutablePropertyReference1Impl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/jvm/internal/Reflection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8823">
+          <caret line="587" column="0" selection-start-line="587" selection-start-column="0" selection-end-line="587" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/jvm/internal/Lambda.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/properties/ObservableProperty.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/func/Observing.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2567">
+          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/jvm/internal/Intrinsics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/AWTEventMulticaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="571" column="0" selection-start-line="571" selection-start-column="0" selection-end-line="571" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/awt/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="540" column="25" selection-start-line="540" selection-start-column="14" selection-end-line="540" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="356" column="0" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/dictionaries/ben_s.xml" />
     <entry file="file://$PROJECT_DIR$/.idea/dictionaries/Snek.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt">
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateController.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#32#162#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt">
+    <entry file="file://$PROJECT_DIR$/../lib/Husky-UI/JVM/src/org/bh/tools/ui/swing/SwingUtils.kt" />
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateMutator.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        <state relative-caret-position="272">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Size.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70754">
-          <caret line="4249" column="26" selection-start-line="4249" selection-start-column="26" selection-end-line="4249" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#227755#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#3370#3371#0" expanded="false" />
-            <element signature="e#3446#3447#0" expanded="false" />
-            <element signature="e#5027#5028#0" expanded="false" />
-            <element signature="e#5098#5099#0" expanded="false" />
-            <element signature="e#6903#6904#0" expanded="false" />
-            <element signature="e#6974#6975#0" expanded="false" />
-            <element signature="e#8781#8782#0" expanded="false" />
-            <element signature="e#8852#8853#0" expanded="false" />
-            <element signature="e#10659#10660#0" expanded="false" />
-            <element signature="e#10730#10731#0" expanded="false" />
-            <element signature="e#12536#12537#0" expanded="false" />
-            <element signature="e#12595#12596#0" expanded="false" />
-            <element signature="e#14928#14929#0" expanded="false" />
-            <element signature="e#14999#15000#0" expanded="false" />
-            <element signature="e#17889#17890#0" expanded="false" />
-            <element signature="e#17960#17961#0" expanded="false" />
-            <element signature="e#84738#84739#0" expanded="false" />
-            <element signature="e#84795#84796#0" expanded="false" />
-            <element signature="e#88329#88330#0" expanded="false" />
-            <element signature="e#88386#88387#0" expanded="false" />
-            <element signature="e#91921#91922#0" expanded="false" />
-            <element signature="e#91978#91979#0" expanded="false" />
-            <element signature="e#95523#95524#0" expanded="false" />
-            <element signature="e#95580#95581#0" expanded="false" />
-            <element signature="e#99118#99119#0" expanded="false" />
-            <element signature="e#99175#99176#0" expanded="false" />
-            <element signature="e#102793#102794#0" expanded="false" />
-            <element signature="e#102850#102851#0" expanded="false" />
-            <element signature="e#107069#107070#0" expanded="false" />
-            <element signature="e#107126#107127#0" expanded="false" />
-            <element signature="e#111724#111725#0" expanded="false" />
-            <element signature="e#111781#111782#0" expanded="false" />
-            <element signature="e#177013#177014#0" expanded="false" />
-            <element signature="e#177054#177055#0" expanded="false" />
-            <element signature="e#177353#177354#0" expanded="false" />
-            <element signature="e#177410#177411#0" expanded="false" />
-            <element signature="e#177457#177458#0" expanded="false" />
-            <element signature="e#177496#177497#0" expanded="false" />
-            <element signature="e#177551#177552#0" expanded="false" />
-            <element signature="e#177591#177592#0" expanded="false" />
-            <element signature="e#178082#178083#0" expanded="false" />
-            <element signature="e#178121#178122#0" expanded="false" />
-            <element signature="e#178785#178786#0" expanded="false" />
-            <element signature="e#178832#178833#0" expanded="false" />
-            <element signature="e#178897#178898#0" expanded="false" />
-            <element signature="e#178976#178977#0" expanded="false" />
-            <element signature="e#179525#179526#0" expanded="false" />
-            <element signature="e#179566#179567#0" expanded="false" />
-            <element signature="e#223144#223145#0" expanded="false" />
-            <element signature="e#223197#223198#0" expanded="false" />
-            <element signature="e#224394#224395#0" expanded="false" />
-            <element signature="e#224447#224448#0" expanded="false" />
-            <element signature="e#225606#225607#0" expanded="false" />
-            <element signature="e#225659#225660#0" expanded="false" />
-            <element signature="e#226830#226831#0" expanded="false" />
-            <element signature="e#226883#226884#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/GsonSerializatinFactory.kt" />
-    <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/src/org/bh/tools/io/serialization/Serializable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="79" selection-start-line="56" selection-start-column="79" selection-end-line="56" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/lib/gson/gson/src/main/java/com/google/gson/JsonElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3735">
-          <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Husky-IO/JVM/lib/gson/gson/src/main/java/com/google/gson/JsonObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/Leaderboard.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding>
-            <element signature="e#32#124#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/regex/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14943">
-          <caret line="914" column="67" selection-start-line="914" selection-start-column="67" selection-end-line="914" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#220073#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#49482#49483#0" expanded="false" />
-            <element signature="e#49530#49531#0" expanded="false" />
-            <element signature="e#49703#49704#0" expanded="false" />
-            <element signature="e#49733#49734#0" expanded="false" />
-            <element signature="e#50012#50013#0" expanded="false" />
-            <element signature="e#50042#50043#0" expanded="false" />
-            <element signature="e#50700#50701#0" expanded="false" />
-            <element signature="e#50728#50729#0" expanded="false" />
-            <element signature="e#57959#57960#0" expanded="false" />
-            <element signature="e#57997#57998#0" expanded="false" />
-            <element signature="e#68318#68319#0" expanded="false" />
-            <element signature="e#68381#68382#0" expanded="false" />
-            <element signature="e#75891#75892#0" expanded="false" />
-            <element signature="e#75922#75923#0" expanded="false" />
-            <element signature="e#76422#76423#0" expanded="false" />
-            <element signature="e#76461#76462#0" expanded="false" />
-            <element signature="e#76875#76876#0" expanded="false" />
-            <element signature="e#76914#76915#0" expanded="false" />
-            <element signature="e#79893#79894#0" expanded="false" />
-            <element signature="e#79917#79918#0" expanded="false" />
-            <element signature="e#122682#122683#0" expanded="false" />
-            <element signature="e#122711#122712#0" expanded="false" />
-            <element signature="e#122750#122751#0" expanded="false" />
-            <element signature="e#122778#122779#0" expanded="false" />
-            <element signature="e#126231#126232#0" expanded="false" />
-            <element signature="e#126282#126283#0" expanded="false" />
-            <element signature="e#128644#128645#0" expanded="false" />
-            <element signature="e#128689#128690#0" expanded="false" />
-            <element signature="e#131342#131343#0" expanded="false" />
-            <element signature="e#131377#131378#0" expanded="false" />
-            <element signature="e#136722#136723#0" expanded="false" />
-            <element signature="e#136761#136762#0" expanded="false" />
-            <element signature="e#139122#139123#0" expanded="false" />
-            <element signature="e#139161#139162#0" expanded="false" />
-            <element signature="e#143211#143212#0" expanded="false" />
-            <element signature="e#143249#143250#0" expanded="false" />
-            <element signature="e#143480#143481#0" expanded="false" />
-            <element signature="e#143518#143519#0" expanded="false" />
-            <element signature="e#143856#143857#0" expanded="false" />
-            <element signature="e#143913#143914#0" expanded="false" />
-            <element signature="e#144110#144111#0" expanded="false" />
-            <element signature="e#144152#144153#0" expanded="false" />
-            <element signature="e#144524#144525#0" expanded="false" />
-            <element signature="e#144566#144567#0" expanded="false" />
-            <element signature="e#144606#144607#0" expanded="false" />
-            <element signature="e#144675#144676#0" expanded="false" />
-            <element signature="e#144894#144895#0" expanded="false" />
-            <element signature="e#144938#144939#0" expanded="false" />
-            <element signature="e#144978#144979#0" expanded="false" />
-            <element signature="e#145049#145050#0" expanded="false" />
-            <element signature="e#145307#145308#0" expanded="false" />
-            <element signature="e#145384#145385#0" expanded="false" />
-            <element signature="e#145637#145638#0" expanded="false" />
-            <element signature="e#145680#145681#0" expanded="false" />
-            <element signature="e#145917#145918#0" expanded="false" />
-            <element signature="e#145983#145984#0" expanded="false" />
-            <element signature="e#146856#146857#0" expanded="false" />
-            <element signature="e#146892#146893#0" expanded="false" />
-            <element signature="e#147254#147255#0" expanded="false" />
-            <element signature="e#147288#147289#0" expanded="false" />
-            <element signature="e#147939#147940#0" expanded="false" />
-            <element signature="e#147973#147974#0" expanded="false" />
-            <element signature="e#148742#148743#0" expanded="false" />
-            <element signature="e#148776#148777#0" expanded="false" />
-            <element signature="e#149565#149566#0" expanded="false" />
-            <element signature="e#149599#149600#0" expanded="false" />
-            <element signature="e#150489#150490#0" expanded="false" />
-            <element signature="e#150523#150524#0" expanded="false" />
-            <element signature="e#150552#150553#0" expanded="false" />
-            <element signature="e#150599#150600#0" expanded="false" />
-            <element signature="e#151509#151510#0" expanded="false" />
-            <element signature="e#151543#151544#0" expanded="false" />
-            <element signature="e#151572#151573#0" expanded="false" />
-            <element signature="e#151650#151651#0" expanded="false" />
-            <element signature="e#151724#151725#0" expanded="false" />
-            <element signature="e#151773#151774#0" expanded="false" />
-            <element signature="e#153329#153330#0" expanded="false" />
-            <element signature="e#153364#153365#0" expanded="false" />
-            <element signature="e#153908#153909#0" expanded="false" />
-            <element signature="e#153949#153950#0" expanded="false" />
-            <element signature="e#167918#167919#0" expanded="false" />
-            <element signature="e#167976#167977#0" expanded="false" />
-            <element signature="e#168015#168016#0" expanded="false" />
-            <element signature="e#168064#168065#0" expanded="false" />
-            <element signature="e#170643#170644#0" expanded="false" />
-            <element signature="e#170690#170691#0" expanded="false" />
-            <element signature="e#171592#171593#0" expanded="false" />
-            <element signature="e#171632#171633#0" expanded="false" />
-            <element signature="e#173773#173774#0" expanded="false" />
-            <element signature="e#173813#173814#0" expanded="false" />
-            <element signature="e#173879#173880#0" expanded="false" />
-            <element signature="e#173941#173942#0" expanded="false" />
-            <element signature="e#173980#173981#0" expanded="false" />
-            <element signature="e#174027#174028#0" expanded="false" />
-            <element signature="e#177368#177369#0" expanded="false" />
-            <element signature="e#177421#177422#0" expanded="false" />
-            <element signature="e#183068#183069#0" expanded="false" />
-            <element signature="e#183122#183123#0" expanded="false" />
-            <element signature="e#185260#185261#0" expanded="false" />
-            <element signature="e#185300#185301#0" expanded="false" />
-            <element signature="e#186043#186044#0" expanded="false" />
-            <element signature="e#186083#186084#0" expanded="false" />
-            <element signature="e#187233#187234#0" expanded="false" />
-            <element signature="e#187289#187290#0" expanded="false" />
-            <element signature="e#188699#188700#0" expanded="false" />
-            <element signature="e#188746#188747#0" expanded="false" />
-            <element signature="e#191265#191266#0" expanded="false" />
-            <element signature="e#191312#191313#0" expanded="false" />
-            <element signature="e#215964#215965#0" expanded="false" />
-            <element signature="e#216009#216010#0" expanded="false" />
-            <element signature="e#218047#218048#0" expanded="false" />
-            <element signature="e#218108#218109#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/generated/_Collections.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27030">
-          <caret line="1593" column="20" selection-start-line="1593" selection-start-column="20" selection-end-line="1593" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/abstraction/Across Architectures.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/generated/_Arrays.kt">
+    <entry file="file://$PROJECT_DIR$/../lib/Husky-UI/JVM/src/org/bh/tools/ui/swing/Graphics Extensions.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="7458" column="38" selection-start-line="7458" selection-start-column="38" selection-end-line="7458" selection-end-column="38" />
-          <folding />
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding>
+            <element signature="e#31#162#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/Array Extensions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="81" column="32" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
+        <state relative-caret-position="1411">
+          <caret line="87" column="34" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
           <folding>
             <element signature="e#39#212#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/parsing/Regex.kt">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-          <folding>
-            <element signature="e#35#122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="235">
+          <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/util/String Utils.kt">
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/struct/coord/Point.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="663">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <element signature="e#66#153#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1667,30 +1240,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt">
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/kotlin/Enum.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Husky-IO/JVM/lib/gson/gson/src/test/java/com/google/gson/functional/EnumTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/OptionSet.kt" />
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekViewController.java.archive">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/tools/game/Command-Line Arguments.kt">
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/JSnekView.java.archive">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="75" column="17" selection-start-line="75" selection-start-column="17" selection-end-line="75" selection-end-column="17" />
+        <state relative-caret-position="450">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="42" />
           <folding>
-            <element signature="e#27#109#0" expanded="true" />
+            <element signature="e#36#407#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekArgs.kt">
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/Keymap.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="765">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="e#32#218#0" expanded="true" />
+            <element signature="e#36#408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/javax/swing/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="252" column="21" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#16759#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#Action#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekWindow.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+          <folding>
+            <element signature="e#36#188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/gui/swing/SnekViewController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#36#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#3888#0" expanded="false" />
+            <element signature="e#2838#2839#0" expanded="false" />
+            <element signature="e#2872#2873#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/HistoryArray.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/Basic State Interfaces.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekGameState.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1732">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="e#58#564#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekMetaGameState.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/state/StateStore.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/SnekGame.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+          <folding>
+            <element signature="e#31#323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/game/logic/SnekGameStateController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#37#285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/bh/game/snek/state/SnekStateStorage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding>
+            <element signature="e#32#252#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/src/org/bh/tools/base/collections/DeltaStack.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+          <folding>
+            <element signature="e#39#137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1700,11 +1421,18 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-content>
+              <type id="library" />
+              <type id="artifact" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>Snek:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1747,7 +1475,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Husky IO</last-edited>
+          <last-edited>Snek</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

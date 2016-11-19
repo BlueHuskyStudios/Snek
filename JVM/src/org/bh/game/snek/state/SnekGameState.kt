@@ -15,6 +15,8 @@ import org.bh.tools.base.struct.coord.Size
 import org.bh.tools.base.struct.coord.randomPoint
 import java.util.*
 
+// TODO: Separate into individual files
+
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
  *
@@ -23,7 +25,11 @@ import java.util.*
  * @author Kyli Rouge
  * @since 2016-10-30
  */
-class SnekGameState(override val dataView: BaseSnekDataView) : DataViewController<SnekData, BaseSnekDataView>, State {
+class SnekGameState(override val dataView: BaseSnekDataView) : DataViewController<SnekData, BaseSnekDataView>,
+        State<SnekGameState> {
+    override val changeValue: StateChange<SnekGameState>
+        get() = SnekGameStateChange(BaseSnekDataViewChange(dataView))
+
     val snek: BaseSnekDataView get() = dataView
 }
 

@@ -23,9 +23,9 @@ class SnekGame(args: Array<String>) {
         SnekDataAccessor.shared.accessData(null) { data, status ->
             val stateController = SnekGameStateController()
             val snekViewController = SnekViewController(
-                    snekData = data ?: SnekDataAccessor.newData,
-                    mutator = stateController,
-                    keymap = Keymap.default)
+                    data ?: SnekDataAccessor.newData,
+                    stateController,
+                    Keymap.default)
             SnekWindow(snekViewController).isVisible = true
         }
     }

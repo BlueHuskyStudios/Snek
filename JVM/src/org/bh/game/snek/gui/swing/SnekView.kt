@@ -18,6 +18,7 @@ import javax.swing.JComponent
  * @since 2016-11-05
  */
 class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView {
+
     var dataView: BaseSnekDataView by observing(dataView, didSet = { old, new -> update() } )
 
     fun update() {
