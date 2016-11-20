@@ -1,8 +1,6 @@
 package org.bh.game.snek.state
 
 import org.bh.tools.base.collections.DeltaStack
-import org.bh.tools.base.collections.HistoryArray
-import org.bh.tools.base.collections.HistoryArraySelectionMode.SelectNewlyPushed
 import org.bh.tools.base.state.StateStore
 
 /**
@@ -15,22 +13,6 @@ import org.bh.tools.base.state.StateStore
  * @author Kyli Rouge
  * @since 2016-10-31
  */
-class SnekStateStorage: DeltaStack<SnekGameState, SnekGameStateChange>(),
-        StateStore<SnekGameState, SnekGameStateChange> {
-    override fun pushState(newState: SnekGameStateChange) {
-        super.push(newState)
-    }
-
-    override fun popState(): SnekGameState {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun currentState(): SnekGameState {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun flattenState() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-}
+class SnekStateStorage(initialState: SnekDataViewController)
+        : DeltaStack<SnekDataViewController, SnekGameStateChange>(initialState),
+            StateStore<SnekDataViewController, SnekGameStateChange>

@@ -25,7 +25,6 @@ class SnekArgs(val metaGameState: SnekMetaGameState): CommandlineArgCollection()
 }
 
 private val _shared = SnekArgs(SnekMetaGameState.shared)
-
 val SnekArgs.Companion.shared: SnekArgs get() = _shared
 
 class SnekArgsProcessor(expectedArgs: SnekArgs): CommandLineArgProcessor(expectedArgs) {

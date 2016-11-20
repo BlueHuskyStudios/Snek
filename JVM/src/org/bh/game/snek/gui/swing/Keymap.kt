@@ -1,7 +1,5 @@
 package org.bh.game.snek.gui.swing
 
-import org.bh.game.snek.gui.swing.KeyActionTrigger.onKeyDown
-import org.bh.game.snek.gui.swing.KeyActionTrigger.onKeyUp
 import org.bh.game.snek.gui.swing.SnekAction.*
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.base.struct.UIViewController
@@ -42,21 +40,6 @@ data class Keymap(val map: Map<SnekAction, Int>) {
 }
 
 typealias KeymapActionCallback = (action: SnekAction) -> Action?
-
-enum class SnekAction(val trigger: KeyActionTrigger) {
-    pause(onKeyDown),
-    unpause(onKeyUp),
-    start(onKeyDown),
-    moveUp(onKeyDown),
-    moveDown(onKeyDown),
-    moveRight(onKeyDown),
-    moveLeft(onKeyDown);
-
-    companion object {
-        val allOnKeyUp: List<SnekAction> by lazy { SnekAction.values().filter { it.trigger == onKeyUp } }
-        val allOnKeyDown: List<SnekAction> by lazy { SnekAction.values().filter { it.trigger == onKeyDown } }
-    }
-}
 
 enum class KeyActionTrigger {
     onKeyUp,

@@ -38,20 +38,23 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
     }
 
     override fun keyTyped(e: KeyEvent?) {
-        println("Key typed: ${e?.extendedKeyCode}")
+        if (e != null) performActionForKeyEvent(e)
     }
 
     override fun keyPressed(e: KeyEvent?) {
-        println("Key down: ${e?.extendedKeyCode}")
+        if (e != null) performActionForKeyEvent(e)
     }
 
     override fun keyReleased(e: KeyEvent?) {
-        println("Key up: ${e?.extendedKeyCode}")
-        if (e == null) return
+        if (e != null) performActionForKeyEvent(e)
+    }
+
+    private fun performActionForKeyEvent(e: KeyEvent) {
         val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
         if (action != null) {
             controller.mutate(action)
             view.dataView = controller.currentState().dataView
         }
+
     }
 }

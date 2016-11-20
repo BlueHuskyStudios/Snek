@@ -6,6 +6,7 @@ import org.bh.game.snek.gui.swing.SnekViewController
 import org.bh.game.snek.gui.swing.SnekWindow
 import org.bh.game.snek.state.SnekArgsProcessor
 import org.bh.game.snek.state.SnekDataAccessor
+import org.bh.game.snek.state.SnekDataViewController
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
@@ -21,9 +22,10 @@ class SnekGame(args: Array<String>) {
 
     fun start() {
         SnekDataAccessor.shared.accessData(null) { data, status ->
-            val stateController = SnekGameStateController()
+            val initialState = SnekDataViewController(data ?: SnekDataAccessor.newData)
+            val stateController = SnekGameStateController(initialState)
             val snekViewController = SnekViewController(
-                    data ?: SnekDataAccessor.newData,
+                    initialState.dataView,
                     stateController,
                     Keymap.default)
             SnekWindow(snekViewController).isVisible = true
