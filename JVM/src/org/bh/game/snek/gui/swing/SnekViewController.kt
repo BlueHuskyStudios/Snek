@@ -1,9 +1,9 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.game.logic.SnekGameStateController
+import org.bh.game.snek.gui.swing.KeyActionTrigger.*
 import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekData
-import org.bh.tools.base.collections.safeFirst
 import org.bh.tools.base.struct.UIViewController
 import java.awt.event.ActionEvent
 import java.awt.event.KeyEvent
@@ -31,30 +31,33 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
             //{print(it)}
             object: AbstractAction() {
                 override fun actionPerformed(e: ActionEvent?) {
-                    println(it)
+                    performAction(it)
                 }
             }
         }
     }
 
     override fun keyTyped(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e)
+        if (e != null) performActionForKeyEvent(e, onKeyTyped)
     }
 
     override fun keyPressed(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e)
+        if (e != null) performActionForKeyEvent(e, onKeyDown)
     }
 
     override fun keyReleased(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e)
+        if (e != null) performActionForKeyEvent(e, onKeyUp)
     }
 
-    private fun performActionForKeyEvent(e: KeyEvent) {
-        val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
-        if (action != null) {
-            controller.mutate(action)
-            view.dataView = controller.currentState().dataView
-        }
+    private fun performActionForKeyEvent(e: KeyEvent, trigger: KeyActionTrigger) {
+//        val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
+        val actions = keymap.actionsForKeyEvent(e, trigger)
+        val appropriateAction = controller.appropriateAction(actions)
+        if (appropriateAction != null) performAction(appropriateAction)
+    }
 
+    private fun performAction(action: SnekAction) {
+        controller.mutate(action)
+        view.dataView = controller.currentState().dataView
     }
 }

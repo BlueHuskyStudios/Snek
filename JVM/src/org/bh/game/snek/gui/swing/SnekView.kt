@@ -31,7 +31,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView {
         if (g == null) return
         g.antiAlias = true
 
-        val multiplier = g.clipBounds.size.sizeValue / dataView.boardSize
+        val multiplier = g.clipBounds.size.sizeValue.floatValue / dataView.boardSize.floatValue
 
         dataView.snek.safeReduce { previous, current -> IntPoint
             g.drawLine(previous * multiplier, current * multiplier)

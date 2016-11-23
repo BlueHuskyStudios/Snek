@@ -1,9 +1,12 @@
 package org.bh.game.snek.game.logic
 
 import org.bh.game.snek.gui.swing.SnekAction
-import org.bh.game.snek.state.*
-import org.bh.game.snek.state.SnekScreen.playing
-import org.bh.game.snek.state.SnekScreen.ready
+import org.bh.game.snek.gui.swing.SnekAction.*
+import org.bh.game.snek.state.SnekDataViewController
+import org.bh.game.snek.state.SnekGameStateChange
+import org.bh.game.snek.state.SnekScreen.*
+import org.bh.game.snek.state.SnekStateStorage
+import org.bh.tools.base.collections.safeFirst
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 
@@ -18,30 +21,51 @@ import org.bh.tools.base.state.StateMutator
 class SnekGameStateController(initialState: SnekDataViewController) : StateController<SnekDataViewController, SnekAction> {
 
     val mutator = SnekGameStateMutator()
-    var states = SnekStateStorage(initialState)
+    var store = SnekStateStorage(initialState)
 
     override fun currentState(): SnekDataViewController {
-        return states.currentState()
+        return store.currentState()
     }
 
     override fun mutate(action: SnekAction) {
-        states.pushState(mutator.mutate(currentState(), action))
+        store.pushState(mutator.mutating(currentState(), action))
+    }
+
+    /**
+     * Given the list of possible actions (either concurrent or vague), returns the appropriate one for the current
+     * state
+     */
+    fun appropriateAction(actions: List<SnekAction>): SnekAction? {
+        return when (currentState().dataView.screen) {
+            playing -> actions.filter { it != unpause }.safeFirst
+            ready, settings, scores -> actions.safeFirst
+        }
+
     }
 }
 
+
+/**
+ * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
+ *
+ *
+ *
+ * @author Kyli Rouge
+ * @since 2016-11-09
+ */
 class SnekGameStateMutator: StateMutator<SnekDataViewController, SnekAction, SnekGameStateChange> {
-    override fun mutate(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
+    override fun mutating(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
         return when (action) {
-            SnekAction.pause -> _pauseStateChange
-            SnekAction.unpause -> _unpauseStateChange
-            SnekAction.start -> TODO()
-            SnekAction.moveUp -> TODO()
-            SnekAction.moveDown -> TODO()
-            SnekAction.moveRight -> TODO()
-            SnekAction.moveLeft -> TODO()
+            pause -> _pauseStateChange
+            unpause -> _unpauseStateChange
+            start -> TODO()
+            moveUp -> TODO()
+            moveDown -> TODO()
+            moveRight -> TODO()
+            moveLeft -> TODO()
         }
     }
 }
 
-private val _pauseStateChange = SnekGameStateChange(BaseSnekDataViewChange(SnekDataChange(screen = ready)))
-private val _unpauseStateChange = SnekGameStateChange(BaseSnekDataViewChange(SnekDataChange(screen = playing)))
+private val _pauseStateChange = SnekGameStateChange(screen = ready)
+private val _unpauseStateChange = SnekGameStateChange(screen = playing)
