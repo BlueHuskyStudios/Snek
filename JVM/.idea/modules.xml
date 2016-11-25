@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../lib/Blue-Base/JVM/Blue Base.iml" filepath="$PROJECT_DIR$/../lib/Blue-Base/JVM/Blue Base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../Husky-IO/JVM/Husky IO.iml" filepath="$PROJECT_DIR$/../../Husky-IO/JVM/Husky IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../lib/Husky-IO/JVM/Husky IO.iml" filepath="$PROJECT_DIR$/../lib/Husky-IO/JVM/Husky IO.iml" />
       <module fileurl="file://$PROJECT_DIR$/../lib/Husky-UI/JVM/Husky UI.iml" filepath="$PROJECT_DIR$/../lib/Husky-UI/JVM/Husky UI.iml" />
       <module fileurl="file://$PROJECT_DIR$/Snek.iml" filepath="$PROJECT_DIR$/Snek.iml" />
     </modules>
