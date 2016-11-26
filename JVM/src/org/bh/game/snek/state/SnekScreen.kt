@@ -13,14 +13,17 @@ enum class SnekScreen {
      * Ready to play; may represent pause screen
      */
     ready,
+
     /**
      * Currently playing
      */
     playing,
+
     /**
      * The settings screen
      */
     settings,
+
     /**
      * Viewing the leaderboard
      */

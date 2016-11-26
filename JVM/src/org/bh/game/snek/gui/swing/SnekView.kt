@@ -1,6 +1,7 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.state.BaseSnekDataView
+import org.bh.tools.base.abstraction.BHFloat
 import org.bh.tools.base.collections.safeReduce
 import org.bh.tools.base.func.observing
 import org.bh.tools.base.struct.UIView
@@ -31,9 +32,9 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView {
         if (g == null) return
         g.antiAlias = true
 
-        val multiplier = g.clipBounds.size.sizeValue.floatValue / dataView.boardSize.floatValue
+        val multiplier = (g.clipBounds.size.sizeValue.floatValue / dataView.boardSize.floatValue).pairValue
 
-        dataView.snek.safeReduce { previous, current -> IntPoint
+        dataView.snek.safeReduce { previous, current -> Int64Point
             g.drawLine(previous * multiplier, current * multiplier)
             /*return*/ current
         }
