@@ -12,10 +12,10 @@ enum class SnekAction(val trigger: KeyActionTrigger) {
     moveRight(onKeyDown),
     moveLeft(onKeyDown);
 
-    companion object {
-        val allOnKeyUp: List<SnekAction> by lazy { values().filter { it.trigger == onKeyUp } }
-        val allOnKeyDown: List<SnekAction> by lazy { values().filter { it.trigger == onKeyDown } }
-    }
+//    companion object {
+//        val allOnKeyUp: List<SnekAction> by lazy { values().filter { it.trigger == onKeyUp } }
+//        val allOnKeyDown: List<SnekAction> by lazy { values().filter { it.trigger == onKeyDown } }
+//    }
 
     override fun toString(): String {
         return "${super.toString()}@$trigger"

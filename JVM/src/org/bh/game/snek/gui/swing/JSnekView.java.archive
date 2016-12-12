@@ -2,7 +2,7 @@ package org.bh.game.snek.gui.swing;
 
 import org.bh.game.snek.state.*;
 import org.bh.tools.base.struct.*;
-import org.bh.tools.base.struct.coord.Point;
+import org.bh.tools.base.math.geometry.Point;
 import org.bh.tools.base.struct.coord.*;
 
 import javax.swing.*;

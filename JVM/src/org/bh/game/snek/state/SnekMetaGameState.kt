@@ -15,7 +15,9 @@ class SnekMetaGameState {
                 Log.i("\r\n\r\n\r\n\t\t\tDebug mode changed from $old to $new\r\n\r\n\r\n\r\n")
             })
 
-    companion object
+    companion object {
+        private val dummy = Unit
+    }
 }
 
 private val _shared = SnekMetaGameState()

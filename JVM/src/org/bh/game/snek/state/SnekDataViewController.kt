@@ -2,11 +2,12 @@
 
 package org.bh.game.snek.state
 
+import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.math.geometry.BHIntPoint
+import org.bh.tools.base.math.geometry.BHIntSize
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.DataViewController
-import org.bh.tools.base.struct.coord.IntPoint
-import org.bh.tools.base.struct.coord.IntSize
 
 // TODO: Separate into individual files
 
@@ -19,7 +20,7 @@ import org.bh.tools.base.struct.coord.IntSize
  * @since 2016-10-30
  */
 class SnekDataViewController(override val dataView: BaseSnekDataView)
-        : DataViewController<SnekData, BaseSnekDataView>, ChangeableState<SnekDataViewController, SnekGameStateChange> {
+    : DataViewController<SnekData, BaseSnekDataView>, ChangeableState<SnekDataViewController, SnekGameStateChange> {
 
     constructor(dataView: SnekData) : this(BaseSnekDataView(dataView))
 
@@ -34,7 +35,6 @@ class SnekDataViewController(override val dataView: BaseSnekDataView)
 }
 
 
-
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
  *
@@ -43,16 +43,16 @@ class SnekDataViewController(override val dataView: BaseSnekDataView)
  * @author Kyli Rouge
  * @since 2016-10-30
  */
-class SnekGameStateChange(val baseChange: BaseSnekDataViewChange): StateChange<SnekGameStateChange, SnekDataViewController> {
+class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<SnekGameStateChange, SnekDataViewController> {
     constructor(snekDataViewController: SnekDataViewController) : this(BaseSnekDataViewChange(snekDataViewController.dataView.data.changeValue))
 
     constructor(
-            boardSize: IntSize? = null,
-            snekPath: Array<IntPoint>? = null,
-            leaderboard: Leaderboard<Leader, Int>? = null,
+            boardSize: BHIntSize? = null,
+            snekPath: Array<BHIntPoint>? = null,
+            leaderboard: Leaderboard<Leader, BHInt>? = null,
             screen: SnekScreen? = null,
-            apple: IntPoint? = null)
-        : this(BaseSnekDataViewChange(
+            apple: BHIntPoint? = null)
+            : this(BaseSnekDataViewChange(
             boardSize = boardSize,
             snekPath = snekPath,
             leaderboard = leaderboard,

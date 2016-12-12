@@ -1,12 +1,12 @@
 package org.bh.game.snek.state
 
+import org.bh.tools.base.abstraction.BHInt
 import org.bh.tools.base.collections.deepEquals
+import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.Data
 import org.bh.tools.base.struct.DataView
-import org.bh.tools.base.struct.coord.IntPoint
-import org.bh.tools.base.struct.coord.IntSize
 import java.util.*
 
 /**
@@ -18,11 +18,11 @@ import java.util.*
  * @since 2016-11-20
  */
 data class SnekData(
-        val boardSize: IntSize,
-        val snekPath: Array<IntPoint>,
-        val leaderboard: Leaderboard<Leader, Int>,
+        val boardSize: BHIntSize,
+        val snekPath: Array<BHIntPoint>,
+        val leaderboard: Leaderboard<Leader, BHInt>,
         val screen: SnekScreen,
-        val apple: IntPoint
+        val apple: BHIntPoint
 ) : Data, ChangeableState<SnekData, SnekDataChange> {
 
     override val changeValue: SnekDataChange
@@ -68,16 +68,16 @@ data class SnekData(
  * @since 2016-11-20
  */
 data class SnekDataChange(
-        val boardSize: IntSize? = null,
-        val snekPath: Array<IntPoint>? = null,
-        val leaderboard: Leaderboard<Leader, Int>? = null,
+        val boardSize: BHIntSize? = null,
+        val snekPath: Array<BHIntPoint>? = null,
+        val leaderboard: Leaderboard<Leader, BHInt>? = null,
         val screen: SnekScreen? = null,
-        val apple: IntPoint? = null)
+        val apple: BHIntPoint? = null)
     : DataView<SnekDataChange>, Data, StateChange<SnekDataChange, SnekData> {
 
     constructor(exactly: BaseSnekDataView) : this(
             boardSize = exactly.boardSize,
-            snekPath = exactly.snek,
+            snekPath = exactly.path,
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
             apple = exactly.apple)
@@ -124,9 +124,9 @@ data class SnekDataChange(
 
     override fun applyingChange(change: SnekDataChange): SnekDataChange
             = SnekDataChange(
-            boardSize = this.boardSize ?: change.boardSize,
-            apple = this.apple ?: change.apple,
-            leaderboard = this.leaderboard ?: change.leaderboard,
-            screen = this.screen ?: change.screen,
-            snekPath = this.snekPath ?: change.snekPath)
+            boardSize = change.boardSize ?: this.boardSize,
+            apple = change.apple ?: this.apple,
+            leaderboard = change.leaderboard ?: this.leaderboard,
+            screen = change.screen ?: this.screen,
+            snekPath = change.snekPath ?: this.snekPath)
 }

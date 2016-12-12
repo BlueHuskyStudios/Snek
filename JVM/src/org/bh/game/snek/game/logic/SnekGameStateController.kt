@@ -2,11 +2,13 @@ package org.bh.game.snek.game.logic
 
 import org.bh.game.snek.gui.swing.SnekAction
 import org.bh.game.snek.gui.swing.SnekAction.*
+import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekDataViewController
 import org.bh.game.snek.state.SnekGameStateChange
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.game.snek.state.SnekStateStorage
-import org.bh.tools.base.collections.safeFirst
+import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.collections.firstOrNull
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 
@@ -37,8 +39,8 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
      */
     fun appropriateAction(actions: List<SnekAction>): SnekAction? {
         return when (currentState().dataView.screen) {
-            playing -> actions.filter { it != unpause }.safeFirst
-            ready, settings, scores -> actions.safeFirst
+            playing -> actions.filter { it != unpause }.firstOrNull
+            ready, settings, scores -> actions.firstOrNull
         }
 
     }
@@ -53,17 +55,24 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
  * @author Kyli Rouge
  * @since 2016-11-09
  */
-class SnekGameStateMutator: StateMutator<SnekDataViewController, SnekAction, SnekGameStateChange> {
+class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, SnekGameStateChange> {
     override fun mutating(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
         return when (action) {
             pause -> _pauseStateChange
             unpause -> _unpauseStateChange
             start -> TODO()
-            moveUp -> TODO()
-            moveDown -> TODO()
-            moveRight -> TODO()
-            moveLeft -> TODO()
+            moveUp -> movingSnek(state, dx = 0, dy = -1)
+            moveDown -> movingSnek(state, dx = 0, dy = 1)
+            moveRight -> movingSnek(state, dx = 1, dy = 0)
+            moveLeft -> movingSnek(state, dx = -1, dy = 0)
         }
+    }
+
+    private fun movingSnek(oldState: SnekDataViewController, dx: BHInt, dy: BHInt): SnekGameStateChange {
+        val headPosition = oldState.snek.headPosition
+        val nextPosition = headPosition + Pair(dx, dy)
+        val newPath = oldState.snek.path + nextPosition
+        return SnekGameStateChange(snekPath = newPath)
     }
 }
 

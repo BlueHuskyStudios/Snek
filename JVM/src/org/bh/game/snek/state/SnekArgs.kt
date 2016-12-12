@@ -20,15 +20,15 @@ class SnekArgs(val metaGameState: SnekMetaGameState): CommandlineArgCollection()
     )
 
     override val args: Array<CommandLineArg<*>> = arrayOf(debug)
-
-    companion object
 }
 
-private val _shared = SnekArgs(SnekMetaGameState.shared)
-val SnekArgs.Companion.shared: SnekArgs get() = _shared
+val SnekArgs_shared = SnekArgs(SnekMetaGameState.shared)
+//val SnekArgs.Companion.shared: SnekArgs get() = _shared
 
-class SnekArgsProcessor(expectedArgs: SnekArgs): CommandLineArgProcessor(expectedArgs) {
-    companion object {
-        val shared = SnekArgsProcessor(SnekArgs.shared)
-    }
-}
+class SnekArgsProcessor(expectedArgs: SnekArgs): CommandLineArgProcessor(expectedArgs)// {
+//    companion object {
+//        val shared = SnekArgsProcessor(SnekArgs_shared)
+//    }
+//}
+
+val SnekArgsProcessor_shared = SnekArgsProcessor(SnekArgs_shared)

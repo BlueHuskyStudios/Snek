@@ -16,8 +16,7 @@ import javax.swing.KeyStroke
  * @since 2016-11-08
  */
 data class Keymap(val map: Map<SnekAction, Int>) {
-    companion object {
-        val default = Keymap(linkedMapOf(
+    constructor(): this(linkedMapOf(
                 Pair(pause, VK_ESCAPE),
                 Pair(unpause, VK_ESCAPE),
                 Pair(start, VK_ENTER),
@@ -26,7 +25,6 @@ data class Keymap(val map: Map<SnekAction, Int>) {
                 Pair(moveRight, VK_RIGHT),
                 Pair(moveLeft, VK_LEFT)
         ))
-    }
 
     /**
      * Registers all the keys in this map to the given view controller, where each one corresponds to an action
@@ -45,9 +43,7 @@ data class Keymap(val map: Map<SnekAction, Int>) {
                 map.entries.filter {
                     it.key.trigger == trigger
                         && it.value == keyCode
-                }.map {
-                    it.key
-                }
+                }.map(Map.Entry<SnekAction, Int>::key)
         return actions
     }
 }
