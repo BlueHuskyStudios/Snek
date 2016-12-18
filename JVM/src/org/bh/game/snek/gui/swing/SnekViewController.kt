@@ -17,13 +17,13 @@ import javax.swing.AbstractAction
  * @since 2016-11-05
  */
 class SnekViewController(override val view: SnekView, val controller: SnekGameStateController, val keymap: Keymap):
-        KeyListener,
+//        KeyListener,
         UIViewController<SnekView> {
     constructor(snekDataView: BaseSnekDataView, mutator: SnekGameStateController, keymap: Keymap): this(SnekView(snekDataView), mutator, keymap)
     constructor(snekData: SnekData, mutator: SnekGameStateController, keymap: Keymap): this(BaseSnekDataView(snekData), mutator, keymap)
 
     init {
-        view.addKeyListener(this)
+//        view.addKeyListener(this)
         view.isFocusCycleRoot = true
         view.grabFocus()
 
@@ -37,27 +37,27 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
         }
     }
 
-    override fun keyTyped(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e, onKeyTyped)
-    }
-
-    override fun keyPressed(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e, onKeyDown)
-    }
-
-    override fun keyReleased(e: KeyEvent?) {
-        if (e != null) performActionForKeyEvent(e, onKeyUp)
-    }
-
-    private fun performActionForKeyEvent(e: KeyEvent, trigger: KeyActionTrigger) {
-//        val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
-        val actions = keymap.actionsForKeyEvent(e, trigger)
-        val appropriateAction = controller.appropriateAction(actions)
-        if (appropriateAction != null) performAction(appropriateAction)
-    }
+//    override fun keyTyped(e: KeyEvent?) {
+//        if (e != null) performActionForKeyEvent(e, onKeyTyped)
+//    }
+//
+//    override fun keyPressed(e: KeyEvent?) {
+//        if (e != null) performActionForKeyEvent(e, onKeyDown)
+//    }
+//
+//    override fun keyReleased(e: KeyEvent?) {
+//        if (e != null) performActionForKeyEvent(e, onKeyUp)
+//    }
+//
+//    private fun performActionForKeyEvent(e: KeyEvent, trigger: KeyActionTrigger) {
+////        val action = keymap.map.entries.safeFirst { 0 != (it.value and e.extendedKeyCode) }?.key
+//        val actions = keymap.actionsForKeyEvent(e, trigger)
+//        val appropriateAction = controller.appropriateAction(actions)
+//        if (appropriateAction != null) performAction(appropriateAction)
+//    }
 
     private fun performAction(action: SnekAction) {
         controller.mutate(action)
-        view.dataView = controller.currentState().dataView
+        view.representedObject = controller.currentState().dataView
     }
 }

@@ -31,7 +31,7 @@ data class Keymap(val map: Map<SnekAction, Int>) {
      * returned in the given block
      */
     fun <ViewType> registerAll(viewController: UIViewController<ViewType>, actionCallback: KeymapActionCallback)
-            where ViewType : UIView, ViewType : JComponent
+            where ViewType : UIView<*>, ViewType : JComponent
             = map.forEach { snekAction: SnekAction, keyCode: Int ->
                 viewController.view.inputMap.put(KeyStroke.getKeyStroke(keyCode, 0), snekAction)
                 viewController.view.actionMap.put(snekAction, actionCallback(snekAction))

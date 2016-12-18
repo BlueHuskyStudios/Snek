@@ -1,10 +1,7 @@
 package org.bh.game.snek.state
 
 import org.bh.tools.base.abstraction.BHInt
-import org.bh.tools.base.math.geometry.BHIntPoint
-import org.bh.tools.base.math.geometry.BHIntSize
-import org.bh.tools.base.math.geometry.integerValue
-import org.bh.tools.base.math.geometry.randomPoint
+import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.DataView
@@ -21,7 +18,7 @@ data class BaseSnekDataView(override val data: SnekData)
 : DataView<SnekData>, ChangeableState<BaseSnekDataView, BaseSnekDataViewChange> {
 
     val boardSize: BHIntSize get() = data.boardSize
-    val path: Array<BHIntPoint> get() = data.snekPath
+    val path: BHIntPath get() = BHIntPath(data.snekPath.asList())
     val leaderboard: Leaderboard<Leader, BHInt> get() = data.leaderboard
     val screen: SnekScreen get() = data.screen
     val apple: BHIntPoint get() = data.apple
@@ -32,7 +29,7 @@ data class BaseSnekDataView(override val data: SnekData)
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataView
         = BaseSnekDataView(data.applyingChange(change.dataChange))
 
-    val headPosition: BHIntPoint get() = path.lastOrNull() ?: boardSize.randomPoint.integerValue
+    val headPosition: BHIntPoint get() = (path.points.lastOrNull() ?: boardSize.randomPoint).integerValue
 }
 
 
@@ -48,13 +45,13 @@ data class BaseSnekDataView(override val data: SnekData)
 class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseSnekDataViewChange, BaseSnekDataView> {
     constructor(
             boardSize: BHIntSize? = null,
-            snekPath: Array<BHIntPoint>? = null,
+            snekPath: BHIntPath? = null,
             leaderboard: Leaderboard<Leader, BHInt>? = null,
             screen: SnekScreen? = null,
             apple: BHIntPoint? = null)
         : this(SnekDataChange(
             boardSize = boardSize,
-            snekPath = snekPath,
+            snekPath = snekPath?.points?.toTypedArray(),
             leaderboard = leaderboard,
             screen = screen,
             apple = apple))

@@ -9,6 +9,7 @@ import org.bh.game.snek.state.SnekScreen.*
 import org.bh.game.snek.state.SnekStateStorage
 import org.bh.tools.base.abstraction.BHInt
 import org.bh.tools.base.collections.firstOrNull
+import org.bh.tools.base.math.geometry.BHIntPoint
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 
@@ -72,9 +73,13 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
         val headPosition = oldState.snek.headPosition
         val nextPosition = headPosition + Pair(dx, dy)
         val newPath = oldState.snek.path + nextPosition
+        if (newPath.intersectsSelf) {
+            return _loseStateChange
+        }
         return SnekGameStateChange(snekPath = newPath)
     }
 }
 
+private val _loseStateChange = SnekGameStateChange(screen = ready)
 private val _pauseStateChange = SnekGameStateChange(screen = ready)
 private val _unpauseStateChange = SnekGameStateChange(screen = playing)

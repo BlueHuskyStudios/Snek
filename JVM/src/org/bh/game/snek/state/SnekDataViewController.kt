@@ -3,6 +3,7 @@
 package org.bh.game.snek.state
 
 import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.math.geometry.BHIntPath
 import org.bh.tools.base.math.geometry.BHIntPoint
 import org.bh.tools.base.math.geometry.BHIntSize
 import org.bh.tools.base.state.ChangeableState
@@ -48,7 +49,7 @@ class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<
 
     constructor(
             boardSize: BHIntSize? = null,
-            snekPath: Array<BHIntPoint>? = null,
+            snekPath: BHIntPath? = null,
             leaderboard: Leaderboard<Leader, BHInt>? = null,
             screen: SnekScreen? = null,
             apple: BHIntPoint? = null)

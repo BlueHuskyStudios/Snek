@@ -18,9 +18,9 @@ import javax.swing.JComponent
  * @author Kyli Rouge
  * @since 2016-11-05
  */
-class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView {
+class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataView> {
 
-    var dataView: BaseSnekDataView by observing(dataView, didSet = { old, new -> update() } )
+    override var representedObject: BaseSnekDataView by observing(dataView, didSet = { _, _ -> update() } )
 
     fun update() {
         repaint()
@@ -39,24 +39,25 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView {
         }
         g.font = g.font.deriveFont(fontSize)
 
-        val multiplier = (g.clipBounds.size.sizeValue.floatValue / dataView.boardSize.floatValue)
+        val multiplier = (g.clipBounds.size.sizeValue.floatValue / representedObject.boardSize.floatValue)
 
-//        dataView.path.safeReduce { previous, current ->
+//        representedObject.path.safeReduce { previous, current ->
 //            g.drawLine(previous * multiplier, current * multiplier)
 //            /*return*/ current
 //        }
-        dataView.path
+        representedObject.path.points
+                .map { it.floatValue }
                 .map { Pair(it, it * multiplier.pairValue) }
                 .forEach { (original, scaled) ->
                     g.drawRect(Rect(scaled, multiplier))
-                    g.drawString(original.stringValue, scaled.x.int32Value + 1, (scaled.y + fontSize).int32Value)
+                    g.drawString(original.stringValue, scaled.x.int32Value + 2, (scaled.y + fontSize).int32Value)
                 }
 
-        g.drawString(dataView.screen.name, 0, height)
+        g.drawString(representedObject.screen.name, 0, height)
     }
 
     override fun getPreferredSize(): Dimension {
-        return (dataView.boardSize * 8).awtValue
+        return (representedObject.boardSize * 8).awtValue
     }
 
     override fun preferredSize(): Dimension {

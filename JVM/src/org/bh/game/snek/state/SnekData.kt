@@ -19,7 +19,7 @@ import java.util.*
  */
 data class SnekData(
         val boardSize: BHIntSize,
-        val snekPath: Array<BHIntPoint>,
+        val snekPath: Array<Point<BHInt>>,
         val leaderboard: Leaderboard<Leader, BHInt>,
         val screen: SnekScreen,
         val apple: BHIntPoint
@@ -69,7 +69,7 @@ data class SnekData(
  */
 data class SnekDataChange(
         val boardSize: BHIntSize? = null,
-        val snekPath: Array<BHIntPoint>? = null,
+        val snekPath: Array<Point<BHInt>>? = null,
         val leaderboard: Leaderboard<Leader, BHInt>? = null,
         val screen: SnekScreen? = null,
         val apple: BHIntPoint? = null)
@@ -77,7 +77,7 @@ data class SnekDataChange(
 
     constructor(exactly: BaseSnekDataView) : this(
             boardSize = exactly.boardSize,
-            snekPath = exactly.path,
+            snekPath = exactly.path.points.toTypedArray(),
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
             apple = exactly.apple)
