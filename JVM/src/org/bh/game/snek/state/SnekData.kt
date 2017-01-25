@@ -2,7 +2,9 @@ package org.bh.game.snek.state
 
 import org.bh.tools.base.abstraction.BHInt
 import org.bh.tools.base.collections.deepEquals
-import org.bh.tools.base.math.geometry.*
+import org.bh.tools.base.math.geometry.BHIntPoint
+import org.bh.tools.base.math.geometry.BHIntSize
+import org.bh.tools.base.math.geometry.ComputablePoint
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.Data
@@ -19,7 +21,7 @@ import java.util.*
  */
 data class SnekData(
         val boardSize: BHIntSize,
-        val snekPath: Array<Point<BHInt>>,
+        val snekPath: Array<ComputablePoint<BHInt>>,
         val leaderboard: Leaderboard<Leader, BHInt>,
         val screen: SnekScreen,
         val apple: BHIntPoint
@@ -69,7 +71,7 @@ data class SnekData(
  */
 data class SnekDataChange(
         val boardSize: BHIntSize? = null,
-        val snekPath: Array<Point<BHInt>>? = null,
+        val snekPath: Array<ComputablePoint<BHInt>>? = null,
         val leaderboard: Leaderboard<Leader, BHInt>? = null,
         val screen: SnekScreen? = null,
         val apple: BHIntPoint? = null)

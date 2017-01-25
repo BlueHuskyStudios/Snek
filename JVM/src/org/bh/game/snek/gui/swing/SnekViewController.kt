@@ -1,13 +1,10 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.game.logic.SnekGameStateController
-import org.bh.game.snek.gui.swing.KeyActionTrigger.*
 import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekData
 import org.bh.tools.base.struct.UIViewController
 import java.awt.event.ActionEvent
-import java.awt.event.KeyEvent
-import java.awt.event.KeyListener
 import javax.swing.AbstractAction
 
 /**

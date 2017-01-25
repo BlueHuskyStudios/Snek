@@ -4,7 +4,10 @@ import org.bh.game.snek.game.logic.SnekGameStateController
 import org.bh.game.snek.gui.swing.Keymap
 import org.bh.game.snek.gui.swing.SnekViewController
 import org.bh.game.snek.gui.swing.SnekWindow
-import org.bh.game.snek.state.*
+import org.bh.game.snek.state.SnekArgsProcessor_shared
+import org.bh.game.snek.state.SnekDataAccessor
+import org.bh.game.snek.state.SnekDataViewController
+import org.bh.game.snek.state.SnekData_new
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.

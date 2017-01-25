@@ -2,14 +2,12 @@ package org.bh.game.snek.game.logic
 
 import org.bh.game.snek.gui.swing.SnekAction
 import org.bh.game.snek.gui.swing.SnekAction.*
-import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekDataViewController
 import org.bh.game.snek.state.SnekGameStateChange
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.game.snek.state.SnekStateStorage
 import org.bh.tools.base.abstraction.BHInt
 import org.bh.tools.base.collections.firstOrNull
-import org.bh.tools.base.math.geometry.BHIntPoint
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 

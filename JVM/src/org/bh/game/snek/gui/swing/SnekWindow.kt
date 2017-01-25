@@ -35,7 +35,9 @@ class SnekWindow(snekViewController: SnekViewController): JFrame(), WindowListen
 
     override fun windowClosing(e: WindowEvent?) { }
 
-    override fun windowClosed(e: WindowEvent?) { }
+    override fun windowClosed(e: WindowEvent?) {
+        System.exit(0)
+    }
 
     override fun windowActivated(e: WindowEvent?) {
         if (!hasShown) {

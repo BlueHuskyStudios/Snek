@@ -2,7 +2,6 @@ package org.bh.game.snek.state
 
 import org.bh.game.snek.state.SnekScreen.ready
 import org.bh.tools.base.abstraction.BHInt
-import org.bh.tools.base.abstraction.Int64
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.DataAccessor
 

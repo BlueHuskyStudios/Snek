@@ -3,13 +3,15 @@ package org.bh.game.snek.gui.swing
 import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.tools.base.func.observing
 import org.bh.tools.base.math.float32Value
-import org.bh.tools.base.math.geometry.*
+import org.bh.tools.base.math.geometry.Rect
+import org.bh.tools.base.math.geometry.awtValue
+import org.bh.tools.base.math.geometry.floatValue
+import org.bh.tools.base.math.geometry.sizeValue
 import org.bh.tools.base.math.int32Value
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.ui.swing.drawRect
 import org.bh.tools.ui.swing.setAntiAlias
 import java.awt.*
-import java.awt.Dimension
 import javax.swing.JComponent
 
 /**
@@ -22,11 +24,12 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
     override var representedObject: BaseSnekDataView by observing(dataView, didSet = { _, _ -> update() } )
 
+    private val fontSize = 10.float32Value
+
+
     fun update() {
         repaint()
     }
-
-    private val fontSize = 10.float32Value
 
     override fun paint(g: Graphics?) {
         super.paint(g)
@@ -49,7 +52,9 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
                 .map { it.floatValue }
                 .map { Pair(it, it * multiplier.pairValue) }
                 .forEach { (original, scaled) ->
+                    g.color = SystemColor.controlText
                     g.drawRect(Rect(scaled, multiplier))
+                    g.color = Color(0f, 0f, 0f, 0.3f)
                     g.drawString(original.stringValue, scaled.x.int32Value + 2, (scaled.y + fontSize).int32Value)
                 }
 
@@ -60,6 +65,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         return (representedObject.boardSize * 8).awtValue
     }
 
+    @Suppress("OverridingDeprecatedMember")
     override fun preferredSize(): Dimension {
         return preferredSize
     }
