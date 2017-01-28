@@ -7,9 +7,12 @@ import org.bh.tools.base.math.geometry.Rect
 import org.bh.tools.base.math.geometry.awtValue
 import org.bh.tools.base.math.geometry.fractionValue
 import org.bh.tools.base.math.geometry.sizeValue
+import org.bh.game.snek.util.*
 import org.bh.tools.base.math.int32Value
 import org.bh.tools.base.struct.UIView
+import org.bh.tools.ui.swing.drawLine
 import org.bh.tools.ui.swing.drawRect
+import org.bh.tools.ui.swing.fillOval
 import org.bh.tools.ui.swing.setAntiAlias
 import java.awt.*
 import javax.swing.JComponent
@@ -48,14 +51,15 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 //            g.drawLine(previous * multiplier, current * multiplier)
 //            /*return*/ current
 //        }
-        representedObject.path.points
+        representedObject.path.lineSegments
                 .map { it.fractionValue }
                 .map { Pair(it, it * multiplier.pairValue) }
                 .forEach { (original, scaled) ->
                     g.color = SystemColor.controlText
-                    g.drawRect(Rect(scaled, multiplier))
+                    g.drawLine(scaled)
+                    g.fillOval(boundingRect = Rect(scaled.start, multiplier))
                     g.color = Color(0f, 0f, 0f, 0.3f)
-                    g.drawString(original.stringValue, scaled.x.int32Value + 2, (scaled.y + fontSize).int32Value)
+                    g.drawString(original.start.stringValue, (scaled.start.x + 2).int32Value, (scaled.start.y + fontSize).int32Value)
                 }
 
         g.drawString(representedObject.screen.name, 0, height)
