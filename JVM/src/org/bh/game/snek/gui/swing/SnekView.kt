@@ -5,7 +5,7 @@ import org.bh.tools.base.func.observing
 import org.bh.tools.base.math.float32Value
 import org.bh.tools.base.math.geometry.Rect
 import org.bh.tools.base.math.geometry.awtValue
-import org.bh.tools.base.math.geometry.floatValue
+import org.bh.tools.base.math.geometry.fractionValue
 import org.bh.tools.base.math.geometry.sizeValue
 import org.bh.tools.base.math.int32Value
 import org.bh.tools.base.struct.UIView
@@ -42,14 +42,14 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         }
         g.font = g.font.deriveFont(fontSize)
 
-        val multiplier = (g.clipBounds.size.sizeValue.floatValue / representedObject.boardSize.floatValue)
+        val multiplier = (g.clipBounds.size.sizeValue.fractionValue / representedObject.boardSize.fractionValue)
 
 //        representedObject.path.safeReduce { previous, current ->
 //            g.drawLine(previous * multiplier, current * multiplier)
 //            /*return*/ current
 //        }
         representedObject.path.points
-                .map { it.floatValue }
+                .map { it.fractionValue }
                 .map { Pair(it, it * multiplier.pairValue) }
                 .forEach { (original, scaled) ->
                     g.color = SystemColor.controlText

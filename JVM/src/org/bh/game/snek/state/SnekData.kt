@@ -1,9 +1,9 @@
 package org.bh.game.snek.state
 
-import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.collections.deepEquals
-import org.bh.tools.base.math.geometry.BHIntPoint
-import org.bh.tools.base.math.geometry.BHIntSize
+import org.bh.tools.base.math.geometry.IntegerPoint
+import org.bh.tools.base.math.geometry.IntegerSize
 import org.bh.tools.base.math.geometry.ComputablePoint
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
@@ -20,11 +20,11 @@ import java.util.*
  * @since 2016-11-20
  */
 data class SnekData(
-        val boardSize: BHIntSize,
-        val snekPath: Array<ComputablePoint<BHInt>>,
-        val leaderboard: Leaderboard<Leader, BHInt>,
+        val boardSize: IntegerSize,
+        val snekPath: Array<ComputablePoint<Integer>>,
+        val leaderboard: Leaderboard<Leader, Integer>,
         val screen: SnekScreen,
-        val apple: BHIntPoint
+        val apple: IntegerPoint
 ) : Data, ChangeableState<SnekData, SnekDataChange> {
 
     override val changeValue: SnekDataChange
@@ -70,11 +70,11 @@ data class SnekData(
  * @since 2016-11-20
  */
 data class SnekDataChange(
-        val boardSize: BHIntSize? = null,
-        val snekPath: Array<ComputablePoint<BHInt>>? = null,
-        val leaderboard: Leaderboard<Leader, BHInt>? = null,
+        val boardSize: IntegerSize? = null,
+        val snekPath: Array<ComputablePoint<Integer>>? = null,
+        val leaderboard: Leaderboard<Leader, Integer>? = null,
         val screen: SnekScreen? = null,
-        val apple: BHIntPoint? = null)
+        val apple: IntegerPoint? = null)
     : DataView<SnekDataChange>, Data, StateChange<SnekDataChange, SnekData> {
 
     constructor(exactly: BaseSnekDataView) : this(

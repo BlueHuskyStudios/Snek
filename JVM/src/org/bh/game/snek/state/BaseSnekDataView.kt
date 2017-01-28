@@ -1,6 +1,6 @@
 package org.bh.game.snek.state
 
-import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
@@ -17,18 +17,18 @@ import org.bh.tools.base.struct.DataView
 data class BaseSnekDataView(override val data: SnekData)
 : DataView<SnekData>, ChangeableState<BaseSnekDataView, BaseSnekDataViewChange> {
 
-    val boardSize: BHIntSize by lazy { data.boardSize }
-    val path: BHIntPath by lazy { BHIntPath(data.snekPath.asList()) }
-    val leaderboard: Leaderboard<Leader, BHInt> by lazy { data.leaderboard }
+    val boardSize: IntegerSize by lazy { data.boardSize }
+    val path: IntegerPath by lazy { IntegerPath(data.snekPath.asList()) }
+    val leaderboard: Leaderboard<Leader, Integer> by lazy { data.leaderboard }
     val screen: SnekScreen by lazy { data.screen }
-    val apple: BHIntPoint by lazy { data.apple }
+    val apple: IntegerPoint by lazy { data.apple }
 
     override val changeValue: BaseSnekDataViewChange by lazy { BaseSnekDataViewChange(data.changeValue) }
 
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataView
         = BaseSnekDataView(data.applyingChange(change.dataChange))
 
-    val headPosition: BHIntPoint by lazy { (path.points.lastOrNull() ?: boardSize.randomPoint).integerValue }
+    val headPosition: IntegerPoint by lazy { (path.points.lastOrNull() ?: boardSize.randomPoint).integerValue }
 }
 
 
@@ -43,11 +43,11 @@ data class BaseSnekDataView(override val data: SnekData)
  */
 class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseSnekDataViewChange, BaseSnekDataView> {
     constructor(
-            boardSize: BHIntSize? = null,
-            snekPath: BHIntPath? = null,
-            leaderboard: Leaderboard<Leader, BHInt>? = null,
+            boardSize: IntegerSize? = null,
+            snekPath: IntegerPath? = null,
+            leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: BHIntPoint? = null)
+            apple: IntegerPoint? = null)
         : this(SnekDataChange(
             boardSize = boardSize,
             snekPath = snekPath?.points?.toTypedArray(),

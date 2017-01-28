@@ -2,10 +2,10 @@
 
 package org.bh.game.snek.state
 
-import org.bh.tools.base.abstraction.BHInt
-import org.bh.tools.base.math.geometry.BHIntPath
-import org.bh.tools.base.math.geometry.BHIntPoint
-import org.bh.tools.base.math.geometry.BHIntSize
+import org.bh.tools.base.abstraction.Integer
+import org.bh.tools.base.math.geometry.IntegerPath
+import org.bh.tools.base.math.geometry.IntegerPoint
+import org.bh.tools.base.math.geometry.IntegerSize
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.DataViewController
@@ -48,11 +48,11 @@ class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<
     constructor(snekDataViewController: SnekDataViewController) : this(BaseSnekDataViewChange(snekDataViewController.dataView.data.changeValue))
 
     constructor(
-            boardSize: BHIntSize? = null,
-            snekPath: BHIntPath? = null,
-            leaderboard: Leaderboard<Leader, BHInt>? = null,
+            boardSize: IntegerSize? = null,
+            snekPath: IntegerPath? = null,
+            leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: BHIntPoint? = null)
+            apple: IntegerPoint? = null)
             : this(BaseSnekDataViewChange(
             boardSize = boardSize,
             snekPath = snekPath,

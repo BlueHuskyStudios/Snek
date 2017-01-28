@@ -6,7 +6,7 @@ import org.bh.game.snek.state.SnekDataViewController
 import org.bh.game.snek.state.SnekGameStateChange
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.game.snek.state.SnekStateStorage
-import org.bh.tools.base.abstraction.BHInt
+import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.collections.firstOrNull
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
@@ -67,7 +67,7 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
         }
     }
 
-    private fun movingSnek(oldState: SnekDataViewController, dx: BHInt, dy: BHInt): SnekGameStateChange {
+    private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Integer): SnekGameStateChange {
         val headPosition = oldState.snek.headPosition
         val nextPosition = headPosition + Pair(dx, dy)
         val newPath = oldState.snek.path + nextPosition
