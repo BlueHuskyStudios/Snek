@@ -10,10 +10,7 @@ import org.bh.tools.base.math.geometry.sizeValue
 import org.bh.game.snek.util.*
 import org.bh.tools.base.math.int32Value
 import org.bh.tools.base.struct.UIView
-import org.bh.tools.ui.swing.drawLine
-import org.bh.tools.ui.swing.drawRect
-import org.bh.tools.ui.swing.fillOval
-import org.bh.tools.ui.swing.setAntiAlias
+import org.bh.tools.ui.swing.*
 import java.awt.*
 import javax.swing.JComponent
 
@@ -38,29 +35,35 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         super.paint(g)
 
         if (g == null) return
-        g.setAntiAlias(true)
-        if (g is Graphics2D) {
-            g.renderingHints[RenderingHints.KEY_ANTIALIASING] = RenderingHints.VALUE_ANTIALIAS_ON
-            g.fontRenderContext
-        }
+        g.antiAlias = true
+        g.textAntiAlias = TextAntiAliasApproach.horizontalRGBStripe
         g.font = g.font.deriveFont(fontSize)
 
         val multiplier = (g.clipBounds.size.sizeValue.fractionValue / representedObject.boardSize.fractionValue)
+        val dotSize = multiplier.minDimension / 3
 
 //        representedObject.path.safeReduce { previous, current ->
 //            g.drawLine(previous * multiplier, current * multiplier)
 //            /*return*/ current
 //        }
-        representedObject.path.lineSegments
+        representedObject.path.segments
                 .map { it.fractionValue }
-                .map { Pair(it, it * multiplier.pairValue) }
-                .forEach { (original, scaled) ->
-                    g.color = SystemColor.controlText
-                    g.drawLine(scaled)
-                    g.fillOval(boundingRect = Rect(scaled.start, multiplier))
-                    g.color = Color(0f, 0f, 0f, 0.3f)
-                    g.drawString(original.start.stringValue, (scaled.start.x + 2).int32Value, (scaled.start.y + fontSize).int32Value)
+                .map {
+                    Pair(it, it * multiplier.pairValue)
                 }
+                .forEach { (originalLineSegment, scaledLineSegment) ->
+                    g.color = SystemColor.controlText
+
+                    g.drawLine(scaledLineSegment)
+                    g.fillCircle(radius = dotSize, center = scaledLineSegment.start)
+                    g.color = Color(0.5f, 0.5f, 0.5f, 0.3f)
+                    g.drawString(originalLineSegment.start.stringValue, (scaledLineSegment.start.x + 2).int32Value, (scaledLineSegment.start.y + fontSize).int32Value)
+                }
+
+        g.color = SystemColor.controlText
+        representedObject.path.endPoint?.let {
+            g.fillCircle(radius = dotSize, center = it * multiplier.pairValue)
+        }
 
         g.drawString(representedObject.screen.name, 0, height)
     }

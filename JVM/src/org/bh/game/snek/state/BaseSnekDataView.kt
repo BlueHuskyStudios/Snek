@@ -18,7 +18,7 @@ data class BaseSnekDataView(override val data: SnekData)
 : DataView<SnekData>, ChangeableState<BaseSnekDataView, BaseSnekDataViewChange> {
 
     val boardSize: IntegerSize by lazy { data.boardSize }
-    val path: IntegerPath by lazy { IntegerPath(data.snekPath.asList()) }
+    val path: IntegerPath by lazy { IntegerPath.pathFromGenericPoints(data.snekPath.asList(), isClosed = false) }
     val leaderboard: Leaderboard<Leader, Integer> by lazy { data.leaderboard }
     val screen: SnekScreen by lazy { data.screen }
     val apple: IntegerPoint by lazy { data.apple }
