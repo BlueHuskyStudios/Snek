@@ -1,0 +1,68 @@
+package org.bh.game.snek.gui.swing;
+
+import org.bh.game.snek.state.*;
+import org.bh.tools.base.struct.*;
+import org.bh.tools.base.math.geometry.Point;
+import org.bh.tools.base.struct.coord.*;
+
+import javax.swing.*;
+import java.awt.*;
+
+import static org.bh.tools.base.collections.Array_ExtensionsKt.*;
+import static org.bh.tools.base.struct.coord.PointKt.times;
+import static org.bh.tools.base.struct.coord.SizeKt.*;
+import static org.bh.tools.base.struct.coord.SizeKt.times;
+import static org.bh.tools.ui.swing.Graphics_ExtensionsKt.*;
+
+/**
+ * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
+ *
+ * @author Kyli Rouge
+ * @since 2016-11-14
+ */
+class JSnekView extends JComponent implements UIView {
+
+    private BaseSnekDataView _dataView; //: by observing(representedObject, didSet = { old, new -> update() } )
+    public BaseSnekDataView getRepresentedObject() {
+        return _dataView;
+    }
+    void setRepresentedObject(BaseSnekDataView newValue) {
+        _dataView = newValue;
+        update();
+    }
+
+    JSnekView(BaseSnekDataView representedObject) {
+        super();
+        _dataView = representedObject;
+    }
+
+    private void update() {
+        repaint();
+    }
+
+    @Override public void paint(Graphics g) {
+        super.paint(g);
+
+        if (g == null) {
+            return;
+        }
+        setAntiAlias(g, true);
+
+        Size<Integer> multiplier = div(getSizeValue(g.getClipBounds().getSize()), _dataView.getBoardSize());
+
+        safeReduce(_dataView.getSnek(), (Point<Integer> previous, Point<Integer> current) -> {
+            drawLine(g, times(previous, multiplier), times(current, multiplier));
+            return current;
+        });
+
+        g.drawString(_dataView.getScreen().name(), 0, getHeight());
+    }
+
+    @Override public Dimension getPreferredSize() {
+        return getAwtValue(times(_dataView.getBoardSize(), 8));
+    }
+
+    @Override public Dimension preferredSize() {
+        return getPreferredSize();
+    }
+}

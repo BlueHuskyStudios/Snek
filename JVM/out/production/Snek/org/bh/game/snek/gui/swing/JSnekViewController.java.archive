@@ -1,0 +1,73 @@
+package org.bh.game.snek.gui.swing;
+
+import org.bh.game.snek.game.logic.*;
+import org.bh.game.snek.state.*;
+import org.bh.tools.base.struct.*;
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.Map.Entry;
+
+import static org.bh.tools.base.collections.Iterable_ExtensionsKt.*;
+
+/**
+ * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
+ *
+ * @author Kyli Rouge
+ * @since 2016-11-14
+ */
+public class JSnekViewController implements KeyListener, UIViewController<JSnekView> {
+
+    private JSnekView                _view;
+    @NotNull @Override public JSnekView getView() {
+        return _view;
+    }
+    private SnekGameStateController _controller;
+    private Keymap                  _keymap;
+
+    public JSnekViewController(JSnekView view, SnekGameStateController controller, Keymap keymap) {
+        _view = view;
+        _controller = controller;
+        _keymap = keymap;
+        init();
+    }
+
+    public JSnekViewController(BaseSnekDataView snekDataView, SnekGameStateController mutator, Keymap keymap) {
+        this(new JSnekView(snekDataView), mutator, keymap);
+    }
+    public JSnekViewController(SnekData snekData, SnekGameStateController mutator, Keymap keymap) {
+        this(new BaseSnekDataView(snekData), mutator, keymap);
+    }
+
+    private void init() {
+        _view.addKeyListener(this);
+        _view.setFocusCycleRoot(true);
+        _view.grabFocus();
+        _view.requestFocus();
+
+        _keymap.getMap().forEach(((SnekAction snekAction, int keyCode) -> {
+            _view.getInputMap().put(KeyStroke.getKeyStroke(keyCode, 0));
+        }));
+    }
+
+    @Override public void keyTyped(KeyEvent e) {
+        System.out.println("Key typed: " + e.getExtendedKeyCode());
+    }
+
+    @Override public void keyPressed(KeyEvent e) {
+        System.out.println("Key down: " + e.getExtendedKeyCode());
+    }
+
+    @Override public void keyReleased(KeyEvent e) {
+        if (e == null) { return; }
+        System.out.println("Key up: " + e.getExtendedKeyCode());
+        Entry<SnekAction, Integer> pair = safeFirst(_keymap.getMap().entrySet(), (Entry<SnekAction, Integer> it) -> 0 != (it.getValue() & e.getExtendedKeyCode()));
+        if (pair == null) return;
+        SnekAction action = pair.getKey();
+        if (action != null) {
+            _controller.mutate(action);
+            _view.setRepresentedObject(_controller.currentState().getRepresentedObject());
+        }
+    }
+}
