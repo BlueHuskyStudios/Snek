@@ -1,0 +1,647 @@
+// This source file is part of the Swift.org open source project
+//
+// Copyright (c) 2014 - 2016 Apple Inc. and the Swift project authors
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See http://swift.org/LICENSE.txt for license information
+// See http://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+//
+@file:Suppress("unused")
+
+package org.bh.tools.base.collections
+
+import org.bh.tools.base.struct.*
+
+
+/* Class for managing set of indices. The set of valid indices are 0 .. NSNotFound - 1; trying to use indices outside this range is an error.  NSIndexSet uses NSNotFound as a return value in cases where the queried index doesn't exist in the set; for instance, when you ask firstIndex and there are no indices; or when you ask for indexGreaterThanIndex: on the last index, and so on.
+
+The following code snippets can be used to enumerate over the indices in an NSIndexSet:
+
+    // Forward
+    var currentIndex = set.firstIndex
+    while currentIndex != NSNotFound {
+        ...
+        currentIndex = set.indexGreaterThanIndex(currentIndex)
+    }
+
+    // Backward
+    var currentIndex = set.lastIndex
+    while currentIndex != NSNotFound {
+        ...
+        currentIndex = set.indexLessThanIndex(currentIndex)
+    }
+
+To enumerate without doing a call per index, you can use the method getIndices:maxCount:inIndexRange:.
+*/
+
+/*internal fun __NSIndexSetRangeCount(indexSet: NSIndexSet): Int {
+    return indexSet._ranges.count
+}
+
+internal fun __NSIndexSetRangeAtIndex(indexSet: NSIndexSet, index: Int, location : UnsafeMutablePointer<Int>, length : UnsafeMutablePointer<Int>) {
+//    if (Int(index) >= indexSet._ranges.count) {
+//        location.pointee = Int(bitPattern: NSNotFound)
+//        length.pointee = Int(0)
+//        return
+//    }
+    val range = indexSet._ranges[Int(index)]
+    location.pointee = Int(range.location)
+    length.pointee = Int(range.length)
+}
+
+internal fun __NSIndexSetIndexOfRangeContainingIndex(indexSet: NSIndexSet, index: Int): Int {
+    var idx = 0
+    while idx < indexSet._ranges.count {
+        val range = indexSet._ranges[idx]
+        if (range.location <= Int(index) && Int(index) <= range.location + range.length) {
+            return Int(idx)
+        }
+        idx += 1
+    }
+    return Int(bitPattern: NSNotFound)
+}*/
+
+open class NSIndexSet : Cloneable {
+    // all instance variables are private
+
+    internal var _ranges: List<ClosedRange<Index>> = listOf()
+    internal var _count = 0
+    public constructor() {
+        _count = 0
+        _ranges = emptyList()
+    }
+    public constructor(range: ClosedRange<Index>) {
+        _count = range.length
+        _ranges = if (_count == 0) emptyList() else listOf(range)
+    }
+    public constructor(indexSet: NSIndexSet) {
+        _ranges = indexSet._ranges.map { ClosedRange(location= it.lowerBound, length= it.upperBound - it.lowerBound) }
+        _count = indexSet.count
+    }
+
+    open override fun clone(): Any {
+        if (this::class === NSIndexSet::class) {
+            // return this for immutable type
+            return this
+        }
+        return NSIndexSet(indexSet = this)
+    }
+
+    open fun mutableClone(): Any {
+        return NSMutableIndexSet(indexSet= this)
+    }
+    
+    public constructor(value: Int) :
+        this(range= ClosedRange(location = value, length = 1))
+    
+
+    open fun isEqual(indexSet: IndexSet): Boolean {
+
+        val otherRanges = indexSet.rangeView.map { ClosedRange<Index>(location: it.lowerBound, length: it.upperBound - it.lowerBound) }
+        if (_ranges.count != otherRanges.count) {
+            return false
+        }
+        for (r1, r2) in zip(_ranges, otherRanges) {
+            if (r1.length != r2.length || r1.location != r2.location) {
+                return false
+            }
+        }
+        return true
+    }
+
+    open var count: Int {
+        return _count
+    }
+
+    /* The following six methods will return NSNotFound if there is no index in the set satisfying the query.
+    */
+    open var firstIndex: Int {
+        return _ranges.first?.location ?? NSNotFound
+    }
+    open var lastIndex: Int {
+        guard _ranges.count > 0 else {
+            return NSNotFound
+        }
+        return NSMaxRange(_ranges.last!) - 1
+    }
+
+    internal fun _indexAndRangeAdjacentToOrContainingIndex(idx : Int): (Int, ClosedRange<Index>)? {
+        val count = _ranges.count
+                guard count > 0 else {
+            return nil
+        }
+
+        var min = 0
+        var max = count - 1
+        while min < max {
+            val rIdx = (min + max) / 2
+            val range = _ranges[rIdx]
+            if (range.location > idx) {
+                max = rIdx
+            } else if (NSMaxRange(range) - 1 < idx) {
+                min = rIdx + 1
+            } else {
+                return (rIdx, range)
+            }
+        }
+        return (min, _ranges[min])
+    }
+
+    internal fun _indexOfRangeContainingIndex (idx : Int): Int? {
+        if (val (rIdx, range) = _indexAndRangeAdjacentToOrContainingIndex(idx)) {
+            return NSLocationInRange(idx, range) ? rIdx : nil
+        } else {
+            return nil
+        }
+    }
+
+    internal fun _indexOfRangeBeforeOrContainingIndex(idx : Int): Int? {
+        if (val (rIdx, range) = _indexAndRangeAdjacentToOrContainingIndex(idx)) {
+            if (range.location <= idx) {
+                return rIdx
+            } else if (rIdx > 0) {
+                return rIdx - 1
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
+    internal fun _indexOfRangeAfterOrContainingIndex(idx : Int): Int? {
+        if (val (rIdx, range) = _indexAndRangeAdjacentToOrContainingIndex(idx)) {
+            if (NSMaxRange(range) - 1 >= idx) {
+                return rIdx
+            } else if (rIdx + 1 < _ranges.count) {
+                return rIdx + 1
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+
+    internal fun _indexClosestToIndex(idx: Int, equalAllowed : Boolean, following: Boolean): Int? {
+        guard _count > 0 else {
+            return nil
+        }
+
+        if (following) {
+            var result = idx
+            if (!equalAllowed) {
+                guard idx < NSNotFound else {
+                    return nil
+                }
+                result += 1
+            }
+
+            if (val rangeIndex = _indexOfRangeAfterOrContainingIndex(result)) {
+                val range = _ranges[rangeIndex]
+                return NSLocationInRange(result, range) ? result : range.location
+            }
+        } else {
+            var result = idx
+            if (!equalAllowed) {
+                guard idx > 0 else {
+                return nil
+            }
+                result -= 1
+            }
+
+            if (val rangeIndex = _indexOfRangeBeforeOrContainingIndex(result)) {
+                val range = _ranges[rangeIndex]
+                return NSLocationInRange(result, range) ? result : (NSMaxRange(range) - 1)
+            }
+        }
+        return nil
+    }
+
+    open fun indexGreaterThanIndex(value: Int): Int {
+        return _indexClosestToIndex(value, equalAllowed: false, following: true) ?? NSNotFound
+    }
+    open fun indexLessThanIndex(value: Int): Int {
+        return _indexClosestToIndex(value, equalAllowed: false, following: false) ?? NSNotFound
+    }
+    open fun indexGreaterThanOrEqual(value: Int): Int {
+        return _indexClosestToIndex(value, equalAllowed: true, following: true) ?? NSNotFound
+    }
+    open fun indexLessThanOrEqual(value: Int): Int {
+        return _indexClosestToIndex(value, equalAllowed: true, following: false) ?? NSNotFound
+    }
+
+    /* Fills up to bufferSize indices in the specified range into the buffer and returns the number of indices actually placed in the buffer; also modifies the optional range passed in by pointer to be "positioned" after the last index filled into the buffer.Example: if the index set contains the indices 0, 2, 4, ..., 98, 100, for a buffer of size 10 and the range (20, 80) the buffer would contain 20, 22, ..., 38 and the range would be modified to (40, 60).
+    */
+    open fun getIndices(indexBuffer: UnsafeMutablePointer<Int>, maxCount bufferSize: Int, inIndexRange range: ClosedRange<Index>Pointer?): Int {
+        val minIndex : Int
+                val maxIndex : Int
+                if (val initialRange = range) {
+                    minIndex = initialRange.pointee.location
+                    maxIndex = NSMaxRange(initialRange.pointee) - 1
+                } else {
+                    minIndex = firstIndex
+                    maxIndex = lastIndex
+                }
+        guard minIndex <= maxIndex else {
+            return 0
+        }
+
+        if (val initialRangeIndex = this._indexOfRangeAfterOrContainingIndex(minIndex)) {
+            var rangeIndex = initialRangeIndex
+            val rangeCount = _ranges.count
+            var counter = 0
+            var idx = minIndex
+            var offset = 0
+            while rangeIndex < rangeCount && idx <= maxIndex && counter < bufferSize {
+                val currentRange = _ranges[rangeIndex]
+                if (currentRange.location <= minIndex) {
+                    idx = minIndex
+                    offset = minIndex - currentRange.location
+                } else {
+                    idx = currentRange.location
+                }
+
+                while idx <= maxIndex && counter < bufferSize && offset < currentRange.length {
+                    indexBuffer.advanced(by: counter).pointee = idx
+                    counter += 1
+                    idx += 1
+                    offset += 1
+                }
+                if (offset >= currentRange.length) {
+                    rangeIndex += 1
+                    offset = 0
+                }
+            }
+
+            if (counter > 0, val resultRange = range) {
+            val delta = indexBuffer.advanced(by: counter - 1).pointee - minIndex + 1
+            resultRange.pointee.location += delta
+            resultRange.pointee.length -= delta
+        }
+            return counter
+        } else {
+            return 0
+        }
+    }
+
+    open fun countOfIndices(range: ClosedRange<Index>): Int {
+        guard _count > 0 && range.length > 0 else {
+            return 0
+        }
+
+        if (val initialRangeIndex = this._indexOfRangeAfterOrContainingIndex(range.location)) {
+            var rangeIndex = initialRangeIndex
+            val maxRangeIndex = NSMaxRange(range) - 1
+
+            var result = 0
+            val firstRange = _ranges[rangeIndex]
+            if (firstRange.location < range.location) {
+                if (NSMaxRange(firstRange) - 1 >= maxRangeIndex) {
+                    return range.length
+                }
+                result = NSMaxRange(firstRange) - range.location
+                rangeIndex += 1
+            }
+
+            for curRange in _ranges.suffix(from: rangeIndex) {
+                if (NSMaxRange(curRange) - 1 > maxRangeIndex) {
+                    if (curRange.location <= maxRangeIndex) {
+                        result += maxRangeIndex + 1 - curRange.location
+                    }
+                    break
+                }
+                result += curRange.length
+            }
+            return result
+        } else {
+            return 0
+        }
+    }
+
+    open fun contains(value: Int): Boolean {
+        return _indexOfRangeContainingIndex(value) != nil
+    }
+    open fun contains(range: ClosedRange<Index>): Boolean {
+        guard range.length > 0 else {
+            return false
+        }
+        if (val rIdx = this._indexOfRangeContainingIndex(range.location)) {
+            return NSMaxRange(_ranges[rIdx]) >= NSMaxRange(range)
+        } else {
+            return false
+        }
+    }
+    open fun contains(indexSet: IndexSet): Boolean {
+        var result = true
+        enumerateRanges(options: emptyList()) { range, stop in
+            if (!this.contains(in: range)) {
+                result = false
+                stop.pointee = true
+            }
+        }
+        return result
+    }
+
+    open fun intersects(range: ClosedRange<Index>): Boolean {
+        guard range.length > 0 else {
+            return false
+        }
+
+        if (val rIdx = _indexOfRangeBeforeOrContainingIndex(range.location)) {
+            if (NSMaxRange(_ranges[rIdx]) - 1 >= range.location) {
+                return true
+            }
+        }
+        if (val rIdx = _indexOfRangeAfterOrContainingIndex(range.location)) {
+            if (NSMaxRange(range) - 1 >= _ranges[rIdx].location) {
+                return true
+            }
+        }
+        return false
+    }
+
+    internal fun _enumerateWithOptions<P, R>(opts : NSEnumerationOptions, range: ClosedRange<Index>, paramType: P.Type, returnType: R.Type, block: (P, UnsafeMutablePointer<ObjCBool>): R) -> Int? {
+        guard !opts.contains(.concurrent) else {
+            NSUnimplemented()
+        }
+
+        guard val startRangeIndex = this._indexOfRangeAfterOrContainingIndex(range.location), val endRangeIndex = _indexOfRangeBeforeOrContainingIndex(NSMaxRange(range) - 1) else {
+            return nil
+        }
+
+        var result : Int? = nil
+        val reverse = opts.contains(.reverse)
+        val passRanges = paramType == ClosedRange<Index>.this
+                val findIndex = returnType == Boolean.this
+        var stop = false
+        val _ranges = _ranges[startRangeIndex...endRangeIndex]
+        val rangeSequence = (reverse ? AnySequence(_ranges.reversed()) : AnySequence(_ranges))
+        outer: for curRange in rangeSequence {
+            val intersection = NSIntersectionRange(curRange, range)
+            if (passRanges) {
+                if (intersection.length > 0) {
+                    val _ = block(intersection as! P, &stop)
+                }
+                if (stop) {
+                    break outer
+                }
+            } else if (intersection.length > 0) {
+                val maxIndex = NSMaxRange(intersection) - 1
+                val indices = reverse ? stride(from: maxIndex, through: intersection.location, by: -1) : stride(from: intersection.location, through: maxIndex, by: 1)
+                for idx in indices {
+                    if (findIndex) {
+                        val found : Boolean = block(idx as! P, &stop) as! Boolean
+                        if (found) {
+                            result = idx
+                            stop = true
+                        }
+                    } else {
+                        val _ = block(idx as! P, &stop)
+                    }
+                    if (stop) {
+                        break outer
+                    }
+                }
+            } // else, continue
+        }
+
+        return result
+    }
+
+    open fun enumerate(block: (Int, UnsafeMutablePointer<ObjCBool>): Void) {
+        enumerate(options: emptyList(), using: block)
+    }
+    open fun enumerate(opts: NSEnumerationOptions = emptyList(), using block: (Int, UnsafeMutablePointer<ObjCBool>): Void) {
+        val _ = _enumerateWithOptions(opts, range: ClosedRange(location = 0, length = Int.max), paramType: Int.this, returnType: Void.this, block: block)
+    }
+    open fun enumerate(range: ClosedRange<Index>, options opts: NSEnumerationOptions = emptyList(), using block: (Int, UnsafeMutablePointer<ObjCBool>): Void) {
+        val _ = _enumerateWithOptions(opts, range: range, paramType: Int.this, returnType: Void.this, block: block)
+    }
+
+    open fun index(predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> Int {
+        return index(options: emptyList(), passingTest: predicate)
+    }
+    open fun index(opts: NSEnumerationOptions = emptyList(), passingTest predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> Int {
+        return _enumerateWithOptions(opts, range: ClosedRange(location = 0, length = Int.max), paramType: Int.this, returnType: Boolean.this, block: predicate) ?? NSNotFound
+    }
+    open fun index(range: ClosedRange<Index>, options opts: NSEnumerationOptions = emptyList(), passingTest predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> Int {
+        return _enumerateWithOptions(opts, range: range, paramType: Int.this, returnType: Boolean.this, block: predicate) ?? NSNotFound
+    }
+
+    open fun indices(predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> IndexSet {
+        return indices(in: ClosedRange(location = 0, length = Int.max), options: emptyList(), passingTest: predicate)
+    }
+    open fun indices(opts: NSEnumerationOptions = emptyList(), passingTest predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> IndexSet {
+        return indices(in: ClosedRange(location = 0, length = Int.max), options: opts, passingTest: predicate)
+    }
+    open fun indices(range: ClosedRange<Index>, options opts: NSEnumerationOptions = emptyList(), passingTest predicate: (Int, UnsafeMutablePointer<ObjCBool>): Boolean) -> IndexSet {
+        var result = IndexSet()
+        val _ = _enumerateWithOptions(opts, range: range, paramType: Int.this, returnType: Void.this) { idx, stop in
+            if (predicate(idx, stop)) {
+                result.insert(idx)
+            }
+        }
+        return result
+    }
+
+    /*
+     The following three methods allow you to enumerate the indices in the receiver by ranges of contiguous indices. The performance of these methods is not guaranteed to be any better than if they were implemented with enumerateIndicesInRange:options:usingBlock:. However, depending on the receiver's implementation, they may perform better than that.
+
+     If the specified range for enumeration intersects a range of contiguous indices in the receiver, then the block will be invoked with the intersection of those two ranges.
+    */
+    open fun enumerateRanges(block: (ClosedRange<Index>, UnsafeMutablePointer<ObjCBool>): Void) {
+        enumerateRanges(options: emptyList(), using: block)
+    }
+    open fun enumerateRanges(opts: NSEnumerationOptions = emptyList(), using block: (ClosedRange<Index>, UnsafeMutablePointer<ObjCBool>): Void) {
+        val _ = _enumerateWithOptions(opts, range: ClosedRange(location = 0, length = Int.max), paramType: ClosedRange<Index>.this, returnType: Void.this, block: block)
+    }
+    open fun enumerateRanges(range: ClosedRange<Index>, options opts: NSEnumerationOptions = emptyList(), using block: (ClosedRange<Index>, UnsafeMutablePointer<ObjCBool>): Void) {
+        val _ = _enumerateWithOptions(opts, range: range, paramType: ClosedRange<Index>.this, returnType: Void.this, block: block)
+    }
+}
+
+public data class NSIndexSetIterator(
+        public typealias Element = Int,
+        internal val _set: NSIndexSet,
+        internal var _first: Boolean = true,
+        internal var _current: Element?,
+    ) {
+
+    internal constructor(set: NSIndexSet) {
+        this._set = set
+        this._current = nil
+    }
+
+    public mutating fun next(): Element? {
+        if (_first) {
+            _current = _set.firstIndex
+            _first = false
+        } else if (val c = _current) {
+            _current = _set.indexGreaterThanIndex(c)
+        }
+        if (_current == NSNotFound) {
+            _current = nil
+        }
+        return _current
+    }
+}
+
+fun NSIndexSet.makeIterator(): NSIndexSetIterator {
+    return NSIndexSetIterator(this)
+}
+
+
+open class NSMutableIndexSet : NSIndexSet {
+
+    open fun add(indexSet: IndexSet) {
+        indexSet.rangeView.forEach { add(in: ClosedRange<Index>(location: it.lowerBound, length: it.upperBound - it.lowerBound)) }
+    }
+
+    open override fun clone(zone: NSZone? = nil): Any {
+        if (type(of: this) === NSMutableIndexSet.this) {
+            val indexSet = NSMutableIndexSet()
+            indexSet._ranges = this._ranges
+            indexSet._count = this._count
+            return indexSet
+        }
+        return NSMutableIndexSet(indexSet: this._bridgeToSwift())
+    }
+
+    open fun remove(indexSet: IndexSet) {
+        indexSet.rangeView.forEach { remove(in: ClosedRange<Index>(location: it.lowerBound, length: it.upperBound - it.lowerBound)) }
+    }
+
+    open fun removeAllIndices() {
+        _ranges = emptyList()
+        _count = 0
+    }
+
+    open fun add(value: Int) {
+        add(in: ClosedRange(location = value, length = 1))
+    }
+
+    open fun remove(value: Int) {
+        remove(in: ClosedRange(location = value, length = 1))
+    }
+
+    internal fun _insertRange(range: ClosedRange<Index>, atIndex index: Int) {
+        _ranges.insert(range, at: index)
+        _count += range.length
+    }
+
+    internal fun _replaceRangeAtIndex(index: Int, withRange range: ClosedRange<Index>?) {
+        val oldRange = _ranges[index]
+        if (val range = range) {
+            _ranges[index] = range
+            _count += range.length - oldRange.length
+        } else {
+            _ranges.remove(at: index)
+            _count -= oldRange.length
+        }
+    }
+
+    internal fun _mergeOverlappingRangesStartingAtIndex(index: Int) {
+        var rangeIndex = index
+        while _ranges.count > 0 && rangeIndex < _ranges.count - 1 {
+            val curRange = _ranges[rangeIndex]
+            val nextRange = _ranges[rangeIndex + 1]
+            val curEnd = NSMaxRange(curRange)
+            val nextEnd = NSMaxRange(nextRange)
+            if (curEnd >= nextRange.location) {
+                // overlaps
+                if (curEnd < nextEnd) {
+                    this._replaceRangeAtIndex(rangeIndex, withRange: ClosedRange(location = nextEnd - curRange.location, length = curRange.length))
+                    rangeIndex += 1
+                }
+                this._replaceRangeAtIndex(rangeIndex + 1, withRange: nil)
+            } else {
+                break
+            }
+        }
+    }
+
+    open fun add(range: ClosedRange<Index>) {
+        guard range.length > 0 else {
+            return
+        }
+        val addEnd = NSMaxRange(range)
+        val startRangeIndex = _indexOfRangeBeforeOrContainingIndex(range.location) ?? 0
+        var replacedRangeIndex : Int?
+        var rangeIndex = startRangeIndex
+        while rangeIndex < _ranges.count {
+            val curRange = _ranges[rangeIndex]
+            val curEnd = NSMaxRange(curRange)
+            if (addEnd < curRange.location) {
+                _insertRange(range, atIndex: rangeIndex)
+                // Done. No need to merge
+                return
+            } else if (range.location < curRange.location && addEnd >= curRange.location) {
+                if (addEnd > curEnd) {
+                    _replaceRangeAtIndex(rangeIndex, withRange: range)
+                } else {
+                    _replaceRangeAtIndex(rangeIndex, withRange: ClosedRange(location = range.location, length = curEnd - range.location))
+                }
+                replacedRangeIndex = rangeIndex
+                // Proceed to merging
+                break
+            } else if (range.location >= curRange.location && addEnd < curEnd) {
+                // Nothing to add
+                return
+            } else if (range.location >= curRange.location && range.location <= curEnd && addEnd > curEnd) {
+                _replaceRangeAtIndex(rangeIndex, withRange: ClosedRange(location = curRange.location, length = addEnd - curRange.location))
+                replacedRangeIndex = rangeIndex
+                // Proceed to merging
+                break
+            }
+            rangeIndex += 1
+        }
+        if (val r = replacedRangeIndex) {
+            _mergeOverlappingRangesStartingAtIndex(r)
+        } else {
+            _insertRange(range, atIndex: _ranges.count)
+        }
+    }
+
+    open fun remove(range: ClosedRange<Index>) {
+        guard range.length > 0 else {
+            return
+        }
+        guard val startRangeIndex = (range.location > 0) ? _indexOfRangeAfterOrContainingIndex(range.location) : 0 else {
+            return
+        }
+        val removeEnd = NSMaxRange(range)
+        var rangeIndex = startRangeIndex
+        while rangeIndex < _ranges.count {
+            val curRange = _ranges[rangeIndex]
+            val curEnd = NSMaxRange(curRange)
+
+            if (removeEnd < curRange.location) {
+                // Nothing to remove
+                return
+            } else if (range.location <= curRange.location && removeEnd >= curRange.location) {
+                if (removeEnd >= curEnd) {
+                    _replaceRangeAtIndex(rangeIndex, withRange: nil)
+                    // Don't increment rangeIndex
+                    continue
+                } else {
+                    this._replaceRangeAtIndex(rangeIndex, withRange: ClosedRange(location = removeEnd, length = curEnd - removeEnd))
+                    return
+                }
+            } else if (range.location > curRange.location && removeEnd < curEnd) {
+                val firstPiece = ClosedRange(location = curRange.location, length = range.location - curRange.location)
+                val secondPiece = ClosedRange(location = removeEnd, length = curEnd - removeEnd)
+                _replaceRangeAtIndex(rangeIndex, withRange: secondPiece)
+                _insertRange(firstPiece, atIndex: rangeIndex)
+            } else if (range.location > curRange.location && range.location < curEnd && removeEnd >= curEnd) {
+                _replaceRangeAtIndex(rangeIndex, withRange: ClosedRange(location = curRange.location, length = range.location - curRange.location))
+            }
+            rangeIndex += 1
+        }
+
+    }
+
+    /* For a positive delta, shifts the indices in [index, INT_MAX] to the right, thereby inserting an "empty space" [index, delta], for a negative delta, shifts the indices in [index, INT_MAX] to the left, thereby deleting the indices in the range [index - delta, delta].
+    */
+    open fun shiftIndicesStarting(index: Int, by delta: Int) { NSUnimplemented() }
+}
