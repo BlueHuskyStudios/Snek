@@ -2,6 +2,7 @@ package org.bh.game.snek.state
 
 import org.bh.game.snek.state.SnekScreen.ready
 import org.bh.tools.base.abstraction.Integer
+import org.bh.tools.base.collections.a
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.DataAccessor
 
@@ -9,15 +10,14 @@ class SnekDataAccessor : DataAccessor<SnekData, SnekDataAccessDetails?, SnekData
 
     override fun accessData(details: SnekDataAccessDetails?,
                             didAccessData: (accessedData: SnekData?, status: SnekDataAccessStatus?) -> Unit) {
-        didAccessData(SnekData_new(), null)
+        // TODO: serialize/deserialize
+        didAccessData(SnekData(), null)
     }
 
-//    companion object {
-//
-//    }
+//    companion object
 }
 
-fun SnekData_new(): SnekData {
+fun SnekData(): SnekData {
     val snekPath: Array<IntegerPoint> = if (SnekMetaGameState.shared.debug) testSnekPath else defaultSnekPath
     return SnekData(defaultBoardSize,
             snekPath.asList().toTypedArray(),
@@ -28,7 +28,7 @@ fun SnekData_new(): SnekData {
 
 private val defaultBoardSize = IntegerSize(width = 32, height = 32)
 private val defaultSnekPath: Array<IntegerPoint> = emptyArray()
-private val testSnekPath: Array<IntegerPoint> = arrayOf(IntPoint(10, 10), IntPoint(15, 10), IntPoint(15, 7))
+private val testSnekPath = a[IntegerPoint(10, 10), IntegerPoint(15, 10), IntegerPoint(15, 7)]
 private val defaultLeaderboard = Leaderboard<Leader, Integer>(mapOf())
 private val defaultScreen = ready
 private fun defaultApple(boardSize: IntegerSize, snekPath: Array<IntegerPoint>): IntPoint = boardSize.randomPoint.integerValue
