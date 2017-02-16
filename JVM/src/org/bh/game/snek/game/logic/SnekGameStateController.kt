@@ -38,7 +38,7 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
      */
     fun appropriateAction(actions: List<SnekAction>): SnekAction? {
         return when (currentState().dataView.screen) {
-            playing -> actions.filter { it != unpause }.firstOrNull
+            playing -> actions.firstOrNull { it != unpause }
             ready, settings, scores -> actions.firstOrNull
         }
 
