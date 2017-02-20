@@ -3,9 +3,7 @@
 package org.bh.game.snek.state
 
 import org.bh.tools.base.abstraction.Integer
-import org.bh.tools.base.math.geometry.IntegerPath
-import org.bh.tools.base.math.geometry.IntegerPoint
-import org.bh.tools.base.math.geometry.IntegerSize
+import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.DataViewController
@@ -52,13 +50,15 @@ class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<
             snekPath: IntegerPath? = null,
             leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: IntegerPoint? = null)
+            apple: IntegerPoint? = null,
+            debug: Boolean? = null)
             : this(BaseSnekDataViewChange(
             boardSize = boardSize,
             snekPath = snekPath,
             leaderboard = leaderboard,
             screen = screen,
-            apple = apple))
+            apple = apple,
+            debug = debug))
 
     override fun applyingChange(change: SnekGameStateChange): SnekGameStateChange
             = SnekGameStateChange(this.baseChange.applyingChange(change.baseChange))

@@ -2,12 +2,10 @@ package org.bh.game.snek.game.logic
 
 import org.bh.game.snek.gui.swing.SnekAction
 import org.bh.game.snek.gui.swing.SnekAction.*
-import org.bh.game.snek.state.SnekDataViewController
-import org.bh.game.snek.state.SnekGameStateChange
+import org.bh.game.snek.state.*
 import org.bh.game.snek.state.SnekScreen.*
-import org.bh.game.snek.state.SnekStateStorage
 import org.bh.tools.base.abstraction.Integer
-import org.bh.tools.base.collections.firstOrNull
+import org.bh.tools.base.collections.extensions.firstOrNull
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 
@@ -41,7 +39,6 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
             playing -> actions.firstOrNull { it != unpause }
             ready, settings, scores -> actions.firstOrNull
         }
-
     }
 }
 
@@ -49,7 +46,7 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
  *
- *
+ * That which mutates Snek's game state
  *
  * @author Kyli Rouge
  * @since 2016-11-09
@@ -57,26 +54,33 @@ class SnekGameStateController(initialState: SnekDataViewController) : StateContr
 class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, SnekGameStateChange> {
     override fun mutating(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
         return when (action) {
-            pause -> _pauseStateChange
-            unpause -> _unpauseStateChange
-            start -> TODO()
-            moveUp -> movingSnek(state, dx = 0, dy = -1)
-            moveDown -> movingSnek(state, dx = 0, dy = 1)
-            moveRight -> movingSnek(state, dx = 1, dy = 0)
-            moveLeft -> movingSnek(state, dx = -1, dy = 0)
-        }
-    }
+            is pause -> _pauseStateChange
+            is unpause -> _unpauseStateChange
+            is start -> TODO()
+            is moveUp -> movingSnek(state, dx = 0, dy = -1)
+            is moveDown -> movingSnek(state, dx = 0, dy = 1)
+            is moveRight -> movingSnek(state, dx = 1, dy = 0)
+            is moveLeft -> movingSnek(state, dx = -1, dy = 0)
 
-    private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Integer): SnekGameStateChange {
-        val headPosition = oldState.snek.headPosition
-        val nextPosition = headPosition + Pair(dx, dy)
-        val newPath = oldState.snek.path + nextPosition
-        if (newPath.intersectsSelf) {
-            return _loseStateChange
+            is setDebugMode -> settingDebugMode(action.newMode)
         }
-        return SnekGameStateChange(snekPath = newPath)
     }
 }
+
+
+private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Integer): SnekGameStateChange {
+    val headPosition = oldState.snek.headPosition
+    val nextPosition = headPosition + Pair(dx, dy)
+    val newPath = oldState.snek.path + nextPosition
+    if (newPath.intersectsSelf) {
+        return _loseStateChange
+    }
+    return SnekGameStateChange(snekPath = newPath)
+}
+
+
+private fun settingDebugMode(newMode: Boolean): SnekGameStateChange = SnekGameStateChange(debug = newMode)
+
 
 private val _loseStateChange = SnekGameStateChange(screen = ready)
 private val _pauseStateChange = SnekGameStateChange(screen = ready)

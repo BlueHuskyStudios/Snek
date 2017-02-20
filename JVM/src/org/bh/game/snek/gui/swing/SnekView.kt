@@ -1,17 +1,14 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.state.BaseSnekDataView
+import org.bh.game.snek.util.times
 import org.bh.tools.base.func.observing
-import org.bh.tools.base.math.float32Value
-import org.bh.tools.base.math.geometry.Rect
-import org.bh.tools.base.math.geometry.awtValue
-import org.bh.tools.base.math.geometry.fractionValue
-import org.bh.tools.base.math.geometry.sizeValue
-import org.bh.game.snek.util.*
-import org.bh.tools.base.math.int32Value
+import org.bh.tools.base.math.*
+import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.ui.swing.*
 import java.awt.*
+import java.awt.Dimension
 import javax.swing.JComponent
 
 /**
@@ -39,8 +36,29 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         g.textAntiAlias = TextAntiAliasApproach.horizontalRGBStripe
         g.font = g.font.deriveFont(fontSize)
 
-        val multiplier = (g.clipBounds.size.sizeValue.fractionValue / representedObject.boardSize.fractionValue)
+        val frame = g.clipBounds.fractionValue
+        val boardSize = representedObject.boardSize
+        val multiplier = (frame.size.fractionValue / boardSize.fractionValue)
         val dotSize = multiplier.minDimension / 3
+
+        g.color = SystemColor.controlText.withAlphaComponent(0.1)
+
+        (0..boardSize.width)
+                .map { it.fractionValue * multiplier.width }
+                .forEach {
+                    g.drawLine(FractionLineSegment(
+                            start = FractionPoint(x = it, y = 0.0),
+                            end = FractionPoint(x = it, y = frame.height)
+                    ))
+                }
+        (0..boardSize.height)
+                .map { it.fractionValue * multiplier.height }
+                .forEach {
+                    g.drawLine(FractionLineSegment(
+                            start = FractionPoint(x = 0.0, y = it),
+                            end = FractionPoint(x = frame.height, y = it)
+                    ))
+                }
 
 //        representedObject.path.safeReduce { previous, current ->
 //            g.drawLine(previous * multiplier, current * multiplier)
@@ -56,8 +74,10 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
                     g.drawLine(scaledLineSegment)
                     g.fillCircle(radius = dotSize, center = scaledLineSegment.start)
-                    g.color = Color(0.5f, 0.5f, 0.5f, 0.3f)
-                    g.drawString(originalLineSegment.start.stringValue, (scaledLineSegment.start.x + 2).int32Value, (scaledLineSegment.start.y + fontSize).int32Value)
+                    if (representedObject.debug) {
+                        g.color = Color(0.5f, 0.5f, 0.5f, 0.3f)
+                        g.drawString(originalLineSegment.start.stringValue, (scaledLineSegment.start.x + 2).int32Value, (scaledLineSegment.start.y + fontSize).int32Value)
+                    }
                 }
 
         g.color = SystemColor.controlText
