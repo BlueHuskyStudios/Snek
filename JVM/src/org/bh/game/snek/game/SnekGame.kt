@@ -6,7 +6,7 @@ import org.bh.game.snek.io.SnekDataAccessDetails
 import org.bh.game.snek.io.SnekDataAccessor
 import org.bh.game.snek.state.*
 import org.bh.tools.base.math.int32Value
-import org.bh.tools.ui.alert.NativeAlert
+import org.bh.tools.wag.alert.NativeAlert
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
