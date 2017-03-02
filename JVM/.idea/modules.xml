@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/../../Husky-IO/JVM/Husky IO.iml" filepath="$PROJECT_DIR$/../../Husky-IO/JVM/Husky IO.iml" group="Libraries" />
       <module fileurl="file://$PROJECT_DIR$/../lib/Husky-UI/JVM/Husky UI.iml" filepath="$PROJECT_DIR$/../lib/Husky-UI/JVM/Husky UI.iml" group="Libraries" />
       <module fileurl="file://$PROJECT_DIR$/Snek.iml" filepath="$PROJECT_DIR$/Snek.iml" group="App" />
+      <module fileurl="file://$PROJECT_DIR$/../../Taskbar-Media-Buttons/Wag/JVM/Wag.iml" filepath="$PROJECT_DIR$/../../Taskbar-Media-Buttons/Wag/JVM/Wag.iml" group="Libraries" />
     </modules>
   </component>
 </project>
