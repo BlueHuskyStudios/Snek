@@ -8,7 +8,7 @@ class SnekDataAccessor : DataAccessor<SnekData, SnekDataAccessDetails?, SnekData
 
     override fun accessData(details: SnekDataAccessDetails?,
                             didAccessData: (accessedData: SnekData?, status: SnekDataAccessStatus?) -> Unit) {
-        val unused = when (details) {
+        return when (details) {
             SnekDataAccessDetails.generateNewData -> didAccessData(SnekDataGenerator().generateDefaultData(), null)
             null -> throw UnsupportedOperationException("Details must be provided")
             // TODO: serialize/deserialize
