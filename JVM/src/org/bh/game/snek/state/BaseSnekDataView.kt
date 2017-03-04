@@ -52,7 +52,7 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             debug: Boolean? = null)
         : this(SnekDataChange(
             boardSize = boardSize,
-            snekPath = snekPath?.points?.toTypedArray(),
+            snekPath = snekPath,
             leaderboard = leaderboard,
             screen = screen,
             apple = apple,
