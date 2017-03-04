@@ -30,7 +30,7 @@ class SnekGame(args: Array<String>) {
             SnekDataAccessor().accessData(SnekDataAccessDetails.generateNewData) { data, status ->
                 log.fine("Accessed data")
                 log.fine(status)
-                if (true || data == null) {
+                if (data == null) {
                     log.fine("Data was null; could not start")
                     NativeAlert.showOptionlessConfirmation(
                             title = "Snek couldn't load",
