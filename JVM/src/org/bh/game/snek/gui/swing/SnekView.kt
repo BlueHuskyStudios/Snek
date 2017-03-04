@@ -56,7 +56,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
                 .forEach {
                     g.drawLine(FractionLineSegment(
                             start = FractionPoint(x = 0.0, y = it),
-                            end = FractionPoint(x = frame.height, y = it)
+                            end = FractionPoint(x = frame.width, y = it)
                     ))
                 }
 
