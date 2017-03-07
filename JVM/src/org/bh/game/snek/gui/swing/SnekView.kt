@@ -81,7 +81,8 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
                 }
 
         g.color = SystemColor.controlText
-        representedObject.path.endPoint?.let {
+        representedObject.headPosition.let {
+            g.color = awtColorFromHex("#4CAF50")
             g.fillCircle(radius = dotSize, center = it * multiplier.pairValue)
         }
 
