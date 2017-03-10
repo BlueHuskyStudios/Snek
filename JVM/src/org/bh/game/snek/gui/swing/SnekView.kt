@@ -1,9 +1,12 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.state.BaseSnekDataView
+import org.bh.game.snek.state.SnekScreen
 import org.bh.game.snek.util.times
+import org.bh.tools.base.abstraction.Fraction
 import org.bh.tools.base.func.observing
-import org.bh.tools.base.math.*
+import org.bh.tools.base.math.float32Value
+import org.bh.tools.base.math.fractionValue
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.ui.swing.*
@@ -21,7 +24,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
     override var representedObject: BaseSnekDataView by observing(dataView, didSet = { _, _ -> update() } )
 
-    private val fontSize = 10.float32Value
+//    private val fontSize = 10.float32Value
 
 
     fun update() {
@@ -29,65 +32,129 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
     }
 
     override fun paint(g: Graphics?) {
+        _prepareToPaint(g)?.let { context ->
+            _paintScreen(context, representedObject.screen)
+        }
+    }
+
+
+    private fun _prepareToPaint(g: Graphics?): SnekViewRenderContext? {
         super.paint(g)
 
-        if (g == null) return
+        if (g == null) return null
         g.antiAlias = true
-        g.textAntiAlias = TextAntiAliasApproach.horizontalRGBStripe
-        g.font = g.font.deriveFont(fontSize)
+//        g.textAntiAlias = TextAntiAliasApproach.horizontalRGBStripe
+        g.textAntiAlias = TextAntiAliasApproach.generic
 
         val frame = g.clipBounds.fractionValue
         val boardSize = representedObject.boardSize
-        val multiplier = (frame.size.fractionValue / boardSize.fractionValue)
-        val dotSize = multiplier.minDimension / 3
+        val stretchedScale = (frame.size.fractionValue / boardSize.fractionValue)
+        val nonStretchedPixelSideLength = stretchedScale.minDimension
+        val fontSize = nonStretchedPixelSideLength.float32Value
 
-        g.color = SystemColor.controlText.withAlphaComponent(0.1)
+        g.font = g.font.deriveFont(fontSize)
+
+        if (representedObject.debug) {
+            g.color = awtColorFromHex("#f44336")
+            g.drawString("DEBUG MODE", frame.minX, frame.minY - fontSize)
+        }
+
+        return SnekViewRenderContext(
+                graphics = g,
+                frame = frame,
+                boardSize = boardSize,
+                stretchedScale = stretchedScale,
+                nonStretchedPixelSideLength = nonStretchedPixelSideLength
+        )
+    }
+
+
+    private fun _paintScreen(renderContext: SnekViewRenderContext, screen: SnekScreen) {
+        when (screen) {
+            SnekScreen.ready -> _paintReadyScreen(renderContext)
+            SnekScreen.playing -> _paintPlayingScreen(renderContext)
+            SnekScreen.settings -> TODO()
+            SnekScreen.scores -> TODO()
+        }
+    }
+
+
+    private fun _paintPlayingScreen(renderContext: SnekViewRenderContext) {
+
+        val (context, frame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
+        val dotSize = nonStretchedPixelSideLength / 3
+
+        context.color = SystemColor.controlText.withAlphaComponent(0.1)
 
         (0..boardSize.width)
-                .map { it.fractionValue * multiplier.width }
+                .map { it.fractionValue * stretchedScale.width }
                 .forEach {
-                    g.drawLine(FractionLineSegment(
+                    context.drawLine(FractionLineSegment(
                             start = FractionPoint(x = it, y = 0.0),
                             end = FractionPoint(x = it, y = frame.height)
                     ))
                 }
         (0..boardSize.height)
-                .map { it.fractionValue * multiplier.height }
+                .map { it.fractionValue * stretchedScale.height }
                 .forEach {
-                    g.drawLine(FractionLineSegment(
+                    context.drawLine(FractionLineSegment(
                             start = FractionPoint(x = 0.0, y = it),
                             end = FractionPoint(x = frame.width, y = it)
                     ))
                 }
 
 //        representedObject.path.safeReduce { previous, current ->
-//            g.drawLine(previous * multiplier, current * multiplier)
+//            context.drawLine(previous * stretchedScale, current * stretchedScale)
 //            /*return*/ current
 //        }
         representedObject.path.segments
-                .map { it.fractionValue }
-                .map {
-                    Pair(it, it * multiplier.pairValue)
+                .map { segment -> segment.fractionValue }
+                .map { segment ->
+                    Pair(segment, segment * stretchedScale.pairValue)
                 }
                 .forEach { (originalLineSegment, scaledLineSegment) ->
-                    g.color = SystemColor.controlText
+                    context.color = SystemColor.controlText
 
-                    g.drawLine(scaledLineSegment)
-                    g.fillCircle(radius = dotSize, center = scaledLineSegment.start)
+                    context.drawLine(scaledLineSegment)
+                    context.fillCircle(radius = dotSize, center = scaledLineSegment.start)
                     if (representedObject.debug) {
-                        g.color = Color(0.5f, 0.5f, 0.5f, 0.3f)
-                        g.drawString(originalLineSegment.start.stringValue, (scaledLineSegment.start.x + 2).int32Value, (scaledLineSegment.start.y + fontSize).int32Value)
+                        context.color = Color(0.5f, 0.5f, 0.5f, 0.3f)
+                        context.drawString(originalLineSegment.start.stringValue,
+                                (scaledLineSegment.start.x + 2),
+                                (scaledLineSegment.start.y + dotSize/2))
                     }
                 }
 
-        g.color = SystemColor.controlText
+        context.color = SystemColor.controlText
         representedObject.headPosition.let {
-            g.color = awtColorFromHex("#4CAF50")
-            g.fillCircle(radius = dotSize, center = it * multiplier.pairValue)
+            context.color = awtColorFromHex("#4CAF50")
+            context.fillCircle(radius = dotSize, center = it * stretchedScale.pairValue)
+        }
+        representedObject.apple.let {
+            context.color = awtColorFromHex("#ff1744")
+            context.fillCircle(radius = dotSize, center = it * stretchedScale.pairValue)
         }
 
-        g.drawString(representedObject.screen.name, 0, height)
+        if (representedObject.debug) {
+            context.drawString(representedObject.screen.name, 0, height)
+        }
     }
+
+
+    private fun _paintReadyScreen(renderContext: SnekViewRenderContext) {
+        val (context, frame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
+
+        val readyString = "Ready!"
+
+        context.font = Font.decode(Font.MONOSPACED).withSize(nonStretchedPixelSideLength * 3)
+        context.color = awtColorFromHex("#1976D2")
+        val metrics = context.fontMetrics
+        val readyStringYOffset = metrics.ascent.fractionValue/2.0
+        val readyStringWidth = metrics.stringWidth(readyString).fractionValue
+
+        context.drawString(readyString, frame.midX - (readyStringWidth / 2.0), frame.midY + readyStringYOffset)
+    }
+
 
     override fun getPreferredSize(): Dimension {
         return (representedObject.boardSize * 8).awtValue
@@ -98,3 +165,12 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         return preferredSize
     }
 }
+
+
+data class SnekViewRenderContext(
+        val graphics: GraphicsContext,
+        val frame: FractionRect,
+        val boardSize: IntegerSize,
+        val stretchedScale: FractionSize,
+        val nonStretchedPixelSideLength: Fraction
+)
