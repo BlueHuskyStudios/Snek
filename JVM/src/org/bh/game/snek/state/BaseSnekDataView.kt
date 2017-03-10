@@ -17,13 +17,14 @@ import org.bh.tools.base.struct.DataView
 data class BaseSnekDataView(override val data: SnekData)
 : DataView<SnekData>, ChangeableState<BaseSnekDataView, BaseSnekDataViewChange> {
 
-    val boardSize: IntegerSize by lazy { data.boardSize }
-    val path: IntegerPath by lazy { IntegerPath.pathFromGenericPoints(data.snekPath.asList(), isClosed = false) }
-    val leaderboard: Leaderboard<Leader, Integer> by lazy { data.leaderboard }
-    val screen: SnekScreen by lazy { data.screen }
-    val apple: IntegerPoint by lazy { data.apple }
+    inline val boardSize get() = data.boardSize
+    val path get() = data.snekPath
+    inline val leaderboard get() = data.leaderboard
+    inline val screen get() = data.screen
+    inline val apple get() = data.apple
+    inline val debug get() = data.debug
 
-    override val changeValue: BaseSnekDataViewChange by lazy { BaseSnekDataViewChange(data.changeValue) }
+    override val changeValue by lazy { BaseSnekDataViewChange(data.changeValue) }
 
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataView
         = BaseSnekDataView(data.applyingChange(change.dataChange))
@@ -47,13 +48,15 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             snekPath: IntegerPath? = null,
             leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: IntegerPoint? = null)
+            apple: IntegerPoint? = null,
+            debug: Boolean? = null)
         : this(SnekDataChange(
             boardSize = boardSize,
-            snekPath = snekPath?.points?.toTypedArray(),
+            snekPath = snekPath,
             leaderboard = leaderboard,
             screen = screen,
-            apple = apple))
+            apple = apple,
+            debug = debug))
 
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataViewChange
         = BaseSnekDataViewChange(dataChange.applyingChange(change.dataChange))

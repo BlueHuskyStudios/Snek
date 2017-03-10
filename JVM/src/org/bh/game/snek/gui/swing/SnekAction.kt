@@ -3,14 +3,16 @@ package org.bh.game.snek.gui.swing
 import org.bh.game.snek.gui.swing.KeyActionTrigger.onKeyDown
 import org.bh.game.snek.gui.swing.KeyActionTrigger.onKeyUp
 
-enum class SnekAction(val trigger: KeyActionTrigger) {
-    pause(onKeyUp),
-    unpause(onKeyUp),
-    start(onKeyUp),
-    moveUp(onKeyDown),
-    moveDown(onKeyDown),
-    moveRight(onKeyDown),
-    moveLeft(onKeyDown);
+sealed class SnekAction(val trigger: KeyActionTrigger?) {
+    object pause: SnekAction(onKeyUp)
+    object unpause: SnekAction(onKeyUp)
+    object start: SnekAction(onKeyUp)
+    object moveUp: SnekAction(onKeyDown)
+    object moveDown: SnekAction(onKeyDown)
+    object moveRight: SnekAction(onKeyDown)
+    object moveLeft: SnekAction(onKeyDown)
+
+    class setDebugMode(val newMode: Boolean): SnekAction(null)
 
 //    companion object {
 //        val allOnKeyUp: List<SnekAction> by lazy { values().filter { it.trigger == onKeyUp } }
