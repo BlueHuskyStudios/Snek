@@ -22,7 +22,7 @@ data class BaseSnekDataView(override val data: SnekData)
     inline val path get() = data.snekPath
     inline val leaderboard get() = data.leaderboard
     inline val screen get() = data.screen
-    inline val apple get() = data.apple
+    inline val applePosition get() = data.applePosition
     inline val keymap get() = data.keymap
 
     inline val debug get() = data.debug
@@ -51,7 +51,7 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             snekPath: IntegerPath? = null,
             leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: IntegerPoint? = null,
+            applePosition: IntegerPoint? = null,
             keymap: Keymap? = null,
 
             debug: Boolean? = null)
@@ -60,7 +60,7 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             snekPath = snekPath,
             leaderboard = leaderboard,
             screen = screen,
-            apple = apple,
+            applePosition = applePosition,
             keymap = keymap,
 
             debug = debug))

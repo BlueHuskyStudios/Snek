@@ -134,7 +134,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
             context.color = awtColorFromHex("#4CAF50")
             context.fillCircle(radius = dotSize, center = it * stretchedScale.pairValue)
         }
-        representedObject.apple.let {
+        representedObject.applePosition.let {
             context.color = awtColorFromHex("#ff1744")
             context.fillCircle(radius = dotSize, center = it * stretchedScale.pairValue)
         }

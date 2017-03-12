@@ -50,14 +50,14 @@ class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<
             snekPath: IntegerPath? = null,
             leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
-            apple: IntegerPoint? = null,
+            applePosition: IntegerPoint? = null,
             debug: Boolean? = null)
             : this(BaseSnekDataViewChange(
             boardSize = boardSize,
             snekPath = snekPath,
             leaderboard = leaderboard,
             screen = screen,
-            apple = apple,
+            applePosition = applePosition,
             debug = debug))
 
     override fun applyingChange(change: SnekGameStateChange): SnekGameStateChange
