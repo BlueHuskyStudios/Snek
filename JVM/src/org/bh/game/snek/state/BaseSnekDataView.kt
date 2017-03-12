@@ -1,5 +1,6 @@
 package org.bh.game.snek.state
 
+import org.bh.game.snek.gui.swing.Keymap
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
@@ -18,10 +19,12 @@ data class BaseSnekDataView(override val data: SnekData)
 : DataView<SnekData>, ChangeableState<BaseSnekDataView, BaseSnekDataViewChange> {
 
     inline val boardSize get() = data.boardSize
-    val path get() = data.snekPath
+    inline val path get() = data.snekPath
     inline val leaderboard get() = data.leaderboard
     inline val screen get() = data.screen
     inline val apple get() = data.apple
+    inline val keymap get() = data.keymap
+
     inline val debug get() = data.debug
 
     override val changeValue by lazy { BaseSnekDataViewChange(data.changeValue) }
@@ -49,6 +52,8 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             leaderboard: Leaderboard<Leader, Integer>? = null,
             screen: SnekScreen? = null,
             apple: IntegerPoint? = null,
+            keymap: Keymap? = null,
+
             debug: Boolean? = null)
         : this(SnekDataChange(
             boardSize = boardSize,
@@ -56,6 +61,8 @@ class BaseSnekDataViewChange(val dataChange: SnekDataChange) : StateChange<BaseS
             leaderboard = leaderboard,
             screen = screen,
             apple = apple,
+            keymap = keymap,
+
             debug = debug))
 
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataViewChange

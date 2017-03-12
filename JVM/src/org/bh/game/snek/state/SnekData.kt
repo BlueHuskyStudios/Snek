@@ -1,5 +1,6 @@
 package org.bh.game.snek.state
 
+import org.bh.game.snek.gui.swing.Keymap
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.state.ChangeableState
@@ -23,6 +24,8 @@ data class SnekData(
         val leaderboard: Leaderboard<Leader, Integer>,
         val screen: SnekScreen,
         val apple: IntegerPoint,
+        val keymap: Keymap,
+
         val debug: Boolean
 ) : Data, ChangeableState<SnekData, SnekDataChange> {
 
@@ -42,6 +45,8 @@ data class SnekData(
             leaderboard = change.leaderboard ?: this.leaderboard,
             screen = change.screen ?: this.screen,
             snekPath = change.snekPath ?: this.snekPath,
+            keymap = change.keymap ?: this.keymap,
+
             debug = change.debug ?: this.debug)
 
     companion object
@@ -63,6 +68,8 @@ data class SnekDataChange(
         val leaderboard: Leaderboard<Leader, Integer>? = null,
         val screen: SnekScreen? = null,
         val apple: IntegerPoint? = null,
+        val keymap: Keymap? = null,
+
         val debug: Boolean? = null)
     : DataView<SnekDataChange>, Data, StateChange<SnekDataChange, SnekData> {
 
@@ -78,6 +85,8 @@ data class SnekDataChange(
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
             apple = exactly.apple,
+            keymap = exactly.keymap,
+
             debug = exactly.debug)
 
 
@@ -87,15 +96,19 @@ data class SnekDataChange(
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
             apple = exactly.apple,
+            keymap = exactly.keymap,
+
             debug = exactly.debug)
 
 
     override fun applyingChange(change: SnekDataChange): SnekDataChange
             = SnekDataChange(
             boardSize = change.boardSize ?: this.boardSize,
-            apple = change.apple ?: this.apple,
+            snekPath = change.snekPath ?: this.snekPath,
             leaderboard = change.leaderboard ?: this.leaderboard,
             screen = change.screen ?: this.screen,
-            snekPath = change.snekPath ?: this.snekPath,
+            apple = change.apple ?: this.apple,
+            keymap = change.keymap ?: this.keymap,
+
             debug = change.debug ?: this.debug)
 }

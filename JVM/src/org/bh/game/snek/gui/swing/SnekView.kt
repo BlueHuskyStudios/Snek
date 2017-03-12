@@ -4,14 +4,15 @@ import org.bh.game.snek.state.BaseSnekDataView
 import org.bh.game.snek.state.SnekScreen
 import org.bh.game.snek.util.times
 import org.bh.tools.base.abstraction.Fraction
+import org.bh.tools.base.collections.extensions.firstOrNull
 import org.bh.tools.base.func.observing
-import org.bh.tools.base.math.float32Value
-import org.bh.tools.base.math.fractionValue
+import org.bh.tools.base.math.*
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.ui.swing.*
 import java.awt.*
 import java.awt.Dimension
+import java.awt.event.KeyEvent
 import javax.swing.JComponent
 
 /**
@@ -151,11 +152,51 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
         context.font = Font.decode(Font.MONOSPACED).withSize(nonStretchedPixelSideLength * 3)
         context.color = awtColorFromHex("#1976D2")
-        val metrics = context.fontMetrics
-        val readyStringYOffset = metrics.ascent.fractionValue/2.0
-        val readyStringWidth = metrics.stringWidth(readyString).fractionValue
+        val readyMetrics = context.fontMetrics
+        val readyStringYOffset = readyMetrics.ascent.fractionValue / 2.0
+        val readyStringWidth = readyMetrics.stringWidth(readyString).fractionValue
 
         context.drawString(readyString, frame.midX - (readyStringWidth / 2.0), frame.midY + readyStringYOffset)
+
+        representedObject.keymap.keyCodesForAction(SnekAction.start).firstOrNull?.let { keyCode ->
+            val pressKeyPrefix = "Press"
+            val pressKeyInfix = KeyEvent.getKeyText(keyCode).toUpperCase()
+            val pressKeySuffix = "to play"
+
+            val keyFontSize = nonStretchedPixelSideLength * 2
+
+            context.font = Font.decode(Font.SANS_SERIF).withSize(keyFontSize)
+            val keyMetrics = context.fontMetrics
+            val keyStringYOffset = readyStringYOffset + (keyMetrics.ascent.fractionValue * 2)
+
+            val keyPrefixStringWidth = keyMetrics.stringWidth(pressKeyPrefix).fractionValue
+            val keyInfixStringWidth = keyMetrics.stringWidth(pressKeyInfix).fractionValue
+            val keySuffixStringWidth = keyMetrics.stringWidth(pressKeySuffix).fractionValue
+
+            val spacing = nonStretchedPixelSideLength
+            val overallWidth = keyPrefixStringWidth + spacing + keyInfixStringWidth + spacing + keySuffixStringWidth
+
+            val halfWidth = overallWidth / 2
+            val pressKeyStart = frame.midX - halfWidth
+            val keyStringYPosition = frame.midY + keyStringYOffset
+
+            context.drawString(pressKeyPrefix, pressKeyStart, keyStringYPosition)
+            context.drawString(pressKeySuffix, frame.midX + halfWidth - keySuffixStringWidth, keyStringYPosition)
+
+            val keyPrefixEndX = pressKeyStart + keyPrefixStringWidth
+            val halfSpacing = spacing / 2
+
+            context.color = awtColorFromHex("#4CAF50")
+            context.fillRoundRect(
+                    (keyPrefixEndX + halfSpacing).roundedInt32Value,
+                    (keyStringYPosition - keyFontSize).roundedInt32Value,
+                    (keyInfixStringWidth + spacing).roundedInt32Value,
+                    (keyFontSize + halfSpacing).roundedInt32Value,
+                    (nonStretchedPixelSideLength).roundedInt32Value,
+                    (nonStretchedPixelSideLength).roundedInt32Value)
+            context.color = awtColorFromHex("#E8F5E9")
+            context.drawString(pressKeyInfix, keyPrefixEndX + spacing, keyStringYPosition)
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package org.bh.game.snek.io
 
+import org.bh.game.snek.gui.swing.Keymap
 import org.bh.game.snek.state.*
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
@@ -17,6 +18,7 @@ class SnekDataGenerator {
                 defaultLeaderboard,
                 defaultScreen,
                 defaultApple(boardSize, path),
+                defaultKeymap,
                 defaultDebug)
     }
 }
@@ -27,6 +29,7 @@ private val testSnekPath = IntegerPath(IntegerPoint(10, 10), IntegerPoint(15, 10
 private val defaultLeaderboard = Leaderboard<Leader, Integer>(mapOf())
 private val defaultScreen = SnekScreen.ready
 private fun defaultApple(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint = boardSize.randomPointNotOnPath(snekPath).integerValue
+private val defaultKeymap = Keymap()
 private val defaultDebug = false
 
 
