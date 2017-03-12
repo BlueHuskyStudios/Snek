@@ -1,7 +1,8 @@
 package org.bh.game.snek.game
 
 import org.bh.game.snek.game.logic.SnekGameStateController
-import org.bh.game.snek.gui.swing.*
+import org.bh.game.snek.gui.swing.SnekViewController
+import org.bh.game.snek.gui.swing.SnekWindow
 import org.bh.game.snek.io.SnekDataAccessDetails
 import org.bh.game.snek.io.SnekDataAccessor
 import org.bh.game.snek.state.*
@@ -70,8 +71,7 @@ class SnekGame(args: Array<String>) {
     private fun startImmediately(onDidStart: OnDidStart) {
         val snekViewController = SnekViewController(
                 initialState.dataView,
-                stateController,
-                Keymap())
+                stateController)
         SnekWindow(snekViewController).isVisible = true
         onDidStart()
     }

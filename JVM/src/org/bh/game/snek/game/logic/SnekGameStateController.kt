@@ -77,8 +77,8 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
     override fun mutating(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
         return when (action) {
             is pause -> _pauseStateChange
-            is unpause -> _unpauseStateChange
-            is start -> TODO()
+            is unpause,
+            is start -> _continuePlayingStateChange
             is moveUp -> movingSnek(state, dx = 0, dy = -1)
             is moveDown -> movingSnek(state, dx = 0, dy = 1)
             is moveRight -> movingSnek(state, dx = 1, dy = 0)
@@ -91,19 +91,30 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
 
 
 private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Integer): SnekGameStateChange {
-    val headPosition = oldState.snek.headPosition
-    val nextPosition = headPosition + Pair(dx, dy)
-    val newPath = oldState.snek.path + nextPosition
-    if (newPath.intersectsSelf) {
-        return _loseStateChange
+    when (oldState.snek.screen) {
+        SnekScreen.ready,
+        SnekScreen.settings,
+        SnekScreen.scores -> return _noChange
+        SnekScreen.playing -> {
+            val headPosition = oldState.snek.headPosition
+            val nextPosition = headPosition + Pair(dx, dy)
+            val newPath = oldState.snek.path + nextPosition
+            if (newPath.intersectsSelf) {
+                return _loseStateChange
+            }
+            return SnekGameStateChange(snekPath = newPath)
+        }
     }
-    return SnekGameStateChange(snekPath = newPath)
 }
+
+
+private fun changingScreen(newScreen: SnekScreen): SnekGameStateChange = SnekGameStateChange(screen = newScreen)
 
 
 private fun settingDebugMode(newMode: Boolean): SnekGameStateChange = SnekGameStateChange(debug = newMode)
 
 
-private val _loseStateChange = SnekGameStateChange(screen = scores)
-private val _pauseStateChange = SnekGameStateChange(screen = ready)
-private val _unpauseStateChange = SnekGameStateChange(screen = playing)
+private val _noChange by lazy { SnekGameStateChange() }
+private val _loseStateChange by lazy { changingScreen(scores) }
+private val _pauseStateChange by lazy { changingScreen(ready) }
+private val _continuePlayingStateChange by lazy { changingScreen(playing) }

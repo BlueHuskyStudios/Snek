@@ -13,19 +13,18 @@ import javax.swing.AbstractAction
  * @author Kyli Rouge
  * @since 2016-11-05
  */
-class SnekViewController(override val view: SnekView, val controller: SnekGameStateController, val keymap: Keymap):
+class SnekViewController(override val view: SnekView, val controller: SnekGameStateController):
 //        KeyListener,
         UIViewController<SnekView> {
-    constructor(snekDataView: BaseSnekDataView, mutator: SnekGameStateController, keymap: Keymap): this(SnekView(snekDataView), mutator, keymap)
-    constructor(snekData: SnekData, mutator: SnekGameStateController, keymap: Keymap): this(BaseSnekDataView(snekData), mutator, keymap)
+    constructor(snekDataView: BaseSnekDataView, mutator: SnekGameStateController): this(SnekView(snekDataView), mutator)
+    constructor(snekData: SnekData, mutator: SnekGameStateController): this(BaseSnekDataView(snekData), mutator)
 
     init {
 //        view.addKeyListener(this)
         view.isFocusCycleRoot = true
         view.grabFocus()
 
-        keymap.registerAll(this) {
-            //{print(it)}
+        controller.store.currentState().snek.keymap.registerAll(this) {
             object: AbstractAction() {
                 override fun actionPerformed(e: ActionEvent?) {
                     performAction(it)

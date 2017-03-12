@@ -1,13 +1,12 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.gui.swing.SnekAction.*
+import org.bh.tools.base.func.transform
 import org.bh.tools.base.struct.UIView
 import org.bh.tools.base.struct.UIViewController
 import java.awt.event.KeyEvent
 import java.awt.event.KeyEvent.*
-import javax.swing.Action
-import javax.swing.JComponent
-import javax.swing.KeyStroke
+import javax.swing.*
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
@@ -17,13 +16,13 @@ import javax.swing.KeyStroke
  */
 data class Keymap(val map: Map<SnekAction, Int>) {
     constructor(): this(linkedMapOf(
-                Pair(pause, VK_ESCAPE),
-                Pair(unpause, VK_ESCAPE),
-                Pair(start, VK_ENTER),
-                Pair(moveUp, VK_UP),
-                Pair(moveDown, VK_DOWN),
-                Pair(moveRight, VK_RIGHT),
-                Pair(moveLeft, VK_LEFT)
+                pause to VK_ESCAPE,
+                unpause to VK_ESCAPE,
+                start to VK_ENTER,
+                moveUp to VK_UP,
+                moveDown to VK_DOWN,
+                moveRight to VK_RIGHT,
+                moveLeft to VK_LEFT
         ))
 
     /**
@@ -37,6 +36,7 @@ data class Keymap(val map: Map<SnekAction, Int>) {
                 viewController.view.actionMap.put(snekAction, actionCallback(snekAction))
             }
 
+
     fun actionsForKeyEvent(e: KeyEvent, trigger: KeyActionTrigger): List<SnekAction> {
         val keyCode = e.extendedKeyCode
         val actions =
@@ -45,6 +45,11 @@ data class Keymap(val map: Map<SnekAction, Int>) {
                         && it.value == keyCode
                 }.map(Map.Entry<SnekAction, Int>::key)
         return actions
+    }
+
+
+    fun keyCodesForAction(action: SnekAction): List<Int> {
+        return map[action]?.transform { listOf(it) } ?: listOf()
     }
 }
 
