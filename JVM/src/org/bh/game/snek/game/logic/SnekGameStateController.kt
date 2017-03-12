@@ -77,8 +77,8 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
     override fun mutating(state: SnekDataViewController, action: SnekAction): SnekGameStateChange {
         return when (action) {
             is pause -> _pauseStateChange
-            is unpause -> _unpauseStateChange
-            is start -> changingScreen(playing)
+            is unpause,
+            is start -> _continuePlayingStateChange
             is moveUp -> movingSnek(state, dx = 0, dy = -1)
             is moveDown -> movingSnek(state, dx = 0, dy = 1)
             is moveRight -> movingSnek(state, dx = 1, dy = 0)
@@ -115,6 +115,6 @@ private fun settingDebugMode(newMode: Boolean): SnekGameStateChange = SnekGameSt
 
 
 private val _noChange by lazy { SnekGameStateChange() }
-private val _loseStateChange by lazy { SnekGameStateChange(screen = scores) }
-private val _pauseStateChange by lazy { SnekGameStateChange(screen = ready) }
-private val _unpauseStateChange by lazy { SnekGameStateChange(screen = playing) }
+private val _loseStateChange by lazy { changingScreen(scores) }
+private val _pauseStateChange by lazy { changingScreen(ready) }
+private val _continuePlayingStateChange by lazy { changingScreen(playing) }

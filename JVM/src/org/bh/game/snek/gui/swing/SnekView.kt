@@ -22,7 +22,10 @@ import javax.swing.JComponent
  */
 class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataView> {
 
-    override var representedObject: BaseSnekDataView by observing(dataView, didSet = { _, _ -> update() } )
+    override var representedObject: BaseSnekDataView by observing(dataView,
+            didSet = { _, new ->
+                update()
+            } )
 
 //    private val fontSize = 10.float32Value
 
