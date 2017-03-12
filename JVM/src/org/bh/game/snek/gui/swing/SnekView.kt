@@ -211,6 +211,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 }
 
 
+
 data class SnekViewRenderContext(
         val graphics: GraphicsContext,
         val frame: FractionRect,
