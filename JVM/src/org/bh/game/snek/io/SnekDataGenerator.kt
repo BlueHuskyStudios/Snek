@@ -44,11 +44,15 @@ private fun <
         PointType : ComputablePoint<NumberType>,
         SegmentType : ComputableLineSegment<NumberType, PointType>
         >
-        ComputableSize<NumberType>.randomPointNotOnPath(snekPath: ComputablePath<NumberType, PointType, SegmentType>)
+        ComputableSize<NumberType>.randomPointNotOnPath(snekPath: ComputablePath<NumberType, PointType, SegmentType>, maxAttempts: Integer = 100)
         : Point<NumberType> {
-    var point = randomPoint
-    while (snekPath.contains(point)) {
-        point = randomPoint
+    var point = randomPoint()
+    for (i in 1..maxAttempts) {
+        if (snekPath.contains(point)) {
+            point = randomPoint()
+        } else {
+            break
+        }
     }
     return point
 }

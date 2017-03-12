@@ -32,7 +32,7 @@ data class BaseSnekDataView(override val data: SnekData)
     override fun applyingChange(change: BaseSnekDataViewChange): BaseSnekDataView
         = BaseSnekDataView(data.applyingChange(change.dataChange))
 
-    val headPosition: IntegerPoint by lazy { (path.points.lastOrNull() ?: boardSize.randomPoint).integerValue }
+    val headPosition: IntegerPoint by lazy { (path.points.lastOrNull() ?: boardSize.randomPoint()).integerValue }
 }
 
 

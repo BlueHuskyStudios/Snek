@@ -118,7 +118,7 @@ private fun checkAppleHit(oldState: SnekDataViewController, nextHeadPosition: In
         when (nextHeadPosition) {
             oldState.snek.applePosition -> SnekDataGenerator.generateApplePosition(
                     boardSize = oldState.snek.boardSize,
-                    snekPath = oldState.snek.path
+                    snekPath = oldState.snek.path + nextHeadPosition
             )
             else -> null
         }
