@@ -21,6 +21,12 @@ class SnekDataGenerator {
                 defaultKeymap,
                 defaultDebug)
     }
+
+
+    companion object {
+        fun generateApplePosition(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint =
+                boardSize.randomPointNotOnPath(snekPath).integerValue
+    }
 }
 
 private val defaultBoardSize = IntegerSize(width = 32, height = 32)
@@ -28,7 +34,7 @@ private fun defaultSnekPath(boardSize: IntegerSize) = IntegerPath(boardSize.midX
 private val testSnekPath = IntegerPath(IntegerPoint(10, 10), IntegerPoint(15, 10), IntegerPoint(15, 7), isClosed = true)
 private val defaultLeaderboard = Leaderboard<Leader, Integer>(mapOf())
 private val defaultScreen = SnekScreen.ready
-private fun defaultApple(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint = boardSize.randomPointNotOnPath(snekPath).integerValue
+private fun defaultApple(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint = SnekDataGenerator.generateApplePosition(boardSize, snekPath)
 private val defaultKeymap = Keymap()
 private val defaultDebug = false
 
@@ -38,11 +44,15 @@ private fun <
         PointType : ComputablePoint<NumberType>,
         SegmentType : ComputableLineSegment<NumberType, PointType>
         >
-        ComputableSize<NumberType>.randomPointNotOnPath(snekPath: ComputablePath<NumberType, PointType, SegmentType>)
+        ComputableSize<NumberType>.randomPointNotOnPath(snekPath: ComputablePath<NumberType, PointType, SegmentType>, maxAttempts: Integer = 100)
         : Point<NumberType> {
-    var point = randomPoint
-    while (snekPath.contains(point)) {
-        point = randomPoint
+    var point = randomPoint()
+    for (i in 1..maxAttempts) {
+        if (snekPath.contains(point)) {
+            point = randomPoint()
+        } else {
+            break
+        }
     }
     return point
 }

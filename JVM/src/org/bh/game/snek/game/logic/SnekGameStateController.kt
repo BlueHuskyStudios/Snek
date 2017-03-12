@@ -2,12 +2,16 @@ package org.bh.game.snek.game.logic
 
 import org.bh.game.snek.gui.swing.SnekAction
 import org.bh.game.snek.gui.swing.SnekAction.*
+import org.bh.game.snek.io.SnekDataGenerator
 import org.bh.game.snek.state.*
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.collections.DeltaStack
+import org.bh.tools.base.collections.extensions.count
 import org.bh.tools.base.collections.extensions.firstOrNull
 import org.bh.tools.base.func.observing
+import org.bh.tools.base.math.geometry.IntegerPath
+import org.bh.tools.base.math.geometry.IntegerPoint
 import org.bh.tools.base.state.StateController
 import org.bh.tools.base.state.StateMutator
 
@@ -25,7 +29,7 @@ class SnekGameStateController(initialState: SnekDataViewController)
 
     /** The largest size the stack can be before it is flattened */
     val stackSizeLimit by observing(16,
-            didSet = { old, new ->
+            didSet = { _, new ->
                 if (store.size > new) {
                     store.flattenState()
                 }
@@ -97,15 +101,27 @@ private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Intege
         SnekScreen.scores -> return _noChange
         SnekScreen.playing -> {
             val headPosition = oldState.snek.headPosition
-            val nextPosition = headPosition + Pair(dx, dy)
-            val newPath = oldState.snek.path + nextPosition
+            val nextHeadPosition = headPosition + Pair(dx, dy)
+            val oldPoints = oldState.snek.path.points
+            val newApplePosition = checkAppleHit(oldState, nextHeadPosition)
+            val newBaseList = if (newApplePosition != null) oldPoints else oldPoints.subList(1, oldPoints.count)
+            val newPath = IntegerPath(points = newBaseList + nextHeadPosition, isClosed = false)
             if (newPath.intersectsSelf) {
                 return _loseStateChange
             }
-            return SnekGameStateChange(snekPath = newPath)
+            return SnekGameStateChange(snekPath = newPath, applePosition = newApplePosition)
         }
     }
 }
+
+private fun checkAppleHit(oldState: SnekDataViewController, nextHeadPosition: IntegerPoint): IntegerPoint? =
+        when (nextHeadPosition) {
+            oldState.snek.applePosition -> SnekDataGenerator.generateApplePosition(
+                    boardSize = oldState.snek.boardSize,
+                    snekPath = oldState.snek.path + nextHeadPosition
+            )
+            else -> null
+        }
 
 
 private fun changingScreen(newScreen: SnekScreen): SnekGameStateChange = SnekGameStateChange(screen = newScreen)

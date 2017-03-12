@@ -23,7 +23,7 @@ data class SnekData(
         val snekPath: IntegerPath,
         val leaderboard: Leaderboard<Leader, Integer>,
         val screen: SnekScreen,
-        val apple: IntegerPoint,
+        val applePosition: IntegerPoint,
         val keymap: Keymap,
 
         val debug: Boolean
@@ -41,7 +41,7 @@ data class SnekData(
     override fun applyingChange(change: SnekDataChange): SnekData
             = SnekData(
             boardSize = change.boardSize ?: this.boardSize,
-            apple = change.apple ?: this.apple,
+            applePosition = change.applePosition ?: this.applePosition,
             leaderboard = change.leaderboard ?: this.leaderboard,
             screen = change.screen ?: this.screen,
             snekPath = change.snekPath ?: this.snekPath,
@@ -67,7 +67,7 @@ data class SnekDataChange(
         val snekPath: IntegerPath? = null,
         val leaderboard: Leaderboard<Leader, Integer>? = null,
         val screen: SnekScreen? = null,
-        val apple: IntegerPoint? = null,
+        val applePosition: IntegerPoint? = null,
         val keymap: Keymap? = null,
 
         val debug: Boolean? = null)
@@ -84,7 +84,7 @@ data class SnekDataChange(
             snekPath = exactly.path,
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
-            apple = exactly.apple,
+            applePosition = exactly.applePosition,
             keymap = exactly.keymap,
 
             debug = exactly.debug)
@@ -95,7 +95,7 @@ data class SnekDataChange(
             snekPath = exactly.snekPath,
             leaderboard = exactly.leaderboard,
             screen = exactly.screen,
-            apple = exactly.apple,
+            applePosition = exactly.applePosition,
             keymap = exactly.keymap,
 
             debug = exactly.debug)
@@ -107,7 +107,7 @@ data class SnekDataChange(
             snekPath = change.snekPath ?: this.snekPath,
             leaderboard = change.leaderboard ?: this.leaderboard,
             screen = change.screen ?: this.screen,
-            apple = change.apple ?: this.apple,
+            applePosition = change.applePosition ?: this.applePosition,
             keymap = change.keymap ?: this.keymap,
 
             debug = change.debug ?: this.debug)
