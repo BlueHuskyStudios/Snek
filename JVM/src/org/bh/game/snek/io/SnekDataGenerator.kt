@@ -4,6 +4,8 @@ import org.bh.game.snek.gui.swing.Keymap
 import org.bh.game.snek.state.*
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
+import org.bh.tools.base.math.int32Value
+import org.bh.tools.io.logging.log
 
 /**
  * @author Ben Leggiero
@@ -46,13 +48,12 @@ private fun <
         >
         ComputableSize<NumberType>.randomPointNotOnPath(snekPath: ComputablePath<NumberType, PointType, SegmentType>, maxAttempts: Integer = 100)
         : Point<NumberType> {
-    var point = randomPoint()
-    for (i in 1..maxAttempts) {
-        if (snekPath.contains(point)) {
-            point = randomPoint()
-        } else {
-            break
-        }
-    }
-    return point
+    
+    return generateSequence(randomPoint()) { randomPoint() }
+            .take(maxAttempts.int32Value)
+            .firstOrNull { !snekPath.contains(it) }
+            ?: {
+        log.severe("Ran out of places to place a point in board: $this")
+        randomPoint()
+    }()
 }

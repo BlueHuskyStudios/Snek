@@ -16,6 +16,9 @@ class SnekWindow(snekViewController: SnekViewController): JFrame(), WindowListen
     init {
         addWindowListener(this)
         title = "Snek"
+        if (snekViewController.controller.store.currentState().snek.debug) {
+            title += " - DEBUG"
+        }
         contentPane = SnekApplet(snekViewController)
         defaultCloseOperation = EXIT_ON_CLOSE
     }

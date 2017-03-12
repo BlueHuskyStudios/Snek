@@ -7,8 +7,7 @@ import org.bh.game.snek.state.*
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.collections.DeltaStack
-import org.bh.tools.base.collections.extensions.count
-import org.bh.tools.base.collections.extensions.firstOrNull
+import org.bh.tools.base.collections.extensions.*
 import org.bh.tools.base.func.observing
 import org.bh.tools.base.math.geometry.IntegerPath
 import org.bh.tools.base.math.geometry.IntegerPoint
@@ -100,8 +99,15 @@ private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Intege
         SnekScreen.settings,
         SnekScreen.scores -> return _noChange
         SnekScreen.playing -> {
-            val headPosition = oldState.snek.headPosition
-            val nextHeadPosition = headPosition + Pair(dx, dy)
+            val oldHeadPosition = oldState.snek.headPosition
+            val oldPathPoints = oldState.snek.path.points
+            val pointBehindHead = oldPathPoints[oldPathPoints.length - 2]
+            val nextHeadPosition = oldHeadPosition + Pair(dx, dy)
+
+            if (nextHeadPosition.equals(pointBehindHead)) {
+                return _noChange
+            }
+
             val oldPoints = oldState.snek.path.points
             val newApplePosition = checkAppleHit(oldState, nextHeadPosition)
             val newBaseList = if (newApplePosition != null) oldPoints else oldPoints.subList(1, oldPoints.count)
