@@ -6,13 +6,14 @@ import org.bh.game.snek.io.SnekDataGenerator
 import org.bh.game.snek.state.*
 import org.bh.game.snek.state.SnekScreen.*
 import org.bh.tools.base.abstraction.Integer
+import org.bh.tools.base.async.Timer
 import org.bh.tools.base.collections.DeltaStack
 import org.bh.tools.base.collections.extensions.*
 import org.bh.tools.base.func.observing
 import org.bh.tools.base.math.geometry.IntegerPath
 import org.bh.tools.base.math.geometry.IntegerPoint
-import org.bh.tools.base.state.StateController
-import org.bh.tools.base.state.StateMutator
+import org.bh.tools.base.math.geometry.LineSegmentDirection.*
+import org.bh.tools.base.state.*
 
 /**
  * Copyright BHStudios ©2016 BH-1-PS. Made for Snek.
@@ -35,6 +36,13 @@ class SnekGameStateController(initialState: SnekDataViewController)
             })
     val mutator = SnekGameStateMutator()
     var store = SnekStateStorage(initialState, this)
+    val timer = Timer(initialState.snek.delayBetweenMovements, { timerDidTick() })
+    val mutationListeners = mutableListOf<StateMutationListener<SnekDataViewController>>()
+
+
+    init {
+        timer.start()
+    }
 
 
     override fun currentState(): SnekDataViewController {
@@ -43,8 +51,34 @@ class SnekGameStateController(initialState: SnekDataViewController)
 
 
     override fun mutate(action: SnekAction) {
+        val oldState = currentState()
         store.pushState(mutator.mutating(currentState(), action))
+        mutationListeners.forEach { it.stateDidMutate(oldState, currentState()) }
     }
+
+
+    private fun timerDidTick() {
+        when (currentState().snek.screen) {
+            playing -> _moveForwardUnconditionally()
+            ready, settings, scores -> return
+        }
+    }
+
+
+    private fun _moveForwardUnconditionally() {
+        val currentPath = currentState().snek.path
+        val neckSegment = currentPath.segments.last
+        val action = when (neckSegment.direction) {
+            is yIncreasesMost -> moveDown
+            is yDecreasesMost -> moveUp
+            is xDecreasesMost -> moveLeft
+            is xIncreasesMost -> moveRight
+        }
+        mutate(action)
+    }
+
+
+    // TODO: setNextMutation(action: SnekAction)
 
 
     /**
@@ -52,8 +86,8 @@ class SnekGameStateController(initialState: SnekDataViewController)
      * state
      */
     fun appropriateAction(actions: List<SnekAction>): SnekAction? {
-        return when (currentState().dataView.screen) {
-            playing -> actions.firstOrNull { it != unpause }
+        return when (currentState().snek.screen) {
+            playing -> actions.firstOrNull { it != start }
             ready, settings, scores -> actions.firstOrNull
         }
     }
@@ -64,6 +98,11 @@ class SnekGameStateController(initialState: SnekDataViewController)
 
     override fun deltaStackShouldFlattenState(stack: DeltaStack<SnekDataViewController, SnekGameStateChange>): Boolean {
         return stack.size > stackSizeLimit
+    }
+
+
+    override fun addStateMutationListener(stateMutationListener: StateMutationListener<SnekDataViewController>) {
+        mutationListeners.add(stateMutationListener)
     }
 }
 
@@ -104,7 +143,7 @@ private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Intege
             val pointBehindHead = oldPathPoints[oldPathPoints.length - 2]
             val nextHeadPosition = oldHeadPosition + Pair(dx, dy)
 
-            if (nextHeadPosition.equals(pointBehindHead)) {
+            if (nextHeadPosition.equals(pointBehindHead)) { // No moving backwards
                 return _noChange
             }
 

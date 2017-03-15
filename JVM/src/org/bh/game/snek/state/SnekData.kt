@@ -7,7 +7,7 @@ import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.Data
 import org.bh.tools.base.struct.DataView
-
+import org.bh.tools.base.util.TimeInterval
 
 
 /**
@@ -25,6 +25,7 @@ data class SnekData(
         val screen: SnekScreen,
         val applePosition: IntegerPoint,
         val keymap: Keymap,
+        val delayBetweenMovements: TimeInterval,
 
         val debug: Boolean
 ) : Data, ChangeableState<SnekData, SnekDataChange> {
@@ -46,6 +47,7 @@ data class SnekData(
             screen = change.screen ?: this.screen,
             snekPath = change.snekPath ?: this.snekPath,
             keymap = change.keymap ?: this.keymap,
+            delayBetweenMovements = change.delayBetweenMovements ?: this.delayBetweenMovements,
 
             debug = change.debug ?: this.debug)
 
@@ -69,6 +71,7 @@ data class SnekDataChange(
         val screen: SnekScreen? = null,
         val applePosition: IntegerPoint? = null,
         val keymap: Keymap? = null,
+        val delayBetweenMovements: TimeInterval? = null,
 
         val debug: Boolean? = null)
     : DataView<SnekDataChange>, Data, StateChange<SnekDataChange, SnekData> {
@@ -86,6 +89,7 @@ data class SnekDataChange(
             screen = exactly.screen,
             applePosition = exactly.applePosition,
             keymap = exactly.keymap,
+            delayBetweenMovements = exactly.delayBetweenMovements,
 
             debug = exactly.debug)
 
@@ -97,6 +101,7 @@ data class SnekDataChange(
             screen = exactly.screen,
             applePosition = exactly.applePosition,
             keymap = exactly.keymap,
+            delayBetweenMovements = exactly.delayBetweenMovements,
 
             debug = exactly.debug)
 
@@ -109,6 +114,7 @@ data class SnekDataChange(
             screen = change.screen ?: this.screen,
             applePosition = change.applePosition ?: this.applePosition,
             keymap = change.keymap ?: this.keymap,
+            delayBetweenMovements = change.delayBetweenMovements ?: this.delayBetweenMovements,
 
             debug = change.debug ?: this.debug)
 }
