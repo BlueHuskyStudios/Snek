@@ -24,7 +24,7 @@ import javax.swing.JComponent
 class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataView> {
 
     override var representedObject: BaseSnekDataView by observing(dataView,
-            didSet = { _, new ->
+            didSet = { _, _ ->
                 update()
             } )
 
@@ -146,7 +146,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
 
     private fun _paintReadyScreen(renderContext: SnekViewRenderContext) {
-        val (context, frame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
+        val (context, frame, _, _, nonStretchedPixelSideLength) = renderContext
 
         val readyString = "Ready!"
 

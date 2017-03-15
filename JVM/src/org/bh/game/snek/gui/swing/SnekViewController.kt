@@ -1,8 +1,8 @@
 package org.bh.game.snek.gui.swing
 
 import org.bh.game.snek.game.logic.SnekGameStateController
-import org.bh.game.snek.state.BaseSnekDataView
-import org.bh.game.snek.state.SnekData
+import org.bh.game.snek.state.*
+import org.bh.tools.base.state.StateMutationListener
 import org.bh.tools.base.struct.UIViewController
 import java.awt.event.ActionEvent
 import javax.swing.AbstractAction
@@ -15,7 +15,9 @@ import javax.swing.AbstractAction
  */
 class SnekViewController(override val view: SnekView, val controller: SnekGameStateController):
 //        KeyListener,
-        UIViewController<SnekView> {
+        UIViewController<SnekView>,
+        StateMutationListener<SnekDataViewController> {
+
     constructor(snekDataView: BaseSnekDataView, mutator: SnekGameStateController): this(SnekView(snekDataView), mutator)
     constructor(snekData: SnekData, mutator: SnekGameStateController): this(BaseSnekDataView(snekData), mutator)
 
@@ -23,6 +25,8 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
 //        view.addKeyListener(this)
         view.isFocusCycleRoot = true
         view.grabFocus()
+
+        controller.addStateMutationListener(this)
 
         controller.store.currentState().snek.keymap.registerAll(this) {
             object: AbstractAction() {
@@ -52,8 +56,13 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
 //        if (appropriateAction != null) performAction(appropriateAction)
 //    }
 
+
     private fun performAction(action: SnekAction) {
         controller.mutate(action)
-        view.representedObject = controller.currentState().dataView
+    }
+
+
+    override fun stateDidMutate(oldState: SnekDataViewController, newState: SnekDataViewController) {
+        view.representedObject = newState.snek
     }
 }

@@ -5,6 +5,7 @@ import org.bh.game.snek.state.*
 import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.math.int32Value
+import org.bh.tools.base.util.TimeInterval
 import org.bh.tools.io.logging.log
 
 /**
@@ -21,6 +22,8 @@ class SnekDataGenerator {
                 defaultScreen,
                 defaultApple(boardSize, path),
                 defaultKeymap,
+                defaultDelayBetweenMovements,
+
                 defaultDebug)
     }
 
@@ -38,6 +41,7 @@ private val defaultLeaderboard = Leaderboard<Leader, Integer>(mapOf())
 private val defaultScreen = SnekScreen.ready
 private fun defaultApple(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint = SnekDataGenerator.generateApplePosition(boardSize, snekPath)
 private val defaultKeymap = Keymap()
+private val defaultDelayBetweenMovements: TimeInterval = 0.5
 private val defaultDebug = false
 
 
