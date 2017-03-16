@@ -2,7 +2,9 @@ package org.bh.game.snek.state
 
 import org.bh.game.snek.gui.swing.Keymap
 import org.bh.tools.base.abstraction.Integer
+import org.bh.tools.base.collections.extensions.count
 import org.bh.tools.base.math.geometry.*
+import org.bh.tools.base.math.integerValue
 import org.bh.tools.base.state.ChangeableState
 import org.bh.tools.base.state.StateChange
 import org.bh.tools.base.struct.DataView
@@ -27,6 +29,8 @@ data class BaseSnekDataView(override val data: SnekData)
     inline val delayBetweenMovements get() = data.delayBetweenMovements
 
     inline val debug get() = data.debug
+
+    val score: Integer = path.points.count.integerValue
 
     override val changeValue by lazy { BaseSnekDataViewChange(data.changeValue) }
 
