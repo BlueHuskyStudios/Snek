@@ -73,18 +73,44 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
     }
 
 
-    private fun _paintScreen(renderContext: SnekViewRenderContext, screen: SnekScreen) {
-        when (screen) {
-            SnekScreen.ready -> _paintReadyScreen(renderContext)
-            SnekScreen.playing -> _paintPlayingScreen(renderContext)
-            SnekScreen.settings -> TODO()
-            SnekScreen.scores -> TODO()
-        }
+    private fun _paintScreen(renderContext: SnekViewRenderContext, screen: SnekScreen) = when (screen) {
+        SnekScreen.ready -> _paintReadyScreen(renderContext)
+        SnekScreen.playing -> _paintPlayingScreen(renderContext)
+        SnekScreen.settings -> TODO()
+        SnekScreen.scores -> _paintScoresScreen(renderContext)
+    }
+
+    private fun _paintScoresScreen(renderContext: SnekViewRenderContext) {
+        val (context, frame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
+        val smallestSideLength = min(frame.height, frame.width)
+        val largeFontSize = smallestSideLength / 5
+        val mediumFontSize = smallestSideLength / 12
+        val titleString = "Score"
+
+        context.font = Font.decode(Font.SANS_SERIF).withSize(largeFontSize).withWeight(FontWeight.thin)
+
+        val titleMetrics = context.fontMetrics
+        val titleStringYOffset = titleMetrics.ascent
+        val titleStringWidth = titleMetrics.stringWidth(titleString).fractionValue
+
+        context.color = awtColorFromHex("#2196F3")
+        context.fillRect(0.0, 0.0, frame.maxX, titleStringYOffset + (largeFontSize / 3.0))
+
+        context.color = awtColorFromHex("#FFF")
+        context.drawString(titleString, frame.midX - (titleStringWidth / 2.0), frame.minY + titleStringYOffset)
+
+
+        val scoreString = representedObject.score.toString()
+        val scoreMetrics = context.fontMetrics
+        val scoreStringYOffset = scoreMetrics.ascent / 2
+        val scoreStringWidth = scoreMetrics.stringWidth(scoreString).fractionValue
+
+        context.color = awtColorFromHex("#388E3C")
+        context.drawString(scoreString, frame.midX - (scoreStringWidth / 2), frame.midY + scoreStringYOffset)
     }
 
 
     private fun _paintPlayingScreen(renderContext: SnekViewRenderContext) {
-
         val (context, frame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
         val dotSize = nonStretchedPixelSideLength / 3
 
@@ -147,13 +173,15 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
 
     private fun _paintReadyScreen(renderContext: SnekViewRenderContext) {
         val (context, frame, _, _, nonStretchedPixelSideLength) = renderContext
-
+        val smallestSideLength = min(frame.height, frame.width)
+        val largeFontSize = smallestSideLength / 5
+        val mediumFontSize = smallestSideLength / 12
         val readyString = "Ready!"
 
-        context.font = Font.decode(Font.MONOSPACED).withSize(nonStretchedPixelSideLength * 3)
+        context.font = Font.decode(Font.MONOSPACED).withSize(largeFontSize)
         context.color = awtColorFromHex("#1976D2")
         val readyMetrics = context.fontMetrics
-        val readyStringYOffset = readyMetrics.ascent.fractionValue / 2.0
+        val readyStringYOffset = 0.0
         val readyStringWidth = readyMetrics.stringWidth(readyString).fractionValue
 
         context.drawString(readyString, frame.midX - (readyStringWidth / 2.0), frame.midY + readyStringYOffset)
@@ -163,9 +191,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
             val pressKeyInfix = KeyEvent.getKeyText(keyCode).toUpperCase()
             val pressKeySuffix = "to play"
 
-            val keyFontSize = nonStretchedPixelSideLength * 2
-
-            context.font = Font.decode(Font.SANS_SERIF).withSize(keyFontSize)
+            context.font = Font.decode(Font.SANS_SERIF).withSize(mediumFontSize)
             val keyMetrics = context.fontMetrics
             val keyStringYOffset = readyStringYOffset + (keyMetrics.ascent.fractionValue * 2)
 
@@ -173,7 +199,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
             val keyInfixStringWidth = keyMetrics.stringWidth(pressKeyInfix).fractionValue
             val keySuffixStringWidth = keyMetrics.stringWidth(pressKeySuffix).fractionValue
 
-            val spacing = nonStretchedPixelSideLength
+            val spacing = mediumFontSize / 2
             val overallWidth = keyPrefixStringWidth + spacing + keyInfixStringWidth + spacing + keySuffixStringWidth
 
             val halfWidth = overallWidth / 2
@@ -189,11 +215,12 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
             context.color = awtColorFromHex("#4CAF50")
             context.fillRoundRect(
                     (keyPrefixEndX + halfSpacing).roundedInt32Value,
-                    (keyStringYPosition - keyFontSize).roundedInt32Value,
+                    (keyStringYPosition - mediumFontSize).roundedInt32Value,
                     (keyInfixStringWidth + spacing).roundedInt32Value,
-                    (keyFontSize + halfSpacing).roundedInt32Value,
-                    (nonStretchedPixelSideLength).roundedInt32Value,
-                    (nonStretchedPixelSideLength).roundedInt32Value)
+                    (mediumFontSize + halfSpacing).roundedInt32Value,
+
+                    (mediumFontSize / 4).roundedInt32Value,
+                    (mediumFontSize / 4).roundedInt32Value)
             context.color = awtColorFromHex("#E8F5E9")
             context.drawString(pressKeyInfix, keyPrefixEndX + spacing, keyStringYPosition)
         }
