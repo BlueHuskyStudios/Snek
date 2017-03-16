@@ -16,7 +16,7 @@ class SnekWindow(snekViewController: SnekViewController): JFrame(), WindowListen
     init {
         addWindowListener(this)
         title = "Snek"
-        if (snekViewController.controller.store.currentState().snek.debug) {
+        if (snekViewController.controller.currentState().snek.debug) {
             title += " - DEBUG"
         }
         contentPane = SnekApplet(snekViewController)
