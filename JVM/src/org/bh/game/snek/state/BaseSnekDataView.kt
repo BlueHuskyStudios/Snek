@@ -24,6 +24,7 @@ data class BaseSnekDataView(override val data: SnekData)
     inline val screen get() = data.screen
     inline val applePosition get() = data.applePosition
     inline val keymap get() = data.keymap
+    inline val delayBetweenMovements get() = data.delayBetweenMovements
 
     inline val debug get() = data.debug
 
