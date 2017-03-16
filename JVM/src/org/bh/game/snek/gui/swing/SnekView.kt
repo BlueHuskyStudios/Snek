@@ -218,8 +218,9 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
                     (keyStringYPosition - mediumFontSize).roundedInt32Value,
                     (keyInfixStringWidth + spacing).roundedInt32Value,
                     (mediumFontSize + halfSpacing).roundedInt32Value,
-                    (nonStretchedPixelSideLength).roundedInt32Value,
-                    (nonStretchedPixelSideLength).roundedInt32Value)
+
+                    (mediumFontSize / 4).roundedInt32Value,
+                    (mediumFontSize / 4).roundedInt32Value)
             context.color = awtColorFromHex("#E8F5E9")
             context.drawString(pressKeyInfix, keyPrefixEndX + spacing, keyStringYPosition)
         }
