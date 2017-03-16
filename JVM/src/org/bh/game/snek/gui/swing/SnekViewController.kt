@@ -28,7 +28,7 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
 
         controller.addStateMutationListener(this)
 
-        controller.store.currentState().snek.keymap.registerAll(this) {
+        controller.currentState().snek.keymap.registerAll(this) {
             object: AbstractAction() {
                 override fun actionPerformed(e: ActionEvent?) {
                     performAction(it)
@@ -58,7 +58,7 @@ class SnekViewController(override val view: SnekView, val controller: SnekGameSt
 
 
     private fun performAction(action: SnekAction) {
-        controller.mutate(action)
+        controller.setQueuedAction(action)
     }
 
 
