@@ -9,7 +9,7 @@ import org.bh.tools.base.abstraction.Integer
 import org.bh.tools.base.async.Timer
 import org.bh.tools.base.collections.DeltaStack
 import org.bh.tools.base.collections.extensions.*
-import org.bh.tools.base.func.observing
+import org.bh.tools.base.func.*
 import org.bh.tools.base.math.geometry.IntegerPath
 import org.bh.tools.base.math.geometry.IntegerPoint
 import org.bh.tools.base.math.geometry.LineSegmentDirection.*
@@ -30,37 +30,61 @@ class SnekGameStateController(initialState: SnekDataViewController)
     /** The largest size the stack can be before it is flattened */
     val stackSizeLimit by observing(16,
             didSet = { _, new ->
-                if (store.size > new) {
-                    store.flattenState()
+                if (_store.size > new) {
+                    _store.flattenState()
                 }
             })
-    val mutator = SnekGameStateMutator()
-    var store = SnekStateStorage(initialState, this)
-    val timer = Timer(initialState.snek.delayBetweenMovements, { timerDidTick() })
-    val mutationListeners = mutableListOf<StateMutationListener<SnekDataViewController>>()
+    private val _mutator = SnekGameStateMutator()
+    private val _store = SnekStateStorage(initialState, this)
+    private val _timer = Timer(initialState.snek.delayBetweenMovements, { timerDidTick() })
+    private val _mutationListeners = mutableListOf<StateMutationListener<SnekDataViewController>>()
+    private var _nextAction: SnekAction? = null
 
 
     init {
-        timer.start()
+        _timer.start()
     }
 
 
     override fun currentState(): SnekDataViewController {
-        return store.currentState()
+        return _store.currentState()
     }
 
 
     override fun mutate(action: SnekAction) {
         val oldState = currentState()
-        store.pushState(mutator.mutating(currentState(), action))
-        mutationListeners.forEach { it.stateDidMutate(oldState, currentState()) }
+        _store.pushState(_mutator.mutating(currentState(), action))
+        _mutationListeners.forEach { it.stateDidMutate(oldState, currentState()) }
     }
 
 
     private fun timerDidTick() {
         when (currentState().snek.screen) {
-            playing -> _moveForwardUnconditionally()
+            playing -> {
+                if (!_consumeNextAction()) {
+                    _moveForwardUnconditionally()
+                }
+            }
             ready, settings, scores -> return
+        }
+    }
+
+    private fun _consumeNextAction(): Boolean {
+        synchronized(this) {
+            val nextAction = _nextAction
+            return if (nextAction != null) {
+                _translateActionToMovement(nextAction)?.let {
+                    if (_nextHeadPositionIfValidMovement(currentState(), it.first, it.second) == null) {
+                        return false
+                    }
+                }
+                mutate(nextAction)
+                _nextAction = null
+
+                /* return */ true
+            } else {
+                /* return */ false
+            }
         }
     }
 
@@ -69,8 +93,8 @@ class SnekGameStateController(initialState: SnekDataViewController)
         val currentPath = currentState().snek.path
         val neckSegment = currentPath.segments.last
         val action = when (neckSegment.direction) {
-            is yIncreasesMost -> moveDown
             is yDecreasesMost -> moveUp
+            is yIncreasesMost -> moveDown
             is xDecreasesMost -> moveLeft
             is xIncreasesMost -> moveRight
         }
@@ -78,7 +102,17 @@ class SnekGameStateController(initialState: SnekDataViewController)
     }
 
 
-    // TODO: setNextMutation(action: SnekAction)
+    /**
+     * Queues the given action to be performed at the next timer tick, or replaces the previously-queued action
+     *
+     * @param action The next action to perform
+     */
+    fun setQueuedAction(action: SnekAction) {
+        when (currentState().snek.screen) {
+            playing -> _nextAction = action
+            ready, settings, scores -> mutate(action)
+        }
+    }
 
 
     /**
@@ -102,7 +136,7 @@ class SnekGameStateController(initialState: SnekDataViewController)
 
 
     override fun addStateMutationListener(stateMutationListener: StateMutationListener<SnekDataViewController>) {
-        mutationListeners.add(stateMutationListener)
+        _mutationListeners.add(stateMutationListener)
     }
 }
 
@@ -121,13 +155,30 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
             is pause -> _pauseStateChange
             is unpause,
             is start -> _continuePlayingStateChange
-            is moveUp -> movingSnek(state, dx = 0, dy = -1)
-            is moveDown -> movingSnek(state, dx = 0, dy = 1)
-            is moveRight -> movingSnek(state, dx = 1, dy = 0)
-            is moveLeft -> movingSnek(state, dx = -1, dy = 0)
+            is moveUp,
+            is moveDown,
+            is moveRight,
+            is moveLeft -> _translateActionToMovement(action)?.let { movingSnek(state, dx = it.first, dy = it.second) } ?: _noChange
 
             is setDebugMode -> settingDebugMode(action.newMode)
         }
+    }
+}
+
+
+/**
+ * Turns the given action into a movement of Snek (as the pair `(dx, dy)`), or `null` if it can't be done
+ */
+private fun _translateActionToMovement(action: SnekAction): Tuple2<Integer, Integer>? {
+    return when (action) {
+        is pause,
+        is unpause,
+        is start,
+        is setDebugMode -> null
+        is moveUp -> tuple(0, -1)
+        is moveDown -> tuple(0, 1)
+        is moveRight -> tuple(1, 0)
+        is moveLeft -> tuple(-1, 0)
     }
 }
 
@@ -138,14 +189,7 @@ private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Intege
         SnekScreen.settings,
         SnekScreen.scores -> return _noChange
         SnekScreen.playing -> {
-            val oldHeadPosition = oldState.snek.headPosition
-            val oldPathPoints = oldState.snek.path.points
-            val pointBehindHead = oldPathPoints[oldPathPoints.length - 2]
-            val nextHeadPosition = oldHeadPosition + Pair(dx, dy)
-
-            if (nextHeadPosition.equals(pointBehindHead)) { // No moving backwards
-                return _noChange
-            }
+            val nextHeadPosition = _nextHeadPositionIfValidMovement(oldState, dx = dx, dy = dy) ?: return _noChange
 
             val oldPoints = oldState.snek.path.points
             val newApplePosition = checkAppleHit(oldState, nextHeadPosition)
@@ -158,6 +202,21 @@ private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Intege
         }
     }
 }
+
+
+private fun _nextHeadPositionIfValidMovement(currentState: SnekDataViewController, dx: Integer, dy: Integer): IntegerPoint? {
+    val oldHeadPosition = currentState.snek.headPosition
+    val oldPathPoints = currentState.snek.path.points
+    val pointBehindHead = oldPathPoints[oldPathPoints.length - 2]
+    val nextHeadPosition = oldHeadPosition + Pair(dx, dy)
+
+    if (nextHeadPosition.equals(pointBehindHead)) { // No moving backwards
+        return null
+    } else {
+        return nextHeadPosition
+    }
+}
+
 
 private fun checkAppleHit(oldState: SnekDataViewController, nextHeadPosition: IntegerPoint): IntegerPoint? =
         when (nextHeadPosition) {
