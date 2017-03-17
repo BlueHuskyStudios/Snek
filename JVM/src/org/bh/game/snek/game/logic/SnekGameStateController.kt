@@ -69,6 +69,7 @@ class SnekGameStateController(initialState: SnekDataViewController)
         }
     }
 
+
     private fun _consumeNextAction(): Boolean {
         synchronized(this) {
             val nextAction = _nextAction
@@ -124,6 +125,11 @@ class SnekGameStateController(initialState: SnekDataViewController)
             playing -> actions.firstOrNull { it != start }
             ready, settings, scores -> actions.firstOrNull
         }
+    }
+
+
+    fun reset() {
+        _store.reset(SnekDataViewController(SnekDataGenerator.generateDefaultData()))
     }
 
 

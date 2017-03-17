@@ -12,7 +12,7 @@ import org.bh.tools.io.logging.log
  * @author Ben Leggiero
  * @since 2017-02-23
  */
-class SnekDataGenerator {
+object SnekDataGenerator {
     fun generateDefaultData(): SnekData {
         val boardSize = defaultBoardSize
         val path = defaultSnekPath(boardSize)
@@ -28,10 +28,8 @@ class SnekDataGenerator {
     }
 
 
-    companion object {
-        fun generateApplePosition(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint =
-                boardSize.randomPointNotOnPath(snekPath).integerValue
-    }
+    fun generateApplePosition(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint =
+            boardSize.randomPointNotOnPath(snekPath).integerValue
 }
 
 private val defaultBoardSize = IntegerSize(width = 12, height = 9)
