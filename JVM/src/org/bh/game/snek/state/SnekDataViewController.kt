@@ -62,4 +62,13 @@ class SnekGameStateChange(val baseChange: BaseSnekDataViewChange) : StateChange<
 
     override fun applyingChange(change: SnekGameStateChange): SnekGameStateChange
             = SnekGameStateChange(this.baseChange.applyingChange(change.baseChange))
+
+    constructor(exactly: SnekDataChange) : this(
+            boardSize = exactly.boardSize,
+            snekPath = exactly.snekPath,
+            leaderboard = exactly.leaderboard,
+            screen = exactly.screen,
+            applePosition = exactly.applePosition,
+            debug = exactly.debug
+    )
 }

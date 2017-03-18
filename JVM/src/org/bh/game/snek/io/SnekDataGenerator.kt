@@ -15,12 +15,12 @@ import org.bh.tools.io.logging.log
 object SnekDataGenerator {
     fun generateDefaultData(): SnekData {
         val boardSize = defaultBoardSize
-        val path = defaultSnekPath(boardSize)
+        val path = generateDefaultSnekPath(boardSize)
         return SnekData(defaultBoardSize,
                 path,
                 defaultLeaderboard,
                 defaultScreen,
-                defaultApple(boardSize, path),
+                generateApplePosition(boardSize, path),
                 defaultKeymap,
                 defaultDelayBetweenMovements,
 
@@ -30,19 +30,20 @@ object SnekDataGenerator {
 
     fun generateApplePosition(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint =
             boardSize.randomPointNotOnPath(snekPath).integerValue
+
+    fun generateDefaultSnekPath(boardSize: IntegerSize) = IntegerPath(
+            boardSize.midXminY.integerValue + IntegerPoint(0, 1),
+            boardSize.midXminY.integerValue + IntegerPoint(0, 2),
+            boardSize.midXminY.integerValue + IntegerPoint(0, 3),
+            boardSize.midXminY.integerValue + IntegerPoint(0, 4),
+            isClosed = false
+    )
 }
 
 private val defaultBoardSize = IntegerSize(width = 12, height = 9)
-private fun defaultSnekPath(boardSize: IntegerSize) = IntegerPath(
-        boardSize.midXminY.integerValue + IntegerPoint(0, 1),
-        boardSize.midXminY.integerValue + IntegerPoint(0, 2),
-        boardSize.midXminY.integerValue + IntegerPoint(0, 3),
-        boardSize.midXminY.integerValue + IntegerPoint(0, 4),
-        isClosed = false)
 private val testSnekPath = IntegerPath(IntegerPoint(10, 10), IntegerPoint(15, 10), IntegerPoint(15, 7), isClosed = true)
 private val defaultLeaderboard = Leaderboard<Leader, Integer>(mapOf())
 private val defaultScreen = SnekScreen.ready
-private fun defaultApple(boardSize: IntegerSize, snekPath: IntegerPath): IntegerPoint = SnekDataGenerator.generateApplePosition(boardSize, snekPath)
 private val defaultKeymap = Keymap()
 private val defaultDelayBetweenMovements: TimeInterval = 0.5
 private val defaultDebug = false

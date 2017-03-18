@@ -54,6 +54,7 @@ class SnekGameStateController(initialState: SnekDataViewController)
     override fun mutate(action: SnekAction) {
         val oldState = currentState()
         _store.pushState(_mutator.mutating(currentState(), action))
+        _updateMetaState()
         _mutationListeners.forEach { it.stateDidMutate(oldState, currentState()) }
     }
 
@@ -68,6 +69,29 @@ class SnekGameStateController(initialState: SnekDataViewController)
             ready, settings, scores -> return
         }
     }
+
+
+    private fun _updateMetaState() {
+        when (currentState().snek.screen) {
+            ready,
+            settings,
+            scores -> _isTimerRunning = false
+            playing -> _isTimerRunning = true
+        }
+    }
+
+
+    private var _isTimerRunning: Boolean
+        get() = _timer.isRunning
+        set(newValue) {
+            if (newValue != _isTimerRunning) {
+                if (newValue) {
+                    _timer.restart()
+                } else {
+                    _timer.stop()
+                }
+            }
+        }
 
 
     private fun _consumeNextAction(): Boolean {
@@ -160,7 +184,12 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
         return when (action) {
             is pause -> _pauseStateChange
             is unpause,
-            is start -> _continuePlayingStateChange
+            is start -> when (state.snek.screen) {
+                ready,
+                playing,
+                scores -> _continuePlayingStateChange
+                settings -> TODO("Settings screen not yet implemented") // TODO
+            }
             is moveUp,
             is moveDown,
             is moveRight,
@@ -191,10 +220,10 @@ private fun _translateActionToMovement(action: SnekAction): Tuple2<Integer, Inte
 
 private fun movingSnek(oldState: SnekDataViewController, dx: Integer, dy: Integer): SnekGameStateChange {
     when (oldState.snek.screen) {
-        SnekScreen.ready,
-        SnekScreen.settings,
-        SnekScreen.scores -> return _noChange
-        SnekScreen.playing -> {
+        ready,
+        settings,
+        scores -> return _noChange
+        playing -> {
             val nextHeadPosition = _nextHeadPositionIfValidMovement(oldState, dx = dx, dy = dy) ?: return _noChange
 
             val oldPoints = oldState.snek.path.points
@@ -242,5 +271,15 @@ private fun settingDebugMode(newMode: Boolean): SnekGameStateChange = SnekGameSt
 
 private val _noChange by lazy { SnekGameStateChange() }
 private val _loseStateChange by lazy { changingScreen(scores) }
+//private fun _loseStateChange(oldState: SnekDataViewController)
+//        = SnekGameStateChange(oldState).applyingChange(SnekGameStateChange(
+//        screen = scores,
+//        snekPath = SnekDataGenerator.generateDefaultSnekPath(oldState.snek.boardSize)
+//))
 private val _pauseStateChange by lazy { changingScreen(ready) }
 private val _continuePlayingStateChange by lazy { changingScreen(playing) }
+private fun _newGameStateChange(oldState: SnekDataViewController)
+        = SnekGameStateChange(oldState).applyingChange(SnekGameStateChange(
+        screen = ready,
+        snekPath = SnekDataGenerator.generateDefaultSnekPath(oldState.snek.boardSize)
+))
