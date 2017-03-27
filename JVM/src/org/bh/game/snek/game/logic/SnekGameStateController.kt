@@ -186,8 +186,8 @@ class SnekGameStateMutator : StateMutator<SnekDataViewController, SnekAction, Sn
             is unpause,
             is start -> when (state.snek.screen) {
                 ready,
-                playing,
-                scores -> _continuePlayingStateChange
+                playing -> _continuePlayingStateChange
+                scores -> _newGameStateChange(state)
                 settings -> TODO("Settings screen not yet implemented") // TODO
             }
             is moveUp,
