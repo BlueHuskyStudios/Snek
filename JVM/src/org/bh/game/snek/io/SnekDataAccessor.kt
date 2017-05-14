@@ -21,7 +21,7 @@ class SnekDataAccessor : DataAccessor<SnekData, SnekDataAccessDetails?, SnekData
 sealed class SnekDataAccessDetails {
     object generateNewData: SnekDataAccessDetails()
 
-    // TODO: More
+    // TODO: More, like continueOldGame
 }
 
 

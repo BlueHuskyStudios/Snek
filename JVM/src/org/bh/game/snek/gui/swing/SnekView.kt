@@ -9,6 +9,7 @@ import org.bh.tools.base.func.observing
 import org.bh.tools.base.math.*
 import org.bh.tools.base.math.geometry.*
 import org.bh.tools.base.struct.UIView
+import org.bh.tools.ui.generic.*
 import org.bh.tools.ui.swing.*
 import java.awt.*
 import java.awt.Dimension
@@ -229,10 +230,10 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
         _paintKey(
                 renderContext = renderContext,
                 textBefore = "Back to start screen", action = SnekAction.start,
-                size = _UISize.small,
-                anchor = _UIAnchor.maxXmaxY(
-                        xOffset = -_UISize.small.fontSize(renderContext),
-                        yOffset = -_UISize.small.fontSize(renderContext)
+                size = UISize.small,
+                anchor = UIAnchor.maxXmaxY(
+                        xOffset = -UISize.small.fontSize(renderContext),
+                        yOffset = -UISize.small.fontSize(renderContext)
                 )
         )
     }
@@ -241,7 +242,7 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
     private fun _paintKey(
             renderContext: SnekViewRenderContext,
             textBefore: String = "", action: SnekAction, textAfter: String = "",
-            size: _UISize, anchor: _UIAnchor
+            size: UISize, anchor: UIAnchor
     ) {
         representedObject.keymap.keyCodesForAction(action).firstOrNull?.let { keyCode ->
             val (context, parentFrame, boardSize, stretchedScale, nonStretchedPixelSideLength) = renderContext
@@ -295,12 +296,12 @@ class SnekView(dataView: BaseSnekDataView) : JComponent(), UIView<BaseSnekDataVi
     }
 
 
-    private fun _UISize.fontSize(renderContext: SnekViewRenderContext): Fraction {
+    private fun UISize.fontSize(renderContext: SnekViewRenderContext): Fraction {
         val smallestSideLength = min(renderContext.frame.height, renderContext.frame.width)
         return when (this) {
-            _UISize.large -> smallestSideLength / 5
-            _UISize.normal -> smallestSideLength / 12
-            _UISize.small -> smallestSideLength / 24
+            UISize.large -> smallestSideLength / 5
+            UISize.normal -> smallestSideLength / 12
+            UISize.small -> smallestSideLength / 24
         }
     }
 
@@ -324,56 +325,3 @@ data class SnekViewRenderContext(
         val stretchedScale: FractionSize,
         val nonStretchedPixelSideLength: Fraction
 )
-
-
-
-internal enum class _UISize {
-    large,
-    normal,
-    small
-}
-
-
-
-internal sealed class _UIAnchor(
-        /**
-         * The distance on the X axis by which an element is offset from its parent, relative to this anchor point on
-         * both the element and its parent
-         */
-        val xOffset: Fraction,
-        /**
-         * The distance on the Y axis by which an element is offset from its parent, relative to this anchor point on
-         * both the element and its parent
-         */
-        val yOffset: Fraction) {
-    class minXminY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class midXminY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class maxXminY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-
-    class minXmidY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class midXmidY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class maxXmidY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-
-    class minXmaxY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class midXmaxY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-    class maxXmaxY(xOffset: Fraction, yOffset: Fraction): _UIAnchor(xOffset, yOffset)
-
-
-    /**
-     * Moves the given rect to a new position within the given frame, using this anchor as a reference point for both rectangles, and offsetting from that reference point
-     */
-    fun reposition(rect: FractionRect, withinFrame: FractionRect): FractionRect {
-        return when (this) {
-            is _UIAnchor.minXminY -> rect.offset(xOffset + withinFrame.minX, yOffset + withinFrame.maxY)
-            is _UIAnchor.midXminY -> TODO()
-            is _UIAnchor.maxXminY -> TODO()
-            is _UIAnchor.minXmidY -> TODO()
-            is _UIAnchor.midXmidY -> TODO()
-            is _UIAnchor.maxXmidY -> TODO()
-            is _UIAnchor.minXmaxY -> TODO()
-            is _UIAnchor.midXmaxY -> TODO()
-            is _UIAnchor.maxXmaxY -> rect.copy(newOrigin = withinFrame.maxXmaxY)
-                    .offset(xOffset - rect.width.clampToPositive, yOffset - rect.height.clampToPositive)
-        }
-    }
-}
